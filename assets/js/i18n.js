@@ -4,8 +4,14 @@ class I18n {
         this.currentLanguage = null;
         this.translations = {};
         this.defaultLanguage = 'de';
-        this.supportedLanguages = ['de', 'en'];
+        this.supportedLanguages = ['de', 'en', 'fr', 'ch'];
         this.fallbackLanguage = 'de';
+        this.languageNames = {
+            'de': 'Deutsch',
+            'en': 'English', 
+            'fr': 'Français',
+            'ch': 'Schwiizerdütsch'
+        };
     }
 
     // Initialize the internationalization system
@@ -50,6 +56,12 @@ class I18n {
         const browserLang = navigator.language.split('-')[0];
         if (this.supportedLanguages.includes(browserLang)) {
             return browserLang;
+        }
+        
+        // 3.1 Special case: Swiss users might prefer Schweizerdeutsch
+        const fullBrowserLang = navigator.language.toLowerCase();
+        if (fullBrowserLang.includes('ch') || fullBrowserLang === 'de-ch') {
+            return 'ch';
         }
 
         // 4. Fallback to default
@@ -209,10 +221,11 @@ class I18n {
         });
 
         // Update current language display
-        const currentLangDisplay = document.querySelector('.current-language');
-        if (currentLangDisplay) {
-            currentLangDisplay.textContent = this.currentLanguage.toUpperCase();
-        }
+        const currentLangDisplay = document.querySelectorAll('.current-language');
+        currentLangDisplay.forEach(display => {
+            const displayText = this.currentLanguage === 'ch' ? 'CH' : this.currentLanguage.toUpperCase();
+            display.textContent = displayText;
+        });
     }
 
     // Switch to a specific language

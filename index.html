@@ -62,9 +62,19 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <div class="language-dropdown hidden absolute right-0 mt-2 w-20 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
-                        <a href="#" class="language-btn block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-lg" data-lang="de">DE</a>
-                        <a href="#" class="language-btn block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-lg" data-lang="en">EN</a>
+                    <div class="language-dropdown hidden absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                        <a href="#" class="language-btn flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-lg" data-lang="de">
+                            <span class="mr-2">🇩🇪</span>DE
+                        </a>
+                        <a href="#" class="language-btn flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en">
+                            <span class="mr-2">🇬🇧</span>EN
+                        </a>
+                        <a href="#" class="language-btn flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="fr">
+                            <span class="mr-2">🇫🇷</span>FR
+                        </a>
+                        <a href="#" class="language-btn flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-lg" data-lang="ch">
+                            <span class="mr-2">🇨🇭</span>CH
+                        </a>
                     </div>
                 </div>
                 
@@ -75,9 +85,11 @@
                         <button class="language-toggle flex items-center text-gray-700 hover:text-amber-600 p-2 text-sm font-medium transition-colors focus:outline-none">
                             <span class="current-language">DE</span>
                         </button>
-                        <div class="language-dropdown hidden absolute right-0 mt-2 w-16 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
-                            <a href="#" class="language-btn block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-lg" data-lang="de">DE</a>
-                            <a href="#" class="language-btn block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-lg" data-lang="en">EN</a>
+                        <div class="language-dropdown hidden absolute right-0 mt-2 w-20 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                            <a href="#" class="language-btn block px-2 py-2 text-xs text-gray-700 hover:bg-gray-100 rounded-t-lg" data-lang="de">🇩🇪 DE</a>
+                            <a href="#" class="language-btn block px-2 py-2 text-xs text-gray-700 hover:bg-gray-100" data-lang="en">🇬🇧 EN</a>
+                            <a href="#" class="language-btn block px-2 py-2 text-xs text-gray-700 hover:bg-gray-100" data-lang="fr">🇫🇷 FR</a>
+                            <a href="#" class="language-btn block px-2 py-2 text-xs text-gray-700 hover:bg-gray-100 rounded-b-lg" data-lang="ch">🇨🇭 CH</a>
                         </div>
                     </div>
                     <button id="mobile-menu-button" class="text-gray-700 hover:text-amber-600 focus:outline-none p-2">
