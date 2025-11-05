@@ -19,6 +19,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     
+    <!-- Internationalization -->
+    <script src="assets/js/i18n.js"></script>
+    
     <!-- Favicon -->
     <link rel="icon" href="assets/images/logo.png" type="image/png">
     
@@ -41,15 +44,43 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#services" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors">Leistungen</a>
-                        <a href="#katalog" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors">Katalog</a>
-                        <a href="#instagram" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors">Instagram</a>
-                        <a href="kontakt.html" class="bg-amber-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-amber-700 transition-colors">Kontakt</a>
+                        <a href="#services" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors" data-i18n="navigation.services">Leistungen</a>
+                        <a href="#katalog" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors" data-i18n="navigation.catalog">Katalog</a>
+                        <a href="#instagram" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors" data-i18n="navigation.instagram">Instagram</a>
+                        <a href="kontakt.html" class="bg-amber-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-amber-700 transition-colors" data-i18n="navigation.contact">Kontakt</a>
                     </div>
                 </div>
+                
+                <!-- Language Switcher -->
+                <div class="hidden md:block relative ml-4">
+                    <button class="language-toggle flex items-center text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors focus:outline-none">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                        </svg>
+                        <span class="current-language">DE</span>
+                        <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="language-dropdown hidden absolute right-0 mt-2 w-20 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                        <a href="#" class="language-btn block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-lg" data-lang="de">DE</a>
+                        <a href="#" class="language-btn block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-lg" data-lang="en">EN</a>
+                    </div>
+                </div>
+                
                 <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-amber-600 focus:outline-none">
+                <div class="md:hidden flex items-center space-x-2">
+                    <!-- Mobile Language Switcher -->
+                    <div class="relative">
+                        <button class="language-toggle flex items-center text-gray-700 hover:text-amber-600 p-2 text-sm font-medium transition-colors focus:outline-none">
+                            <span class="current-language">DE</span>
+                        </button>
+                        <div class="language-dropdown hidden absolute right-0 mt-2 w-16 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                            <a href="#" class="language-btn block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-lg" data-lang="de">DE</a>
+                            <a href="#" class="language-btn block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-lg" data-lang="en">EN</a>
+                        </div>
+                    </div>
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-amber-600 focus:outline-none p-2">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -61,10 +92,10 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#services" class="text-gray-700 hover:text-amber-600 block px-3 py-2 text-base font-medium">Leistungen</a>
-                <a href="#katalog" class="text-gray-700 hover:text-amber-600 block px-3 py-2 text-base font-medium">Katalog</a>
-                <a href="#instagram" class="text-gray-700 hover:text-amber-600 block px-3 py-2 text-base font-medium">Instagram</a>
-                <a href="kontakt.html" class="text-gray-700 hover:text-amber-600 block px-3 py-2 text-base font-medium">Kontakt</a>
+                <a href="#services" class="text-gray-700 hover:text-amber-600 block px-3 py-2 text-base font-medium" data-i18n="navigation.services">Leistungen</a>
+                <a href="#katalog" class="text-gray-700 hover:text-amber-600 block px-3 py-2 text-base font-medium" data-i18n="navigation.catalog">Katalog</a>
+                <a href="#instagram" class="text-gray-700 hover:text-amber-600 block px-3 py-2 text-base font-medium" data-i18n="navigation.instagram">Instagram</a>
+                <a href="kontakt.html" class="text-gray-700 hover:text-amber-600 block px-3 py-2 text-base font-medium" data-i18n="navigation.contact">Kontakt</a>
             </div>
         </div>
     </header>
@@ -77,17 +108,14 @@
             <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
                 Blacklodge
             </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-                Mobile Cocktailbar & Event-Services
-            </p>
-            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-                Premium Cocktails, 360 Booth und Photo Box – für Privat, Business & Hochzeiten.
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed" data-i18n="hero.description">
+                Premium Event-Services für die Schweiz: Mobile Cocktailbar, 360° Booth & Event Entertainment
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="kontakt.html" class="inline-flex items-center px-8 py-3 bg-amber-600 text-white font-medium rounded-full hover:bg-amber-700 transition-all duration-300 transform hover:scale-105">
+                <a href="kontakt.html" class="inline-flex items-center px-8 py-3 bg-amber-600 text-white font-medium rounded-full hover:bg-amber-700 transition-all duration-300 transform hover:scale-105" data-i18n="hero.cta_primary">
                     Jetzt Anfrage starten
                 </a>
-                <a href="assets/images/catalog.pdf" target="_blank" class="inline-flex items-center px-8 py-3 border-2 border-white text-white font-medium rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300">
+                <a href="assets/images/catalog.pdf" target="_blank" class="inline-flex items-center px-8 py-3 border-2 border-white text-white font-medium rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300" data-i18n="hero.cta_secondary">
                     Katalog ansehen
                 </a>
             </div>
@@ -98,8 +126,8 @@
     <section id="services" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Unsere Leistungen</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Professionelle Event-Services für unvergessliche Momente</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-i18n="services.title">Unsere Services</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-i18n="services.subtitle">Drei einzigartige Erlebnisse für Ihr Event</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -110,9 +138,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Cocktail & Bar Service</h3>
-                    <p class="text-gray-600 mb-6">
-                        Professionelle Bartender mit mobiler Bar-Ausstattung. Individuelle Cocktailkarte mit Premium-Spirituosen und alkoholfreien Alternativen. Komplettes Setup inklusive Gläser und Cleanup-Service.
+                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-i18n="services.cocktail.title">Cocktail & Bar Service</h3>
+                    <p class="text-gray-600 mb-6" data-i18n="services.cocktail.description">
+                        Mobile Premium-Bar mit professionellen Barkeepern und hochwertigen Spirituosen für Ihr Event.
                     </p>
                     <ul class="space-y-2 text-sm text-gray-500">
                         <li>• Flexible Gästezahl</li>
@@ -129,9 +157,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">360° Booth & PhotoBooth</h3>
-                    <p class="text-gray-600 mb-6">
-                        Innovative 360°-Videotechnologie mit professionellem Lightning-Setup. Branding-Overlay möglich und sofortiges Sharing via QR-Code, AirDrop oder direktem Link.
+                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-i18n="services.booth.title">360° Booth & PhotoBooth</h3>
+                    <p class="text-gray-600 mb-6" data-i18n="services.booth.description">
+                        Innovative Videotechnologie für spektakuläre 360°-Aufnahmen und klassische PhotoBooth-Erinnerungen.
                     </p>
                     <ul class="space-y-2 text-sm text-gray-500">
                         <li>• Schneller Aufbau</li>
@@ -148,9 +176,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Event Entertainment</h3>
-                    <p class="text-gray-600 mb-6">
-                        Professionelle DJs mit hochwertiger Technik, LED-Screens und Tanzchoreographie. Von entspannter Hintergrundmusik bis zur Vollgas-Party – wir schaffen die perfekte Atmosphäre.
+                    <h3 class="text-xl font-bold text-gray-900 mb-4" data-i18n="services.entertainment.title">Event Entertainment</h3>
+                    <p class="text-gray-600 mb-6" data-i18n="services.entertainment.description">
+                        Komplette Unterhaltung mit DJs, LED-Screens und choreographiertem Entertainment für Ihr Event.
                     </p>
                     <ul class="space-y-2 text-sm text-gray-500">
                         <li>• Professionelle DJs</li>
@@ -166,11 +194,11 @@
     <!-- Catalog Section -->
     <section id="katalog" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Unser Katalog</h2>
-            <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
-                Entdecken Sie unsere Signature Drinks, alkoholfreie Alternativen und verschiedene Service-Packages.
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8" data-i18n="catalog.title">Blacklodge Katalog 2025</h2>
+            <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto" data-i18n="catalog.description">
+                Entdecken Sie alle unsere Services im Detail mit Preisen und Paketen für Ihr perfektes Event.
             </p>
-            <a href="assets/images/catalog.pdf" target="_blank" class="inline-flex items-center px-8 py-3 bg-amber-600 text-white font-medium rounded-full hover:bg-amber-700 transition-all duration-300 transform hover:scale-105">
+            <a href="assets/images/catalog.pdf" target="_blank" class="inline-flex items-center px-8 py-3 bg-amber-600 text-white font-medium rounded-full hover:bg-amber-700 transition-all duration-300 transform hover:scale-105" data-i18n="catalog.download">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                 </svg>
@@ -183,9 +211,9 @@
     <section id="instagram" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Folge uns auf Instagram</h2>
-                <p class="text-lg text-gray-600 mb-8">Entdecke unsere neuesten Events und Kreationen</p>
-                <a href="https://www.instagram.com/_the.black.lodge_/" target="_blank" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-i18n="instagram.title">Folgen Sie uns auf Instagram</h2>
+                <p class="text-lg text-gray-600 mb-8" data-i18n="instagram.description">Entdecken Sie unsere neuesten Events und lassen Sie sich inspirieren.</p>
+                <a href="https://www.instagram.com/_the.black.lodge_/" target="_blank" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300" data-i18n="instagram.cta">
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12.017 0C8.396 0 7.652.025 6.465.073 5.277.121 4.469.264 3.752.428c-.738.163-1.365.378-1.99.753-.626.374-1.153.861-1.602 1.602-.375.625-.59 1.252-.753 1.99C-.076 4.469-.22 5.277-.073 6.465-.025 7.652 0 8.396 0 12.017c0 3.62.025 4.365.073 5.552.048 1.188.191 1.996.355 2.714.163.738.378 1.365.753 1.99.374.626.861 1.153 1.602 1.602.625.375 1.252.59 1.99.753.718.164 1.526.307 2.714.355 1.187.048 1.931.073 5.552.073 3.62 0 4.365-.025 5.552-.073 1.188-.048 1.996-.191 2.714-.355.738-.163 1.365-.378 1.99-.753.626-.374 1.153-.861 1.602-1.602.375-.625.59-1.252.753-1.99.164-.718.307-1.526.355-2.714.048-1.187.073-1.931.073-5.552 0-3.62-.025-4.365-.073-5.552-.048-1.188-.191-1.996-.355-2.714-.163-.738-.378-1.365-.753-1.99-.374-.626-.861-1.153-1.602-1.602-.625-.375-1.252-.59-1.99-.753C16.465.264 15.657.121 14.469.073 13.282.025 12.538 0 8.917 0h3.1zm0 2.163c3.564 0 3.987.014 5.393.072 1.3.06 2.006.276 2.476.458.622.242.966.532 1.389.955.423.423.713.767.955 1.389.182.47.398 1.176.458 2.476.058 1.406.072 1.829.072 5.393 0 3.564-.014 3.987-.072 5.393-.06 1.3-.276 2.006-.458 2.476-.242.622-.532.966-.955 1.389-.423.423-.767.713-1.389.955-.47.182-1.176.398-2.476.458-1.406.058-1.829.072-5.393.072-3.564 0-3.987-.014-5.393-.072-1.3-.06-2.006-.276-2.476-.458-.622-.242-.966-.532-1.389-.955-.423-.423-.713-.767-.955-1.389-.182-.47-.398-1.176-.458-2.476C2.177 16.004 2.163 15.581 2.163 12.017c0-3.564.014-3.987.072-5.393.06-1.3.276-2.006.458-2.476.242-.622.532-.966.955-1.389.423-.423.767-.713 1.389-.955.47-.182 1.176-.398 2.476-.458 1.406-.058 1.829-.072 5.393-.072z"/>
                         <path d="M12.017 5.838a6.18 6.18 0 1 0 0 12.36 6.18 6.18 0 0 0 0-12.36zm0 10.197a4.017 4.017 0 1 1 0-8.034 4.017 4.017 0 0 1 0 8.034z"/>
