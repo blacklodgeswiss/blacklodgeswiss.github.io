@@ -1,7 +1,8 @@
 // Mobile menu functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+    // Try different selectors for mobile menu
+    const mobileMenuButton = document.getElementById('mobile-menu-button') || document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu') || document.querySelector('.mobile-menu');
     
     if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', function() {
