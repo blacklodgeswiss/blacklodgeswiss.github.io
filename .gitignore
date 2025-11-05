@@ -1,1 +1,9 @@
 .DS_Store
+
+# EmailJS Environment Variables (auto-generated during GitHub Actions build)
+assets/js/emailjs-env.js
+
+# Development files
+*.log
+.vscode/
+node_modules/

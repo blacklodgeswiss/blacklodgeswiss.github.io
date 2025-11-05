@@ -127,7 +127,8 @@ class I18n {
                 // Handle different content types
                 if (element.tagName === 'INPUT' && element.type === 'submit') {
                     element.value = translation;
-                } else if (element.hasAttribute('placeholder')) {
+                } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    // For input and textarea elements, set placeholder
                     element.placeholder = translation;
                 } else if (element.hasAttribute('title')) {
                     element.title = translation;
@@ -234,6 +235,11 @@ class I18n {
             await this.setLanguage(language);
             this.updateLanguageSwitcher();
             
+            // Re-apply translations to ensure all elements are updated
+            setTimeout(() => {
+                this.applyTranslations();
+            }, 50);
+            
             // Trigger custom event for other components
             window.dispatchEvent(new CustomEvent('languageChanged', { 
                 detail: { language: this.currentLanguage } 
@@ -283,6 +289,11 @@ const i18n = new I18n();
 document.addEventListener('DOMContentLoaded', async () => {
     await i18n.init();
     
+    // Apply translations immediately after init
+    setTimeout(() => {
+        i18n.applyTranslations();
+    }, 100);
+    
     // Initialize Swiss Language Modal if SwissLanguageModal is available
     if (window.SwissLanguageModal) {
         const swissModal = new SwissLanguageModal(i18n);
@@ -290,35 +301,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     // Setup language switcher event listeners
-    document.querySelectorAll('.language-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+    document.addEventListener('click', (e) => {
+        const languageBtn = e.target.closest('.language-btn');
+        if (languageBtn) {
             e.preventDefault();
-            const targetLang = btn.getAttribute('data-lang');
+            const targetLang = languageBtn.getAttribute('data-lang');
             i18n.switchLanguage(targetLang);
-        });
+        }
     });
     
-    // Setup language dropdown toggle
-    const langToggle = document.querySelector('.language-toggle');
-    const langDropdown = document.querySelector('.language-dropdown');
-    
-    if (langToggle && langDropdown) {
-        langToggle.addEventListener('click', (e) => {
+    // Setup language dropdown toggle  
+    document.addEventListener('click', (e) => {
+        const langToggle = e.target.closest('.language-toggle');
+        if (langToggle) {
             e.preventDefault();
             e.stopPropagation();
-            langDropdown.classList.toggle('hidden');
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', () => {
-            langDropdown.classList.add('hidden');
-        });
-        
-        // Prevent dropdown from closing when clicking inside it
-        langDropdown.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-    }
+            const langDropdown = langToggle.parentElement.querySelector('.language-dropdown');
+            if (langDropdown) {
+                langDropdown.classList.toggle('hidden');
+            }
+        } else {
+            // Close all language dropdowns when clicking outside
+            document.querySelectorAll('.language-dropdown').forEach(dropdown => {
+                dropdown.classList.add('hidden');
+            });
+        }
+    });
 });
 
 // Export for use in other files

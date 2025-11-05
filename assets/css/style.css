@@ -10,6 +10,38 @@
     }
 }
 
+/* Instagram Feed Styles */
+.instagram-post {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.instagram-post:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Loading animation for Instagram feed */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.instagram-loading {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 .animate-fade-in {
     animation: fadeIn 0.8s ease-out forwards;
 }

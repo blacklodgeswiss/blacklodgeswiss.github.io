@@ -23,8 +23,13 @@ function initializePageComponents() {
     // Initialize page components based on current page
     const currentPage = document.documentElement.getAttribute('data-page') || 'home';
     
+    // Initialize and render Navigation (for all pages)
+    initializeNavigation(app, currentPage);
+    
     if (currentPage === 'home') {
         initializeHomePageComponents(app);
+    } else if (currentPage === 'contact') {
+        initializeContactPageComponents(app);
     }
     
     // Initialize Instagram feed for all pages that have it
@@ -32,6 +37,43 @@ function initializePageComponents() {
     
     // Initialize legacy features
     initializeLegacyFeatures();
+}
+
+/**
+ * Initialize and render Navigation component
+ * @param {AppController} app - App controller instance
+ * @param {string} currentPage - Current page identifier
+ */
+function initializeNavigation(app, currentPage) {
+    const navigation = app.getComponent('navigation');
+    const navigationContainer = document.getElementById('navigation-root');
+    
+    if (navigation && navigationContainer) {
+        const navigationHTML = navigation.render({ currentPage });
+        navigationContainer.innerHTML = navigationHTML;
+        navigation.init();
+        console.log('🧭 Navigation component rendered');
+    }
+}
+
+/**
+ * Initialize contact page specific components
+ * @param {AppController} app - App controller instance
+ */
+function initializeContactPageComponents(app) {
+    const i18n = app.i18n;
+    
+    // Initialize and render Footer
+    if (window.FooterComponent) {
+        const footerContainer = document.getElementById('footer-root');
+        if (footerContainer) {
+            const footer = new FooterComponent(i18n);
+            footer.render(footerContainer);
+            app.components.set('footer', footer);
+        }
+    }
+    
+    console.log('📞 Contact page components initialized');
 }
 
 /**
@@ -144,13 +186,18 @@ function initializeLegacyFeatures() {
 }
 
 /**
- * Initialize contact form functionality
+ * Initialize contact form functionality with EmailJS and spam protection
  */
 function initializeContactForm() {
     const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        // Initialize EmailJS if not already done
+        if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG?.publicKey) {
+            emailjs.init(window.EMAILJS_CONFIG.publicKey);
+        }
+        
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get form data
@@ -165,6 +212,22 @@ function initializeContactForm() {
                 } else {
                     data[key] = value;
                 }
+            }
+            
+            // SPAM PROTECTION: Check honeypot field
+            if (data.website_url && data.website_url.trim() !== '') {
+                console.log('🚫 Spam detected - honeypot field filled');
+                // Silent fail for spam
+                contactForm.reset();
+                return;
+            }
+            
+            // SPAM PROTECTION: Check rate limiting
+            if (window.BlacklodgeRateLimiter && !window.BlacklodgeRateLimiter.canSubmit()) {
+                const nextAllowed = window.BlacklodgeRateLimiter.getNextAllowedTime();
+                const waitTime = Math.ceil((nextAllowed - new Date()) / (1000 * 60)); // minutes
+                alert(`Bitte warten Sie ${waitTime} Minuten vor der nächsten Anfrage.`);
+                return;
             }
             
             // Basic validation
@@ -191,15 +254,95 @@ function initializeContactForm() {
             submitButton.textContent = 'Wird gesendet...';
             submitButton.disabled = true;
             
-            // Simulate form submission (replace with actual endpoint)
-            setTimeout(() => {
-                alert('Vielen Dank für Ihre Anfrage! Wir melden uns bald bei Ihnen.');
+            try {
+                // Send email via EmailJS (preferred) or fallback to Formspree
+                if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG?.serviceId) {
+                    await sendViaEmailJS(data);
+                } else {
+                    await sendViaFormspree(data);
+                }
+                
+                // Record successful submission for rate limiting
+                if (window.BlacklodgeRateLimiter) {
+                    window.BlacklodgeRateLimiter.recordSubmission();
+                }
+                
+                alert('Vielen Dank für Ihre Anfrage! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
                 contactForm.reset();
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('Es gab einen Fehler beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt per E-Mail oder Telefon.');
+            } finally {
+                // Reset button state
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
-            }, 1500);
+            }
         });
     }
+}
+
+/**
+ * Send email via EmailJS
+ * @param {Object} data - Form data
+ */
+async function sendViaEmailJS(data) {
+    const templateParams = {
+        from_name: `${data.vorname} ${data.nachname}`,
+        from_email: data.email,
+        phone: data.phone || 'Nicht angegeben',
+        event_type: data.event_type || 'Nicht angegeben',
+        event_date: data.event_date || 'Nicht angegeben',
+        location: data.location || 'Nicht angegeben',
+        guests: data.guests || 'Nicht angegeben',
+        services: data.services ? data.services.join(', ') : 'Keine ausgewählt',
+        budget: data.budget || 'Nicht angegeben',
+        message: data.message || 'Keine zusätzlichen Informationen',
+        reply_to: data.email
+    };
+    
+    const config = window.EMAILJS_CONFIG;
+    const result = await emailjs.send(config.serviceId, config.templateId, templateParams);
+    
+    if (result.status !== 200) {
+        throw new Error('EmailJS failed');
+    }
+    
+    console.log('✅ Email sent via EmailJS:', result);
+}
+
+/**
+ * Fallback: Send email via Formspree
+ * @param {Object} data - Form data
+ */
+async function sendViaFormspree(data) {
+    const formspreeEndpoint = window.BLACKLODGE_CONFIG?.contact?.formspreeEndpoint || 'https://formspree.io/f/xpwwqbjy';
+    const response = await fetch(formspreeEndpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: `${data.vorname} ${data.nachname}`,
+            email: data.email,
+            phone: data.phone || 'Nicht angegeben',
+            event_type: data.event_type || 'Nicht angegeben',
+            event_date: data.event_date || 'Nicht angegeben',
+            location: data.location || 'Nicht angegeben',
+            guests: data.guests || 'Nicht angegeben',
+            services: data.services ? data.services.join(', ') : 'Keine ausgewählt',
+            budget: data.budget || 'Nicht angegeben',
+            message: data.message || 'Keine zusätzlichen Informationen',
+            _subject: `Neue Anfrage von ${data.vorname} ${data.nachname}`,
+            _replyto: data.email
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error('Formspree submission failed');
+    }
+    
+    console.log('✅ Email sent via Formspree fallback');
 }
 
 /**

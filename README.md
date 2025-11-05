@@ -158,7 +158,7 @@ Bei Fragen zur Website-Entwicklung oder technischen Problemen:
 
 **Blacklodge Business:**
 - Telefon: +41 79 778 48 61  
-- E-Mail: info@blacklodge.ch
+- E-Mail: the.blacklodge@outlook.com
 - Instagram: [@_the.black.lodge_](https://www.instagram.com/_the.black.lodge_/)
 
 ---
