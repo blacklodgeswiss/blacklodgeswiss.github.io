@@ -250,6 +250,30 @@ class I18n {
     isLanguageSupported(language) {
         return this.supportedLanguages.includes(language);
     }
+
+    // Translate a specific element and its children
+    translateElement(element) {
+        if (!element) return;
+        
+        const elementsToTranslate = element.querySelectorAll('[data-i18n]');
+        elementsToTranslate.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const translation = this.getTranslation(key);
+            
+            if (translation) {
+                // Handle different content types
+                if (el.tagName === 'INPUT' && el.type === 'submit') {
+                    el.value = translation;
+                } else if (el.hasAttribute('placeholder')) {
+                    el.placeholder = translation;
+                } else if (el.hasAttribute('title')) {
+                    el.title = translation;
+                } else {
+                    el.textContent = translation;
+                }
+            }
+        });
+    }
 }
 
 // Initialize global I18n instance
@@ -258,6 +282,12 @@ const i18n = new I18n();
 // Auto-initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
     await i18n.init();
+    
+    // Initialize Swiss Language Modal if SwissLanguageModal is available
+    if (window.SwissLanguageModal) {
+        const swissModal = new SwissLanguageModal(i18n);
+        await swissModal.init();
+    }
     
     // Setup language switcher event listeners
     document.querySelectorAll('.language-btn').forEach(btn => {
@@ -293,3 +323,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // Export for use in other files
 window.i18n = i18n;
+window.I18n = I18n;

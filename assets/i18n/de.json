@@ -1,149 +1,164 @@
 {
-  "meta": {
-    "title": "Blacklodge | Mobile Cocktailbar & Event-Services Schweiz",
-    "description": "Blacklodge bietet mobile Cocktailbar, 360° Booth, PhotoBooth und Event Entertainment in der ganzen Schweiz. Professionelle Event-Services für unvergessliche Momente."
-  },
-  "navigation": {
-    "home": "Home",
-    "services": "Services",
-    "catalog": "Katalog",
-    "instagram": "Instagram",
-    "contact": "Kontakt"
-  },
-  "hero": {
-    "title": "Unvergessliche Momente,",
-    "subtitle": "serviert in Style",
-    "description": "Premium Event-Services für die Schweiz: Mobile Cocktailbar, 360° Booth & Event Entertainment",
-    "cta_primary": "Jetzt Anfrage starten",
-    "cta_secondary": "Katalog ansehen"
-  },
-  "services": {
-    "title": "Unsere Services",
-    "subtitle": "Drei einzigartige Erlebnisse für Ihr Event",
-    "cocktail": {
-      "title": "Cocktail & Bar Service",
-      "description": "Mobile Premium-Bar mit professionellen Barkeepern und hochwertigen Spirituosen für Ihr Event.",
-      "features": [
-        "Mobile Bar-Ausstattung",
-        "Premium-Spirituosen & frische Zutaten",
-        "Professionelle Barkeeper",
-        "Komplettes Setup & Service"
-      ]
+    "meta": {
+        "title": "Blacklodge | Mobile Cocktailbar & Event-Services Schweiz",
+        "description": "Blacklodge bietet mobile Cocktailbar, 360° Booth, PhotoBooth und Event Entertainment in der ganzen Schweiz. Professionelle Event-Services für unvergessliche Momente."
     },
-    "booth": {
-      "title": "360° Booth & PhotoBooth",
-      "description": "Innovative Videotechnologie für spektakuläre 360°-Aufnahmen und klassische PhotoBooth-Erinnerungen.",
-      "features": [
-        "Modernste 360° Video-Technologie",
-        "Sofort-Sharing auf Social Media",
-        "Individuelles Branding möglich",
-        "Professionelle Beleuchtung"
-      ]
+    "navigation": {
+        "home": "Home",
+        "services": "Services",
+        "catalog": "Katalog",
+        "instagram": "Instagram",
+        "contact": "Kontakt"
     },
-    "entertainment": {
-      "title": "Event Entertainment",
-      "description": "Komplette Unterhaltung mit DJs, LED-Screens und choreographiertem Entertainment für Ihr Event.",
-      "features": [
-        "Professionelle DJs & Musikausstattung",
-        "LED-Screens & Lichttechnik",
-        "Tanzchoreographie & Shows",
-        "Maßgeschneidertes Entertainment"
-      ]
+    "hero": {
+        "title": "Unvergessliche Momente,",
+        "subtitle": "serviert in Style",
+        "description": "Premium Event-Services für die Schweiz: Mobile Cocktailbar, 360° Booth & Event Entertainment",
+        "cta_primary": "Jetzt Anfrage starten",
+        "cta_secondary": "Katalog ansehen"
+    },
+    "services": {
+        "title": "Unsere Services",
+        "subtitle": "Drei einzigartige Erlebnisse für Ihr Event",
+        "cocktail": {
+            "title": "Cocktail & Bar Service",
+            "description": "Mobile Premium-Bar mit professionellen Barkeepern und hochwertigen Spirituosen für Ihr Event.",
+            "features": [
+                "Mobile Bar-Ausstattung",
+                "Premium-Spirituosen & frische Zutaten",
+                "Professionelle Barkeeper",
+                "Komplettes Setup & Service"
+            ]
+        },
+        "booth": {
+            "title": "360° Booth & PhotoBooth",
+            "description": "Innovative Videotechnologie für spektakuläre 360°-Aufnahmen und klassische PhotoBooth-Erinnerungen.",
+            "features": [
+                "Modernste 360° Video-Technologie",
+                "Sofort-Sharing auf Social Media",
+                "Individuelles Branding möglich",
+                "Professionelle Beleuchtung"
+            ]
+        },
+        "entertainment": {
+            "title": "Event Entertainment",
+            "description": "Komplette Unterhaltung mit DJs, LED-Screens und choreographiertem Entertainment für Ihr Event.",
+            "features": [
+                "Professionelle DJs & Musikausstattung",
+                "LED-Screens & Lichttechnik",
+                "Tanzchoreographie & Shows",
+                "Maßgeschneidertes Entertainment"
+            ]
+        }
+    },
+    "catalog": {
+        "title": "Blacklodge Katalog 2025",
+        "description": "Entdecken Sie alle unsere Services im Detail mit Preisen und Paketen für Ihr perfektes Event.",
+        "download": "Katalog herunterladen"
+    },
+    "instagram": {
+        "title": "Folgen Sie uns auf Instagram",
+        "description": "Entdecken Sie unsere neuesten Events und lassen Sie sich inspirieren.",
+        "cta": "Auf Instagram folgen"
+    },
+    "contact": {
+        "title": "Kontakt",
+        "subtitle": "Bereit für Ihr unvergessliches Event?",
+        "description": "Kontaktieren Sie uns für eine unverbindliche Beratung und ein maßgeschneidertes Angebot.",
+        "direct_contact": "Direkter Kontakt",
+        "phone": "Telefon",
+        "email": "E-Mail",
+        "service_area": "Service-Gebiet",
+        "service_area_text": "Schweizweit verfügbar",
+        "form": {
+            "title": "Anfrage senden",
+            "microsoft_form": "Microsoft Forms (Empfohlen)",
+            "microsoft_form_description": "Das Formular öffnet sich direkt hier oder Sie können es in einem",
+            "new_tab": "neuen Tab öffnen",
+            "alternative_form": "Alternative: Direktes Kontaktformular",
+            "first_name": "Vorname",
+            "last_name": "Nachname",
+            "email": "E-Mail",
+            "phone": "Telefon",
+            "event_type": "Art des Anlasses",
+            "event_type_placeholder": "Bitte wählen...",
+            "event_type_private": "Private Feier",
+            "event_type_corporate": "Firmenveranstaltung",
+            "event_type_wedding": "Hochzeit",
+            "event_type_other": "Sonstiges",
+            "event_date": "Datum (ungefähr)",
+            "location": "Ort / PLZ",
+            "location_placeholder": "z.B. Zürich, 8001",
+            "guests": "Anzahl Gäste",
+            "guests_1_25": "1-25 Personen",
+            "guests_26_50": "26-50 Personen",
+            "guests_51_100": "51-100 Personen",
+            "guests_101_200": "101-200 Personen",
+            "guests_200_plus": "200+ Personen",
+            "services": "Gewünschte Services",
+            "service_cocktail": "Cocktail & Bar Service",
+            "service_booth": "360° Booth & PhotoBooth",
+            "service_entertainment": "Event Entertainment",
+            "budget": "Budgetrahmen",
+            "budget_500_1000": "CHF 500 - 1'000",
+            "budget_1000_2500": "CHF 1'000 - 2'500",
+            "budget_2500_5000": "CHF 2'500 - 5'000",
+            "budget_5000_plus": "CHF 5'000+",
+            "budget_open": "Offen / Individuell",
+            "message": "Zusätzliche Informationen",
+            "message_placeholder": "Teilen Sie uns weitere Details zu Ihrem Event mit...",
+            "privacy": "Ich stimme der",
+            "privacy_link": "Datenschutzerklärung",
+            "privacy_text": "zu und bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden.",
+            "submit": "Anfrage senden",
+            "submitting": "Wird gesendet..."
+        },
+        "social": {
+            "title": "Folgen Sie uns",
+            "description": "Entdecken Sie unsere neuesten Events und bekommen Sie Inspiration für Ihre Veranstaltung."
+        },
+        "response_times": {
+            "title": "Antwortzeiten",
+            "email": "E-Mail: Innerhalb von 24 Stunden",
+            "phone": "Telefon: Mo-Fr 09:00-18:00 Uhr",
+            "quote": "Angebote: Innerhalb von 3 Werktagen"
+        }
+    },
+    "footer": {
+        "company_description": "Mobile Cocktailbar & Event-Services für unvergessliche Momente.",
+        "navigation_title": "Navigation",
+        "legal_title": "Rechtliches",
+        "impressum": "Impressum",
+        "privacy": "Datenschutz",
+        "copyright": "© 2025 Blacklodge. Alle Rechte vorbehalten."
+    },
+    "messages": {
+        "form_success": "Vielen Dank für Ihre Anfrage! Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+        "form_error": "Es gab einen Fehler beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
+        "required_fields": "Bitte füllen Sie alle Pflichtfelder aus.",
+        "privacy_required": "Bitte akzeptieren Sie die Datenschutzerklärung.",
+        "invalid_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+    },
+    "swiss_modal": {
+        "greeting": "Grüezi!",
+        "welcome": "Willkommen bei Blacklodge",
+        "language_prompt": "Wählen Sie Ihre bevorzugte Sprache",
+        "language_prompt_multi": "Wählen Sie Ihre bevorzugte Sprache • Choisissez votre langue préférée • Choose your preferred language",
+        "swiss_german": "Schwiizerdütsch",
+        "swiss_german_desc": "Authentisches Schwiizerdütsch",
+        "german": "Deutsch",
+        "german_desc": "Hochdeutsch",
+        "french": "Français",
+        "french_desc": "Langue française",
+        "english": "English",
+        "english_desc": "English language",
+        "choose_later": "Später wählen • Choisir plus tard • Choose later"
+    },
+    "common": {
+        "required": "*",
+        "optional": "optional",
+        "loading": "Lädt...",
+        "close": "Schließen",
+        "open": "Öffnen"
     }
-  },
-  "catalog": {
-    "title": "Blacklodge Katalog 2025",
-    "description": "Entdecken Sie alle unsere Services im Detail mit Preisen und Paketen für Ihr perfektes Event.",
-    "download": "Katalog herunterladen"
-  },
-  "instagram": {
-    "title": "Folgen Sie uns auf Instagram",
-    "description": "Entdecken Sie unsere neuesten Events und lassen Sie sich inspirieren.",
-    "cta": "Auf Instagram folgen"
-  },
-  "contact": {
-    "title": "Kontakt",
-    "subtitle": "Bereit für Ihr unvergessliches Event?",
-    "description": "Kontaktieren Sie uns für eine unverbindliche Beratung und ein maßgeschneidertes Angebot.",
-    "direct_contact": "Direkter Kontakt",
-    "phone": "Telefon",
-    "email": "E-Mail",
-    "service_area": "Service-Gebiet",
-    "service_area_text": "Schweizweit verfügbar",
-    "form": {
-      "title": "Anfrage senden",
-      "microsoft_form": "Microsoft Forms (Empfohlen)",
-      "microsoft_form_description": "Das Formular öffnet sich direkt hier oder Sie können es in einem",
-      "new_tab": "neuen Tab öffnen",
-      "alternative_form": "Alternative: Direktes Kontaktformular",
-      "first_name": "Vorname",
-      "last_name": "Nachname",
-      "email": "E-Mail",
-      "phone": "Telefon",
-      "event_type": "Art des Anlasses",
-      "event_type_placeholder": "Bitte wählen...",
-      "event_type_private": "Private Feier",
-      "event_type_corporate": "Firmenveranstaltung",
-      "event_type_wedding": "Hochzeit",
-      "event_type_other": "Sonstiges",
-      "event_date": "Datum (ungefähr)",
-      "location": "Ort / PLZ",
-      "location_placeholder": "z.B. Zürich, 8001",
-      "guests": "Anzahl Gäste",
-      "guests_1_25": "1-25 Personen",
-      "guests_26_50": "26-50 Personen",
-      "guests_51_100": "51-100 Personen",
-      "guests_101_200": "101-200 Personen",
-      "guests_200_plus": "200+ Personen",
-      "services": "Gewünschte Services",
-      "service_cocktail": "Cocktail & Bar Service",
-      "service_booth": "360° Booth & PhotoBooth",
-      "service_entertainment": "Event Entertainment",
-      "budget": "Budgetrahmen",
-      "budget_500_1000": "CHF 500 - 1'000",
-      "budget_1000_2500": "CHF 1'000 - 2'500",
-      "budget_2500_5000": "CHF 2'500 - 5'000",
-      "budget_5000_plus": "CHF 5'000+",
-      "budget_open": "Offen / Individuell",
-      "message": "Zusätzliche Informationen",
-      "message_placeholder": "Teilen Sie uns weitere Details zu Ihrem Event mit...",
-      "privacy": "Ich stimme der",
-      "privacy_link": "Datenschutzerklärung",
-      "privacy_text": "zu und bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden.",
-      "submit": "Anfrage senden",
-      "submitting": "Wird gesendet..."
-    },
-    "social": {
-      "title": "Folgen Sie uns",
-      "description": "Entdecken Sie unsere neuesten Events und bekommen Sie Inspiration für Ihre Veranstaltung."
-    },
-    "response_times": {
-      "title": "Antwortzeiten",
-      "email": "E-Mail: Innerhalb von 24 Stunden",
-      "phone": "Telefon: Mo-Fr 09:00-18:00 Uhr",
-      "quote": "Angebote: Innerhalb von 3 Werktagen"
-    }
-  },
-  "footer": {
-    "company_description": "Mobile Cocktailbar & Event-Services für unvergessliche Momente.",
-    "navigation_title": "Navigation",
-    "legal_title": "Rechtliches",
-    "impressum": "Impressum",
-    "privacy": "Datenschutz",
-    "copyright": "© 2025 Blacklodge. Alle Rechte vorbehalten."
-  },
-  "messages": {
-    "form_success": "Vielen Dank für Ihre Anfrage! Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
-    "form_error": "Es gab einen Fehler beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
-    "required_fields": "Bitte füllen Sie alle Pflichtfelder aus.",
-    "privacy_required": "Bitte akzeptieren Sie die Datenschutzerklärung.",
-    "invalid_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
-  },
-  "common": {
-    "required": "*",
-    "optional": "optional",
-    "loading": "Lädt...",
-    "close": "Schließen",
-    "open": "Öffnen"
-  }
 }

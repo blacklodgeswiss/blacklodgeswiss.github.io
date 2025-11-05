@@ -139,6 +139,21 @@
         "privacy_required": "Bitte akzeptiered d'Dateschutzerklärig.",
         "invalid_email": "Bitte gebed ä gültigi E-Mail-Adrässe ii."
     },
+    "swiss_modal": {
+        "greeting": "Grüezi!",
+        "welcome": "Willkommä bi Blacklodge",
+        "language_prompt": "Wähled euri bevorzugti Sprach",
+        "language_prompt_multi": "Wählen Sie Ihre bevorzugte Sprache • Choisissez votre langue préférée • Choose your preferred language",
+        "swiss_german": "Schwiizerdütsch",
+        "swiss_german_desc": "Authentisches Schwiizerdütsch",
+        "german": "Deutsch",
+        "german_desc": "Hochdütsch",
+        "french": "Français",
+        "french_desc": "Französischi Sprach",
+        "english": "English",
+        "english_desc": "Änglischi Sprach",
+        "choose_later": "Später wählen • Choisir plus tard • Choose later"
+    },
     "common": {
         "required": "*",
         "optional": "optional",

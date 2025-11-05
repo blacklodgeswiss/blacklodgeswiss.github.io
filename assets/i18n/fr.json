@@ -139,9 +139,24 @@
         "privacy_required": "Veuillez accepter la politique de confidentialité.",
         "invalid_email": "Veuillez entrer une adresse email valide."
     },
+    "swiss_modal": {
+        "greeting": "Grüezi!",
+        "welcome": "Bienvenue chez Blacklodge",
+        "language_prompt": "Choisissez votre langue préférée",
+        "language_prompt_multi": "Wählen Sie Ihre bevorzugte Sprache • Choisissez votre langue préférée • Choose your preferred language",
+        "swiss_german": "Schwiizerdütsch",
+        "swiss_german_desc": "Suisse allemand authentique",
+        "german": "Deutsch",
+        "german_desc": "Allemand standard",
+        "french": "Français",
+        "french_desc": "Langue française",
+        "english": "English",
+        "english_desc": "Langue anglaise",
+        "choose_later": "Später wählen • Choisir plus tard • Choose later"
+    },
     "common": {
         "required": "*",
-        "optional": "optionnel",
+        "optional": "optional",
         "loading": "Chargement...",
         "close": "Fermer",
         "open": "Ouvrir"
