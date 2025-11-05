@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-page="privacy">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenschutzerklärung – Blacklodge</title>
-    <meta name="description" content="Datenschutzerklärung von Blacklodge – Mobile Cocktailbar & Event-Services. Informationen zum Umgang mit personenbezogenen Daten.">
+    <title data-i18n="privacy.title">Datenschutzerklärung – Blacklodge</title>
+    <meta name="description" content="Datenschutzerklärung von Blacklodge – Mobile Cocktailbar & Event-Services. Informationen zum Umgang mit personenbezogenen Daten." data-i18n="privacy.meta_description">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,29 +25,8 @@
     </style>
 </head>
 <body class="bg-white text-gray-900">
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="index.html">
-                        <img class="h-8 w-auto" src="assets/images/logo.png" alt="Blacklodge Logo">
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html#services" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors">Leistungen</a>
-                        <a href="index.html#katalog" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors">Katalog</a>
-                        <a href="index.html#instagram" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors">Instagram</a>
-                        <a href="index.html#kontakt" class="bg-amber-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-amber-700 transition-colors">Kontakt</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <a href="index.html" class="text-gray-700 hover:text-amber-600 text-sm font-medium">← Zurück</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Navigation Component -->
+    <div id="navigation-root"></div>
 
     <!-- Main Content -->
     <main class="pt-24 pb-20">
@@ -57,16 +36,16 @@
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                     </svg>
-                    Zurück zur Startseite
+                    <span data-i18n="privacy.back_to_home">Zurück zur Startseite</span>
                 </a>
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Datenschutzerklärung</h1>
-                <p class="text-lg text-gray-600">Informationen zum Umgang mit Ihren personenbezogenen Daten</p>
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-i18n="privacy.title">Datenschutzerklärung</h1>
+                <p class="text-lg text-gray-600" data-i18n="privacy.sections.overview.content">Informationen zum Umgang mit Ihren personenbezogenen Daten</p>
             </div>
 
             <div class="prose prose-lg max-w-none">
                 <div class="bg-blue-50 rounded-xl p-8 mb-8">
-                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Verantwortliche Stelle</h2>
-                    <p class="text-gray-700 mb-4">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4" data-i18n="privacy.sections.controller.title">Verantwortliche Stelle</h2>
+                    <p class="text-gray-700 mb-4" data-i18n="privacy.sections.controller.content">
                         <strong>Blacklodge</strong><br>
                         Mario Kantharoobarajah<br>
                         <em>Adresse folgt nach Firmenanmeldung</em><br>
@@ -221,19 +200,34 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
-                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Startseite</a>
-                <a href="impressum.html" class="text-gray-400 hover:text-white transition-colors">Impressum</a>
-                <a href="datenschutz.html" class="text-amber-500">Datenschutz</a>
-                <a href="https://www.instagram.com/_the.black.lodge_/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
-            </div>
-            <div class="mt-4 pt-4 border-t border-gray-800">
-                <p class="text-gray-400 text-sm">© 2025 Blacklodge. Alle Rechte vorbehalten.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Component -->
+    <div id="footer-root"></div>
+
+    <!-- Load scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/components/NavigationComponent.js"></script>
+    <script src="assets/js/components/FooterComponent.js"></script>
+    <script src="assets/js/AppController.js"></script>
+    <script>
+        // Initialize for privacy page
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (window.BlacklodgeApp && window.BlacklodgeApp.isReady()) {
+                    const app = window.BlacklodgeApp;
+                    const i18n = app.i18n;
+                    
+                    // Initialize and render Footer
+                    if (window.FooterComponent) {
+                        const footerContainer = document.getElementById('footer-root');
+                        if (footerContainer) {
+                            const footer = new FooterComponent(i18n);
+                            footer.render(footerContainer);
+                            app.components.set('footer', footer);
+                        }
+                    }
+                }
+            }, 100);
+        });
+    </script>
 </body>
 </html>

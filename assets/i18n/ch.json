@@ -125,10 +125,10 @@
         }
     },
     "footer": {
-        "company_description": "Mobili Cocktailbar & Event-Services für unvergässlichi Momänt.",
+        "description": "Unvergässlichi Momänt, serviert mit Stil. Premium Event-Services für d'Schwiiz.",
         "navigation_title": "Navigation",
-        "legal_title": "Rechtlichs",
-        "impressum": "Impressum",
+        "legal_title": "Rechtlichs", 
+        "imprint": "Impressum",
         "privacy": "Dateschutz",
         "copyright": "© 2025 Blacklodge. Alli Rächt vorbehalte."
     },
@@ -160,5 +160,72 @@
         "loading": "Ladet...",
         "close": "Schliessä",
         "open": "Öffnä"
+    },
+    "imprint": {
+        "title": "Impressum",
+        "meta_description": "Impressum und rächtlichi Informatione vo Blacklodge – Mobili Cocktailbar & Event-Services.",
+        "back_to_home": "Zrugg zur Startsiitä",
+        "subtitle": "Angabä gemäss Art. 8 UWG und Art. 2 GSchG",
+        "company_info": "Unternehmä",
+        "business_type": "Mobili Cocktailbar & Event-Services",
+        "address": "Schwiiz",
+        "address_note": "Adressä folgt nach Firmäamäldig",
+        "contact_title": "Kontakt",
+        "phone_label": "Telefon",
+        "email_label": "E-Mail",
+        "website_label": "Website",
+        "responsible_title": "Vertretigsberächtigi Person",
+        "responsible_name": "Mario Kantharoobarajah",
+        "responsible_role": "Gschäftsfüehrer",
+        "register_title": "Handelsregister",
+        "register_note": "Iitrag erfolgt bi Firmäamäldig",
+        "uid_note": "UID: wird bi Amäldig vergäh",
+        "authority_title": "Ufsichtsbehörde",
+        "authority_text": "Kei spezifischi Ufsichtsbehörde erforderlich. Allgemeini Gschäftstätigkeit underliit dä schwiizerischä Gsetz.",
+        "disclaimer_title": "Haftigsusschluss",
+        "content_liability_title": "Inhalt vo dä Website",
+        "content_liability_text": "D'Informatione uf dere Website sind sorgfältig prüeft wordä und werdä regelmässig aktualisiert. Trotzdem chönnä mir kei Gwähr für d'Vollständigkeit, Richtigkäit und letscht Aktualität vo allnä Agabä übernäh. Das gilt insbesonderä für alli Verbindige (\"Links\") zu anderä Websites, wo diräkt oder indiräkt verwisä wird.",
+        "links_liability_title": "Externi Links",
+        "links_liability_text": "Alli Verwiis und Links zu anderä Internetsiitä sind usserhalb vom Verantwortigsbereich vo Blacklodge. Dä Zuegriff und d'Nutzig vo sölchä Websites erfolgt uf eigni Gfahr vom jewiilige Nutzer.",
+        "copyright_title": "Urheberrächt",
+        "copyright_text": "D'Inhalte wo uf dere Website veröffentlicht sind, sind urheberrächtlich gschützt. Jedi vom schwiizerischä Urheberrächt nöd zuglasseni Verwärtig brucht d'vorgängigi schriftlichi Zuestimmig vo Blacklodge.",
+        "law_title": "Awändbars Rächt und Grichtsstand",
+        "law_text": "Für desi Website und d'gsamti Rächtsbezieihig zwüschä däm Nutzer und Blacklodge gilt usschliesslich schwiizerisches Rächt. Grichtsstand isch dä Sitz vo dä Firmä Blacklodge.",
+        "company_note_title": "Hiwiis zur Firmäamäldig",
+        "company_note_text": "Blacklodge befindet sich zur Ziit i dä Gründigsphase. D'vollständige Firmäamäldigsdetails (Handelsregisternummer, UID, Gschäftsadressä) werdä nach dä offizielle Amäldig ergänzt.",
+        "last_updated": "Letscht Aktualisierig: November 2025"
+    },
+    "privacy": {
+        "title": "Dateschutzerklärig",
+        "sections": {
+            "overview": {
+                "title": "Übersicht",
+                "content": "Dä Dateschutzerklärig informiert euch über Art, Umfang und Zwäck vo dä Verarbeitig vo personebezogenä Datä innerhalb vo üsem Online-Abot und dä dazuehörige Websites, Funktione und Inhalte."
+            },
+            "controller": {
+                "title": "Verantwortlichi Stell",
+                "content": "Blacklodge Swiss<br>[Namä]<br>[Strassäadresse]<br>[PLZ] [Stadt], Schwiiz<br>E-Mail: [E-Mail-Adresse]<br>Telefon: [Telefonnummer]"
+            },
+            "collection": {
+                "title": "Datesammlig",
+                "content": "Mir sammled Datä, wo Dir üs diräkt zur Verfüegig stellet, zum Bispil wenn Dir üs per E-Mail kontaktiered oder üses Kontaktformular verwendat. Zuesätzlich sammled mir automatisch gwüssi technischi Datä, wenn Dir üseri Website besueched."
+            },
+            "usage": {
+                "title": "Datevrwendig",
+                "content": "Mir verwendä euri personebezogenä Datä zum uf euri Afragä antworte, üseri Dienstleistige z'erbringä und üseri Website z'verbessere. Mir tailed euri Datä nöd mit Drittä, usser wenn's vom Gsetz erforderet wird oder für d'Dienstleistig notwendig isch."
+            },
+            "cookies": {
+                "title": "Cookies",
+                "content": "Üseri Website verwendet Cookies zum d'Funktionalität und s'Benutzererläbnis z'verbessere. Dir chönd eure Browser so iistelle, dass är Cookies ablehnt oder euch benachrichtigt, wenn Cookies gschickt werdä."
+            },
+            "rights": {
+                "title": "Euri Rächt",
+                "content": "Dir händ s'Rächt, uf euri personebezogenä Datä zuzgriffe, sie z'korrigiere, z'lösche oder derä Verarbeitig iizsschränkä. Dir händ au s'Rächt uf Dateportabilität und chönd gege d'Verarbeitig uf Basis vo berechtigte Interesse Widerspruch iilege."
+            },
+            "contact": {
+                "title": "Kontakt",
+                "content": "Wenn Dir Fragä zu dere Dateschutzerklärig oder zum Dateschutz händ, chönd Dir üs unter [E-Mail-Adresse] kontaktiere."
+            }
+        }
     }
 }

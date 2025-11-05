@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-page="imprint">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impressum – Blacklodge</title>
-    <meta name="description" content="Impressum und rechtliche Informationen von Blacklodge – Mobile Cocktailbar & Event-Services.">
+    <title data-i18n="imprint.title">Impressum – Blacklodge</title>
+    <meta name="description" content="Impressum und rechtliche Informationen von Blacklodge – Mobile Cocktailbar & Event-Services." data-i18n="imprint.meta_description">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,29 +25,8 @@
     </style>
 </head>
 <body class="bg-white text-gray-900">
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="index.html">
-                        <img class="h-8 w-auto" src="assets/images/logo.png" alt="Blacklodge Logo">
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html#services" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors">Leistungen</a>
-                        <a href="index.html#katalog" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors">Katalog</a>
-                        <a href="index.html#instagram" class="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors">Instagram</a>
-                        <a href="index.html#kontakt" class="bg-amber-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-amber-700 transition-colors">Kontakt</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <a href="index.html" class="text-gray-700 hover:text-amber-600 text-sm font-medium">← Zurück</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Navigation Component -->
+    <div id="navigation-root"></div>
 
     <!-- Main Content -->
     <main class="pt-24 pb-20">
@@ -57,32 +36,32 @@
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                     </svg>
-                    Zurück zur Startseite
+                    <span data-i18n="imprint.back_to_home">Zurück zur Startseite</span>
                 </a>
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Impressum</h1>
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-i18n="imprint.title">Impressum</h1>
             </div>
 
             <div class="prose prose-lg max-w-none">
                 <div class="bg-gray-50 rounded-xl p-8 mb-8">
-                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Angaben gemäss Art. 8 UWG und Art. 2 GSchG</h2>
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6" data-i18n="imprint.subtitle">Angaben gemäss Art. 8 UWG und Art. 2 GSchG</h2>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                            <h3 class="font-semibold text-gray-900 mb-3">Unternehmen</h3>
+                            <h3 class="font-semibold text-gray-900 mb-3" data-i18n="imprint.company_info">Unternehmen</h3>
                             <p class="text-gray-700 mb-4">
                                 <strong>Blacklodge</strong><br>
-                                Mobile Cocktailbar & Event-Services<br>
-                                <em>Adresse folgt nach Firmenanmeldung</em><br>
-                                Schweiz
+                                <span data-i18n="imprint.business_type">Mobile Cocktailbar & Event-Services</span><br>
+                                <em data-i18n="imprint.address_note">Adresse folgt nach Firmenanmeldung</em><br>
+                                <span data-i18n="imprint.address">Schweiz</span>
                             </p>
                         </div>
                         
                         <div>
-                            <h3 class="font-semibold text-gray-900 mb-3">Kontakt</h3>
+                            <h3 class="font-semibold text-gray-900 mb-3" data-i18n="imprint.contact_title">Kontakt</h3>
                             <p class="text-gray-700 mb-4">
-                                <strong>Telefon:</strong> +41 79 778 48 61<br>
-                                <strong>E-Mail:</strong> info@blacklodge.ch<br>
-                                <strong>Website:</strong> www.blacklodge.ch
+                                <strong data-i18n="imprint.phone_label">Telefon:</strong> +41 79 778 48 61<br>
+                                <strong data-i18n="imprint.email_label">E-Mail:</strong> info@blacklodge.ch<br>
+                                <strong data-i18n="imprint.website_label">Website:</strong> www.blacklodge.ch
                             </p>
                         </div>
                     </div>
@@ -90,49 +69,49 @@
 
                 <div class="space-y-8">
                     <section>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Vertretungsberechtigte Person</h2>
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4" data-i18n="imprint.responsible_title">Vertretungsberechtigte Person</h2>
                         <p class="text-gray-700">
-                            Mario Kantharoobarajah<br>
-                            Geschäftsführer
+                            <span data-i18n="imprint.responsible_name">Mario Kantharoobarajah</span><br>
+                            <span data-i18n="imprint.responsible_role">Geschäftsführer</span>
                         </p>
                     </section>
 
                     <section>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Handelsregister</h2>
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4" data-i18n="imprint.register_title">Handelsregister</h2>
                         <p class="text-gray-700">
-                            <em>Eintrag erfolgt bei Firmenanmeldung</em><br>
-                            UID: <em>wird bei Anmeldung vergeben</em>
+                            <em data-i18n="imprint.register_note">Eintrag erfolgt bei Firmenanmeldung</em><br>
+                            <span data-i18n="imprint.uid_note">UID: wird bei Anmeldung vergeben</span>
                         </p>
                     </section>
 
                     <section>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Aufsichtsbehörde</h2>
-                        <p class="text-gray-700">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4" data-i18n="imprint.authority_title">Aufsichtsbehörde</h2>
+                        <p class="text-gray-700" data-i18n="imprint.authority_text">
                             Keine spezifische Aufsichtsbehörde erforderlich.<br>
                             Allgemeine Geschäftstätigkeit unterliegt den schweizerischen Gesetzen.
                         </p>
                     </section>
 
                     <section>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Haftungsausschluss</h2>
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4" data-i18n="imprint.disclaimer_title">Haftungsausschluss</h2>
                         <div class="space-y-4 text-gray-700">
                             <div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Inhalt der Website</h3>
-                                <p>
+                                <h3 class="font-semibold text-gray-900 mb-2" data-i18n="imprint.content_liability_title">Inhalt der Website</h3>
+                                <p data-i18n="imprint.content_liability_text">
                                     Die Informationen auf dieser Website wurden sorgfältig geprüft und werden regelmäßig aktualisiert. Dennoch kann keine Gewähr für die Vollständigkeit, Richtigkeit und letzte Aktualität sämtlicher Angaben übernommen werden. Dies gilt insbesondere für alle Verbindungen ("Links") zu anderen Websites, auf die direkt oder indirekt verwiesen wird.
                                 </p>
                             </div>
                             
                             <div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Externe Links</h3>
-                                <p>
+                                <h3 class="font-semibold text-gray-900 mb-2" data-i18n="imprint.links_liability_title">Externe Links</h3>
+                                <p data-i18n="imprint.links_liability_text">
                                     Alle Verweise und Links zu anderen Internetseiten liegen außerhalb des Verantwortungsbereichs von Blacklodge. Der Zugriff und die Nutzung solcher Websites erfolgen auf eigene Gefahr des jeweiligen Nutzers.
                                 </p>
                             </div>
                             
                             <div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Urheberrecht</h3>
-                                <p>
+                                <h3 class="font-semibold text-gray-900 mb-2" data-i18n="imprint.copyright_title">Urheberrecht</h3>
+                                <p data-i18n="imprint.copyright_text">
                                     Die auf dieser Website veröffentlichten Inhalte sind urheberrechtlich geschützt. Jede vom schweizerischen Urheberrecht nicht zugelassene Verwertung bedarf der vorherigen schriftlichen Zustimmung von Blacklodge.
                                 </p>
                             </div>
@@ -140,22 +119,22 @@
                     </section>
 
                     <section>
-                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Anwendbares Recht und Gerichtsstand</h2>
-                        <p class="text-gray-700">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4" data-i18n="imprint.law_title">Anwendbares Recht und Gerichtsstand</h2>
+                        <p class="text-gray-700" data-i18n="imprint.law_text">
                             Für diese Website und die gesamte Rechtsbeziehung zwischen dem Nutzer und Blacklodge gilt ausschließlich schweizerisches Recht. Gerichtsstand ist der Sitz der Firma Blacklodge.
                         </p>
                     </section>
 
                     <section class="bg-amber-50 rounded-lg p-6">
-                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Hinweis zur Firmenanmeldung</h2>
-                        <p class="text-gray-700">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4" data-i18n="imprint.company_note_title">Hinweis zur Firmenanmeldung</h2>
+                        <p class="text-gray-700" data-i18n="imprint.company_note_text">
                             Blacklodge befindet sich derzeit in der Gründungsphase. Die vollständigen Firmenanmeldungsdetails (Handelsregisternummer, UID, Geschäftsadresse) werden nach der offiziellen Anmeldung ergänzt.
                         </p>
                     </section>
                 </div>
 
                 <div class="mt-12 pt-8 border-t border-gray-200 text-center">
-                    <p class="text-gray-500 text-sm">
+                    <p class="text-gray-500 text-sm" data-i18n="imprint.last_updated">
                         Letzte Aktualisierung: November 2025
                     </p>
                 </div>
@@ -163,19 +142,34 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
-                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Startseite</a>
-                <a href="impressum.html" class="text-amber-500">Impressum</a>
-                <a href="datenschutz.html" class="text-gray-400 hover:text-white transition-colors">Datenschutz</a>
-                <a href="https://www.instagram.com/_the.black.lodge_/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
-            </div>
-            <div class="mt-4 pt-4 border-t border-gray-800">
-                <p class="text-gray-400 text-sm">© 2025 Blacklodge. Alle Rechte vorbehalten.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Component -->
+    <div id="footer-root"></div>
+
+    <!-- Load scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/components/NavigationComponent.js"></script>
+    <script src="assets/js/components/FooterComponent.js"></script>
+    <script src="assets/js/AppController.js"></script>
+    <script>
+        // Initialize for imprint page
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (window.BlacklodgeApp && window.BlacklodgeApp.isReady()) {
+                    const app = window.BlacklodgeApp;
+                    const i18n = app.i18n;
+                    
+                    // Initialize and render Footer
+                    if (window.FooterComponent) {
+                        const footerContainer = document.getElementById('footer-root');
+                        if (footerContainer) {
+                            const footer = new FooterComponent(i18n);
+                            footer.render(footerContainer);
+                            app.components.set('footer', footer);
+                        }
+                    }
+                }
+            }, 100);
+        });
+    </script>
 </body>
 </html>

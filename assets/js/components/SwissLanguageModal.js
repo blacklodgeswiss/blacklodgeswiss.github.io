@@ -62,7 +62,7 @@ class SwissLanguageModal {
         }
 
         // For demo purposes, force Swiss detection (remove in production)
-        this.isSwissUser = true;
+        // this.isSwissUser = true;
         
         console.log('Swiss user detection:', this.isSwissUser ? 'Swiss user detected' : 'Not Swiss user');
     }

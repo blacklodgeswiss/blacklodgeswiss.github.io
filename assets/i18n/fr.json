@@ -125,10 +125,10 @@
         }
     },
     "footer": {
-        "company_description": "Bar mobile & services événementiels pour des moments inoubliables.",
+        "description": "Des moments inoubliables, servis avec style. Services événementiels premium pour la Suisse.",
         "navigation_title": "Navigation",
         "legal_title": "Légal",
-        "impressum": "Mentions légales",
+        "imprint": "Mentions légales",
         "privacy": "Confidentialité",
         "copyright": "© 2025 Blacklodge. Tous droits réservés."
     },
@@ -160,5 +160,72 @@
         "loading": "Chargement...",
         "close": "Fermer",
         "open": "Ouvrir"
+    },
+    "imprint": {
+        "title": "Mentions Légales",
+        "meta_description": "Mentions légales et informations juridiques de Blacklodge – Bar Mobile & Services Événementiels.",
+        "back_to_home": "Retour à l'Accueil",
+        "subtitle": "Informations selon l'Art. 8 UWG et l'Art. 2 GSchG",
+        "company_info": "Entreprise",
+        "business_type": "Bar Mobile & Services Événementiels",
+        "address": "Suisse",
+        "address_note": "L'adresse sera fournie après l'enregistrement de l'entreprise",
+        "contact_title": "Contact",
+        "phone_label": "Téléphone",
+        "email_label": "Email",
+        "website_label": "Site Web",
+        "responsible_title": "Représentant Autorisé",
+        "responsible_name": "Mario Kantharoobarajah",
+        "responsible_role": "Directeur Général",
+        "register_title": "Registre du Commerce",
+        "register_note": "L'inscription aura lieu lors de l'enregistrement de l'entreprise",
+        "uid_note": "UID : sera attribué lors de l'enregistrement",
+        "authority_title": "Autorité de Surveillance",
+        "authority_text": "Aucune autorité de surveillance spécifique requise. Les activités commerciales générales sont soumises au droit suisse.",
+        "disclaimer_title": "Avis de Non-Responsabilité",
+        "content_liability_title": "Contenu du Site Web",
+        "content_liability_text": "Les informations sur ce site web ont été soigneusement vérifiées et sont régulièrement mises à jour. Cependant, nous ne pouvons garantir l'exhaustivité, l'exactitude et l'actualité de toutes les informations. Ceci s'applique en particulier à toutes les connexions (\"liens\") vers d'autres sites web qui sont directement ou indirectement référencés.",
+        "links_liability_title": "Liens Externes",
+        "links_liability_text": "Toutes les références et liens vers d'autres sites web sont en dehors de la responsabilité de Blacklodge. L'accès et l'utilisation de tels sites web se font aux risques et périls de l'utilisateur.",
+        "copyright_title": "Droits d'Auteur",
+        "copyright_text": "Le contenu publié sur ce site web est protégé par le droit d'auteur. Toute utilisation non autorisée par le droit d'auteur suisse nécessite le consentement écrit préalable de Blacklodge.",
+        "law_title": "Droit Applicable et Juridiction",
+        "law_text": "Le droit suisse s'applique exclusivement à ce site web et à l'ensemble de la relation juridique entre l'utilisateur et Blacklodge. Le lieu de juridiction est le siège social de Blacklodge.",
+        "company_note_title": "Avis d'Enregistrement de l'Entreprise",
+        "company_note_text": "Blacklodge est actuellement en phase de création. Les détails complets de l'enregistrement de l'entreprise (numéro de registre du commerce, UID, adresse commerciale) seront ajoutés après l'enregistrement officiel.",
+        "last_updated": "Dernière mise à jour : Novembre 2025"
+    },
+    "privacy": {
+        "title": "Politique de Confidentialité",
+        "sections": {
+            "overview": {
+                "title": "Aperçu",
+                "content": "Cette politique de confidentialité vous informe sur le type, la portée et le but du traitement des données personnelles au sein de notre service en ligne et des sites web associés, fonctionnalités et contenu."
+            },
+            "controller": {
+                "title": "Responsable du Traitement",
+                "content": "Blacklodge Swiss<br>[Nom]<br>[Adresse]<br>[Code Postal] [Ville], Suisse<br>Email : [Adresse email]<br>Téléphone : [Numéro de téléphone]"
+            },
+            "collection": {
+                "title": "Collecte des Données",
+                "content": "Nous collectons les données que vous nous fournissez directement, par exemple lorsque vous nous contactez par email ou utilisez notre formulaire de contact. De plus, nous collectons automatiquement certaines données techniques lorsque vous visitez notre site web."
+            },
+            "usage": {
+                "title": "Utilisation des Données",
+                "content": "Nous utilisons vos données personnelles pour répondre à vos demandes, fournir nos services et améliorer notre site web. Nous ne partageons pas vos données avec des tiers sauf si requis par la loi ou nécessaire pour la prestation de services."
+            },
+            "cookies": {
+                "title": "Cookies",
+                "content": "Notre site web utilise des cookies pour améliorer la fonctionnalité et l'expérience utilisateur. Vous pouvez configurer votre navigateur pour refuser les cookies ou pour vous notifier lorsque des cookies sont envoyés."
+            },
+            "rights": {
+                "title": "Vos Droits",
+                "content": "Vous avez le droit d'accéder, de corriger, de supprimer ou de restreindre le traitement de vos données personnelles. Vous avez également le droit à la portabilité des données et de vous opposer au traitement basé sur des intérêts légitimes."
+            },
+            "contact": {
+                "title": "Contact",
+                "content": "Si vous avez des questions sur cette politique de confidentialité ou la protection des données, veuillez nous contacter à [Adresse email]."
+            }
+        }
     }
 }

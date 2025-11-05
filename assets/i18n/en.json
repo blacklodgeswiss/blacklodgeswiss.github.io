@@ -125,10 +125,10 @@
         }
     },
     "footer": {
-        "company_description": "Mobile cocktail bar & event services for unforgettable moments.",
+        "description": "Unforgettable moments, served with style. Premium event services for Switzerland.",
         "navigation_title": "Navigation",
         "legal_title": "Legal",
-        "impressum": "Imprint",
+        "imprint": "Imprint",
         "privacy": "Privacy",
         "copyright": "© 2025 Blacklodge. All rights reserved."
     },
@@ -160,5 +160,72 @@
         "loading": "Loading...",
         "close": "Close",
         "open": "Open"
+    },
+    "imprint": {
+        "title": "Legal Notice",
+        "meta_description": "Legal notice and legal information from Blacklodge – Mobile Cocktailbar & Event Services.",
+        "back_to_home": "Back to Home",
+        "subtitle": "Information according to Art. 8 UWG and Art. 2 GSchG",
+        "company_info": "Company",
+        "business_type": "Mobile Cocktailbar & Event Services",
+        "address": "Switzerland",
+        "address_note": "Address will be provided after company registration",
+        "contact_title": "Contact",
+        "phone_label": "Phone",
+        "email_label": "Email",
+        "website_label": "Website",
+        "responsible_title": "Authorized Representative",
+        "responsible_name": "Mario Kantharoobarajah",
+        "responsible_role": "Managing Director",
+        "register_title": "Commercial Register",
+        "register_note": "Entry will be made upon company registration",
+        "uid_note": "UID: will be assigned upon registration",
+        "authority_title": "Supervisory Authority",
+        "authority_text": "No specific supervisory authority required. General business activities are subject to Swiss law.",
+        "disclaimer_title": "Disclaimer",
+        "content_liability_title": "Website Content",
+        "content_liability_text": "The information on this website has been carefully reviewed and is regularly updated. However, we cannot guarantee the completeness, accuracy, and timeliness of all information. This applies in particular to all connections (\"links\") to other websites that are directly or indirectly referenced.",
+        "links_liability_title": "External Links",
+        "links_liability_text": "All references and links to other websites are outside the responsibility of Blacklodge. Access and use of such websites are at the user's own risk.",
+        "copyright_title": "Copyright",
+        "copyright_text": "The content published on this website is protected by copyright. Any use not permitted by Swiss copyright law requires prior written consent from Blacklodge.",
+        "law_title": "Applicable Law and Jurisdiction",
+        "law_text": "Swiss law applies exclusively to this website and the entire legal relationship between the user and Blacklodge. The place of jurisdiction is the registered office of Blacklodge.",
+        "company_note_title": "Company Registration Notice",
+        "company_note_text": "Blacklodge is currently in the founding phase. Complete company registration details (commercial register number, UID, business address) will be added after official registration.",
+        "last_updated": "Last updated: November 2025"
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "sections": {
+            "overview": {
+                "title": "Overview",
+                "content": "This privacy policy informs you about the type, scope, and purpose of the processing of personal data within our online service and the associated websites, features, and content."
+            },
+            "controller": {
+                "title": "Data Controller",
+                "content": "Blacklodge Swiss<br>[Name]<br>[Street Address]<br>[ZIP] [City], Switzerland<br>Email: [Email Address]<br>Phone: [Phone Number]"
+            },
+            "collection": {
+                "title": "Data Collection",
+                "content": "We collect data that you provide to us directly, such as when you contact us via email or use our contact form. Additionally, we automatically collect certain technical data when you visit our website."
+            },
+            "usage": {
+                "title": "Data Usage",
+                "content": "We use your personal data to respond to your inquiries, provide our services, and improve our website. We do not share your data with third parties unless required by law or necessary for service provision."
+            },
+            "cookies": {
+                "title": "Cookies",
+                "content": "Our website uses cookies to improve functionality and user experience. You can configure your browser to refuse cookies or to notify you when cookies are sent."
+            },
+            "rights": {
+                "title": "Your Rights",
+                "content": "You have the right to access, correct, delete, or restrict the processing of your personal data. You also have the right to data portability and to object to processing based on legitimate interests."
+            },
+            "contact": {
+                "title": "Contact",
+                "content": "If you have questions about this privacy policy or data protection, please contact us at [Email Address]."
+            }
+        }
     }
 }
