@@ -1,149 +1,149 @@
 {
-  "meta": {
-    "title": "Blacklodge | Mobili Cocktailbar & Event-Services Schwiiz",
-    "description": "Blacklodge bietet mobili Cocktailbar, 360° Booth, Fotobooth und Event Entertainment i dä ganzä Schwiiz. Professionelli Event-Services für unvergässlichi Momänt."
-  },
-  "navigation": {
-    "home": "Home",
-    "services": "Services",
-    "catalog": "Katalog",
-    "instagram": "Instagram",
-    "contact": "Kontakt"
-  },
-  "hero": {
-    "title": "Unvergässlichi Momänt,",
-    "subtitle": "serviert mit Stil",
-    "description": "Premium Event-Services für d'Schwiiz: Mobili Cocktailbar, 360° Booth & Event Entertainment",
-    "cta_primary": "Jetzt Afrag startä",
-    "cta_secondary": "Katalog alugä"
-  },
-  "services": {
-    "title": "Üseri Services",
-    "subtitle": "Drüü einzigartige Erläbnis für Ihres Event",
-    "cocktail": {
-      "title": "Cocktail & Bar Service",
-      "description": "Mobili Premium-Bar mit professionellä Barkeeper und hochwertigä Spirituosä für Ihres Event.",
-      "features": [
-        "Mobili Bar-Usrüstig",
-        "Premium-Spirituosä & frische Zutatä",
-        "Professionelli Barkeeper",
-        "Kompletts Setup & Service"
-      ]
+    "meta": {
+        "title": "Blacklodge | Mobili Cocktailbar & Event-Services Schwiiz",
+        "description": "Blacklodge bietet mobili Cocktailbar, 360° Booth, Fotobooth und Event Entertainment i dä ganzä Schwiiz. Professionelli Event-Services für unvergässlichi Momänt."
     },
-    "booth": {
-      "title": "360° Booth & Fotobooth",
-      "description": "Innovativi Videotechnologie für spektakuläri 360°-Ufnahmä und klassischi Fotobooth-Erinnerigä.",
-      "features": [
-        "Neueschti 360° Videotechnologie",
-        "Sofort Social Media Sharing",
-        "Individuells Branding möglich",
-        "Professionells Liecht"
-      ]
+    "navigation": {
+        "home": "Home",
+        "services": "Services",
+        "catalog": "Katalog",
+        "instagram": "Instagram",
+        "contact": "Kontakt"
     },
-    "entertainment": {
-      "title": "Event Entertainment",
-      "description": "Kompletti Unterhaltig mit DJs, LED-Screens und choreographiertes Entertainment für Ihres Event.",
-      "features": [
-        "Professionelli DJs & Musikusrüstig",
-        "LED-Screens & Liechttechnik",
-        "Tanzchoreographie & Shows",
-        "Massgeschnidertes Entertainment"
-      ]
+    "hero": {
+        "title": "Unvergässlichi Momänt,",
+        "subtitle": "serviert mit Stil",
+        "description": "Premium Event-Services für d'Schwiiz: Mobili Cocktailbar, 360° Booth & Event Entertainment",
+        "cta_primary": "Jetzt Afrag startä",
+        "cta_secondary": "Katalog alugä"
+    },
+    "services": {
+        "title": "Üseri Services",
+        "subtitle": "Drüü einzigartige Erläbnis für Ihres Event",
+        "cocktail": {
+            "title": "Cocktail & Bar Service",
+            "description": "Mobili Premium-Bar mit professionellä Barkeeper und hochwertigä Spirituosä für Ihres Event.",
+            "features": [
+                "Mobili Bar-Usrüstig",
+                "Premium-Spirituosä & frische Zutatä",
+                "Professionelli Barkeeper",
+                "Kompletts Setup & Service"
+            ]
+        },
+        "booth": {
+            "title": "360° Booth & Fotobooth",
+            "description": "Innovativi Videotechnologie für spektakuläri 360°-Ufnahmä und klassischi Fotobooth-Erinnerigä.",
+            "features": [
+                "Neueschti 360° Videotechnologie",
+                "Sofort Social Media Sharing",
+                "Individuells Branding möglich",
+                "Professionells Liecht"
+            ]
+        },
+        "entertainment": {
+            "title": "Event Entertainment",
+            "description": "Kompletti Unterhaltig mit DJs, LED-Screens und choreographiertes Entertainment für Ihres Event.",
+            "features": [
+                "Professionelli DJs & Musikusrüstig",
+                "LED-Screens & Liechttechnik",
+                "Tanzchoreographie & Shows",
+                "Massgeschnidertes Entertainment"
+            ]
+        }
+    },
+    "catalog": {
+        "title": "Blacklodge Katalog 2025",
+        "description": "Entdecked alli üseri Services im Detail mit Priisä und Paket für Ihres perfekte Event.",
+        "download": "Katalog abalädä"
+    },
+    "instagram": {
+        "title": "Folged üs uf Instagram",
+        "description": "Entdecked üseri neueste Events und lönd euch inspirierä.",
+        "cta": "Uf Instagram folgä"
+    },
+    "contact": {
+        "title": "Kontakt",
+        "subtitle": "Bereit für Ihres unvergässlichs Event?",
+        "description": "Kontaktiered üs für ä unverbindlichi Beratig und es massgeschnidertes Abot.",
+        "direct_contact": "Direkte Kontakt",
+        "phone": "Telefon",
+        "email": "E-Mail",
+        "service_area": "Service-Gebiet",
+        "service_area_text": "I dä ganzä Schwiiz verfüegbar",
+        "form": {
+            "title": "Afrag schickä",
+            "microsoft_form": "Microsoft Forms (Empfohlä)",
+            "microsoft_form_description": "S'Formular öffnet sich diräkt da oder Dir chönd's i mä",
+            "new_tab": "neue Tab öffnä",
+            "alternative_form": "Alternativ: Direkts Kontaktformular",
+            "first_name": "Vornamä",
+            "last_name": "Nachnamä",
+            "email": "E-Mail",
+            "phone": "Telefon",
+            "event_type": "Art vom Aalass",
+            "event_type_placeholder": "Bitte wählä...",
+            "event_type_private": "Privati Fiir",
+            "event_type_corporate": "Firmenaalass",
+            "event_type_wedding": "Hochziit",
+            "event_type_other": "Anderes",
+            "event_date": "Datum (öppe)",
+            "location": "Ort / PLZ",
+            "location_placeholder": "z.B. Züri, 8001",
+            "guests": "Azahl Gäscht",
+            "guests_1_25": "1-25 Persönä",
+            "guests_26_50": "26-50 Persönä",
+            "guests_51_100": "51-100 Persönä",
+            "guests_101_200": "101-200 Persönä",
+            "guests_200_plus": "200+ Persönä",
+            "services": "Gwünschti Services",
+            "service_cocktail": "Cocktail & Bar Service",
+            "service_booth": "360° Booth & Fotobooth",
+            "service_entertainment": "Event Entertainment",
+            "budget": "Budgetrahme",
+            "budget_500_1000": "CHF 500 - 1'000",
+            "budget_1000_2500": "CHF 1'000 - 2'500",
+            "budget_2500_5000": "CHF 2'500 - 5'000",
+            "budget_5000_plus": "CHF 5'000+",
+            "budget_open": "Offe / Individuell",
+            "message": "Zuesätzlichi Informatione",
+            "message_placeholder": "Verzelled üs meh Details zu Ihrem Event...",
+            "privacy": "Ich stimme dä",
+            "privacy_link": "Dateschutzerklärig",
+            "privacy_text": "zue und bin demit iiverstandä, dass mini Agabä zur Kontaktufnahm und für Rückfragä gspeicheret werdä.",
+            "submit": "Afrag schickä",
+            "submitting": "Wird gschickt..."
+        },
+        "social": {
+            "title": "Folged Üs",
+            "description": "Entdecked üseri neueste Events und holed euch Inspiratione für euri Fiir."
+        },
+        "response_times": {
+            "title": "Antwortziitä",
+            "email": "E-Mail: Innerhalb vo 24 Stundä",
+            "phone": "Telefon: Mo-Fr 09:00-18:00 Uhr",
+            "quote": "Abotä: Innerhalb vo 3 Wärktäg"
+        }
+    },
+    "footer": {
+        "company_description": "Mobili Cocktailbar & Event-Services für unvergässlichi Momänt.",
+        "navigation_title": "Navigation",
+        "legal_title": "Rechtlichs",
+        "impressum": "Impressum",
+        "privacy": "Dateschutz",
+        "copyright": "© 2025 Blacklodge. Alli Rächt vorbehalte."
+    },
+    "messages": {
+        "form_success": "Vilä Dank für Ihri Afrag! Mir meldä üs innerhalb vo 24 Stundä bi euch.",
+        "form_error": "Es het ä Fehler gä bim Schickä vo eurer Afrag. Bitte versuched's nomal.",
+        "required_fields": "Bitte fülled alli Pflichtfälder us.",
+        "privacy_required": "Bitte akzeptiered d'Dateschutzerklärig.",
+        "invalid_email": "Bitte gebed ä gültigi E-Mail-Adrässe ii."
+    },
+    "common": {
+        "required": "*",
+        "optional": "optional",
+        "loading": "Ladet...",
+        "close": "Schliessä",
+        "open": "Öffnä"
     }
-  },
-  "catalog": {
-    "title": "Blacklodge Katalog 2025",
-    "description": "Entdecked alli üseri Services im Detail mit Priisä und Paket für Ihres perfekte Event.",
-    "download": "Katalog abalädä"
-  },
-  "instagram": {
-    "title": "Folged üs uf Instagram",
-    "description": "Entdecked üseri neueste Events und lönd euch inspirierä.",
-    "cta": "Uf Instagram folgä"
-  },
-  "contact": {
-    "title": "Kontakt",
-    "subtitle": "Bereit für Ihres unvergässlichs Event?",
-    "description": "Kontaktiered üs für ä unverbindlichi Beratig und es massgeschnidertes Abot.",
-    "direct_contact": "Direkte Kontakt",
-    "phone": "Telefon",
-    "email": "E-Mail",
-    "service_area": "Service-Gebiet",
-    "service_area_text": "I dä ganzä Schwiiz verfüegbar",
-    "form": {
-      "title": "Afrag schickä",
-      "microsoft_form": "Microsoft Forms (Empfohlä)",
-      "microsoft_form_description": "S'Formular öffnet sich diräkt da oder Dir chönd's i mä",
-      "new_tab": "neue Tab öffnä",
-      "alternative_form": "Alternativ: Direkts Kontaktformular",
-      "first_name": "Vornamä",
-      "last_name": "Nachnamä",
-      "email": "E-Mail",
-      "phone": "Telefon",
-      "event_type": "Art vom Aalass",
-      "event_type_placeholder": "Bitte wählä...",
-      "event_type_private": "Privati Fiir",
-      "event_type_corporate": "Firmenaalass",
-      "event_type_wedding": "Hochziit",
-      "event_type_other": "Anderes",
-      "event_date": "Datum (öppe)",
-      "location": "Ort / PLZ",
-      "location_placeholder": "z.B. Züri, 8001",
-      "guests": "Azahl Gäscht",
-      "guests_1_25": "1-25 Persönä",
-      "guests_26_50": "26-50 Persönä",
-      "guests_51_100": "51-100 Persönä",
-      "guests_101_200": "101-200 Persönä",
-      "guests_200_plus": "200+ Persönä",
-      "services": "Gwünschti Services",
-      "service_cocktail": "Cocktail & Bar Service",
-      "service_booth": "360° Booth & Fotobooth",
-      "service_entertainment": "Event Entertainment",
-      "budget": "Budgetrahme",
-      "budget_500_1000": "CHF 500 - 1'000",
-      "budget_1000_2500": "CHF 1'000 - 2'500",
-      "budget_2500_5000": "CHF 2'500 - 5'000",
-      "budget_5000_plus": "CHF 5'000+",
-      "budget_open": "Offe / Individuell",
-      "message": "Zuesätzlichi Informatione",
-      "message_placeholder": "Verzelled üs meh Details zu Ihrem Event...",
-      "privacy": "Ich stimme dä",
-      "privacy_link": "Dateschutzerklärig",
-      "privacy_text": "zue und bin demit iiverstandä, dass mini Agabä zur Kontaktufnahm und für Rückfragä gspeicheret werdä.",
-      "submit": "Afrag schickä",
-      "submitting": "Wird gschickt..."
-    },
-    "social": {
-      "title": "Folged Üs",
-      "description": "Entdecked üseri neueste Events und holed euch Inspiratione für euri Fiir."
-    },
-    "response_times": {
-      "title": "Antwortziitä",
-      "email": "E-Mail: Innerhalb vo 24 Stundä",
-      "phone": "Telefon: Mo-Fr 09:00-18:00 Uhr",
-      "quote": "Abotä: Innerhalb vo 3 Wärktäg"
-    }
-  },
-  "footer": {
-    "company_description": "Mobili Cocktailbar & Event-Services für unvergässlichi Momänt.",
-    "navigation_title": "Navigation",
-    "legal_title": "Rechtlichs",
-    "impressum": "Impressum",
-    "privacy": "Dateschutz",
-    "copyright": "© 2025 Blacklodge. Alli Rächt vorbehalte."
-  },
-  "messages": {
-    "form_success": "Vilä Dank für Ihri Afrag! Mir meldä üs innerhalb vo 24 Stundä bi euch.",
-    "form_error": "Es het ä Fehler gä bim Schickä vo eurer Afrag. Bitte versuched's nomal.",
-    "required_fields": "Bitte fülled alli Pflichtfälder us.",
-    "privacy_required": "Bitte akzeptiered d'Dateschutzerklärig.",
-    "invalid_email": "Bitte gebed ä gültigi E-Mail-Adrässe ii."
-  },
-  "common": {
-    "required": "*",
-    "optional": "optional",
-    "loading": "Ladet...",
-    "close": "Schliessä",
-    "open": "Öffnä"
-  }
 }

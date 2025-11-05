@@ -1,149 +1,149 @@
 {
-  "meta": {
-    "title": "Blacklodge | Bar Mobile & Services Événementiels Suisse",
-    "description": "Blacklodge offre un service de bar mobile, cabine 360°, photobooth et animation événementielle dans toute la Suisse. Services événementiels professionnels pour des moments inoubliables."
-  },
-  "navigation": {
-    "home": "Accueil",
-    "services": "Services",
-    "catalog": "Catalogue",
-    "instagram": "Instagram",
-    "contact": "Contact"
-  },
-  "hero": {
-    "title": "Des moments inoubliables,",
-    "subtitle": "servis avec style",
-    "description": "Services événementiels premium pour la Suisse : Bar mobile, cabine 360° et animation événementielle",
-    "cta_primary": "Demander un devis",
-    "cta_secondary": "Voir le catalogue"
-  },
-  "services": {
-    "title": "Nos Services",
-    "subtitle": "Trois expériences uniques pour votre événement",
-    "cocktail": {
-      "title": "Service Bar & Cocktails",
-      "description": "Bar premium mobile avec barmans professionnels et spiritueux de qualité pour votre événement.",
-      "features": [
-        "Équipement de bar mobile",
-        "Spiritueux premium & ingrédients frais",
-        "Barmans professionnels",
-        "Installation complète & service"
-      ]
+    "meta": {
+        "title": "Blacklodge | Bar Mobile & Services Événementiels Suisse",
+        "description": "Blacklodge offre un service de bar mobile, cabine 360°, photobooth et animation événementielle dans toute la Suisse. Services événementiels professionnels pour des moments inoubliables."
     },
-    "booth": {
-      "title": "Cabine 360° & Photobooth",
-      "description": "Technologie vidéo innovante pour des enregistrements 360° spectaculaires et des souvenirs photobooth classiques.",
-      "features": [
-        "Technologie vidéo 360° dernière génération",
-        "Partage instantané sur les réseaux sociaux",
-        "Branding personnalisé possible",
-        "Éclairage professionnel"
-      ]
+    "navigation": {
+        "home": "Accueil",
+        "services": "Services",
+        "catalog": "Catalogue",
+        "instagram": "Instagram",
+        "contact": "Contact"
     },
-    "entertainment": {
-      "title": "Animation Événementielle",
-      "description": "Animation complète avec DJs, écrans LED et divertissement chorégraphié pour votre événement.",
-      "features": [
-        "DJs professionnels & équipement musical",
-        "Écrans LED & technologie d'éclairage",
-        "Chorégraphies & spectacles",
-        "Animation sur mesure"
-      ]
+    "hero": {
+        "title": "Des moments inoubliables,",
+        "subtitle": "servis avec style",
+        "description": "Services événementiels premium pour la Suisse : Bar mobile, cabine 360° et animation événementielle",
+        "cta_primary": "Demander un devis",
+        "cta_secondary": "Voir le catalogue"
+    },
+    "services": {
+        "title": "Nos Services",
+        "subtitle": "Trois expériences uniques pour votre événement",
+        "cocktail": {
+            "title": "Service Bar & Cocktails",
+            "description": "Bar premium mobile avec barmans professionnels et spiritueux de qualité pour votre événement.",
+            "features": [
+                "Équipement de bar mobile",
+                "Spiritueux premium & ingrédients frais",
+                "Barmans professionnels",
+                "Installation complète & service"
+            ]
+        },
+        "booth": {
+            "title": "Cabine 360° & Photobooth",
+            "description": "Technologie vidéo innovante pour des enregistrements 360° spectaculaires et des souvenirs photobooth classiques.",
+            "features": [
+                "Technologie vidéo 360° dernière génération",
+                "Partage instantané sur les réseaux sociaux",
+                "Branding personnalisé possible",
+                "Éclairage professionnel"
+            ]
+        },
+        "entertainment": {
+            "title": "Animation Événementielle",
+            "description": "Animation complète avec DJs, écrans LED et divertissement chorégraphié pour votre événement.",
+            "features": [
+                "DJs professionnels & équipement musical",
+                "Écrans LED & technologie d'éclairage",
+                "Chorégraphies & spectacles",
+                "Animation sur mesure"
+            ]
+        }
+    },
+    "catalog": {
+        "title": "Catalogue Blacklodge 2025",
+        "description": "Découvrez tous nos services en détail avec les prix et forfaits pour votre événement parfait.",
+        "download": "Télécharger le catalogue"
+    },
+    "instagram": {
+        "title": "Suivez-nous sur Instagram",
+        "description": "Découvrez nos derniers événements et laissez-vous inspirer.",
+        "cta": "Suivre sur Instagram"
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Prêt pour votre événement inoubliable ?",
+        "description": "Contactez-nous pour une consultation gratuite et une offre personnalisée.",
+        "direct_contact": "Contact Direct",
+        "phone": "Téléphone",
+        "email": "Email",
+        "service_area": "Zone de Service",
+        "service_area_text": "Disponible dans toute la Suisse",
+        "form": {
+            "title": "Envoyer une Demande",
+            "microsoft_form": "Microsoft Forms (Recommandé)",
+            "microsoft_form_description": "Le formulaire s'ouvre directement ici ou vous pouvez l'ouvrir dans un",
+            "new_tab": "nouvel onglet",
+            "alternative_form": "Alternative : Formulaire de Contact Direct",
+            "first_name": "Prénom",
+            "last_name": "Nom",
+            "email": "Email",
+            "phone": "Téléphone",
+            "event_type": "Type d'Événement",
+            "event_type_placeholder": "Veuillez sélectionner...",
+            "event_type_private": "Fête Privée",
+            "event_type_corporate": "Événement d'Entreprise",
+            "event_type_wedding": "Mariage",
+            "event_type_other": "Autre",
+            "event_date": "Date (approximative)",
+            "location": "Lieu / Code Postal",
+            "location_placeholder": "ex. Genève, 1200",
+            "guests": "Nombre d'Invités",
+            "guests_1_25": "1-25 personnes",
+            "guests_26_50": "26-50 personnes",
+            "guests_51_100": "51-100 personnes",
+            "guests_101_200": "101-200 personnes",
+            "guests_200_plus": "200+ personnes",
+            "services": "Services Souhaités",
+            "service_cocktail": "Service Bar & Cocktails",
+            "service_booth": "Cabine 360° & Photobooth",
+            "service_entertainment": "Animation Événementielle",
+            "budget": "Budget",
+            "budget_500_1000": "CHF 500 - 1'000",
+            "budget_1000_2500": "CHF 1'000 - 2'500",
+            "budget_2500_5000": "CHF 2'500 - 5'000",
+            "budget_5000_plus": "CHF 5'000+",
+            "budget_open": "Ouvert / Individuel",
+            "message": "Informations Supplémentaires",
+            "message_placeholder": "Partagez-nous plus de détails sur votre événement...",
+            "privacy": "J'accepte la",
+            "privacy_link": "politique de confidentialité",
+            "privacy_text": "et consens à ce que mes données soient stockées à des fins de contact et de suivi.",
+            "submit": "Envoyer la Demande",
+            "submitting": "Envoi en cours..."
+        },
+        "social": {
+            "title": "Suivez-Nous",
+            "description": "Découvrez nos derniers événements et trouvez l'inspiration pour votre célébration."
+        },
+        "response_times": {
+            "title": "Délais de Réponse",
+            "email": "Email : Sous 24 heures",
+            "phone": "Téléphone : Lun-Ven 09h00-18h00",
+            "quote": "Devis : Sous 3 jours ouvrables"
+        }
+    },
+    "footer": {
+        "company_description": "Bar mobile & services événementiels pour des moments inoubliables.",
+        "navigation_title": "Navigation",
+        "legal_title": "Légal",
+        "impressum": "Mentions légales",
+        "privacy": "Confidentialité",
+        "copyright": "© 2025 Blacklodge. Tous droits réservés."
+    },
+    "messages": {
+        "form_success": "Merci pour votre demande ! Nous vous contacterons sous 24 heures.",
+        "form_error": "Une erreur s'est produite lors de l'envoi de votre demande. Veuillez réessayer.",
+        "required_fields": "Veuillez remplir tous les champs obligatoires.",
+        "privacy_required": "Veuillez accepter la politique de confidentialité.",
+        "invalid_email": "Veuillez entrer une adresse email valide."
+    },
+    "common": {
+        "required": "*",
+        "optional": "optionnel",
+        "loading": "Chargement...",
+        "close": "Fermer",
+        "open": "Ouvrir"
     }
-  },
-  "catalog": {
-    "title": "Catalogue Blacklodge 2025",
-    "description": "Découvrez tous nos services en détail avec les prix et forfaits pour votre événement parfait.",
-    "download": "Télécharger le catalogue"
-  },
-  "instagram": {
-    "title": "Suivez-nous sur Instagram",
-    "description": "Découvrez nos derniers événements et laissez-vous inspirer.",
-    "cta": "Suivre sur Instagram"
-  },
-  "contact": {
-    "title": "Contact",
-    "subtitle": "Prêt pour votre événement inoubliable ?",
-    "description": "Contactez-nous pour une consultation gratuite et une offre personnalisée.",
-    "direct_contact": "Contact Direct",
-    "phone": "Téléphone",
-    "email": "Email",
-    "service_area": "Zone de Service",
-    "service_area_text": "Disponible dans toute la Suisse",
-    "form": {
-      "title": "Envoyer une Demande",
-      "microsoft_form": "Microsoft Forms (Recommandé)",
-      "microsoft_form_description": "Le formulaire s'ouvre directement ici ou vous pouvez l'ouvrir dans un",
-      "new_tab": "nouvel onglet",
-      "alternative_form": "Alternative : Formulaire de Contact Direct",
-      "first_name": "Prénom",
-      "last_name": "Nom",
-      "email": "Email",
-      "phone": "Téléphone",
-      "event_type": "Type d'Événement",
-      "event_type_placeholder": "Veuillez sélectionner...",
-      "event_type_private": "Fête Privée",
-      "event_type_corporate": "Événement d'Entreprise",
-      "event_type_wedding": "Mariage",
-      "event_type_other": "Autre",
-      "event_date": "Date (approximative)",
-      "location": "Lieu / Code Postal",
-      "location_placeholder": "ex. Genève, 1200",
-      "guests": "Nombre d'Invités",
-      "guests_1_25": "1-25 personnes",
-      "guests_26_50": "26-50 personnes",
-      "guests_51_100": "51-100 personnes",
-      "guests_101_200": "101-200 personnes",
-      "guests_200_plus": "200+ personnes",
-      "services": "Services Souhaités",
-      "service_cocktail": "Service Bar & Cocktails",
-      "service_booth": "Cabine 360° & Photobooth",
-      "service_entertainment": "Animation Événementielle",
-      "budget": "Budget",
-      "budget_500_1000": "CHF 500 - 1'000",
-      "budget_1000_2500": "CHF 1'000 - 2'500",
-      "budget_2500_5000": "CHF 2'500 - 5'000",
-      "budget_5000_plus": "CHF 5'000+",
-      "budget_open": "Ouvert / Individuel",
-      "message": "Informations Supplémentaires",
-      "message_placeholder": "Partagez-nous plus de détails sur votre événement...",
-      "privacy": "J'accepte la",
-      "privacy_link": "politique de confidentialité",
-      "privacy_text": "et consens à ce que mes données soient stockées à des fins de contact et de suivi.",
-      "submit": "Envoyer la Demande",
-      "submitting": "Envoi en cours..."
-    },
-    "social": {
-      "title": "Suivez-Nous",
-      "description": "Découvrez nos derniers événements et trouvez l'inspiration pour votre célébration."
-    },
-    "response_times": {
-      "title": "Délais de Réponse",
-      "email": "Email : Sous 24 heures",
-      "phone": "Téléphone : Lun-Ven 09h00-18h00",
-      "quote": "Devis : Sous 3 jours ouvrables"
-    }
-  },
-  "footer": {
-    "company_description": "Bar mobile & services événementiels pour des moments inoubliables.",
-    "navigation_title": "Navigation",
-    "legal_title": "Légal",
-    "impressum": "Mentions légales",
-    "privacy": "Confidentialité",
-    "copyright": "© 2025 Blacklodge. Tous droits réservés."
-  },
-  "messages": {
-    "form_success": "Merci pour votre demande ! Nous vous contacterons sous 24 heures.",
-    "form_error": "Une erreur s'est produite lors de l'envoi de votre demande. Veuillez réessayer.",
-    "required_fields": "Veuillez remplir tous les champs obligatoires.",
-    "privacy_required": "Veuillez accepter la politique de confidentialité.",
-    "invalid_email": "Veuillez entrer une adresse email valide."
-  },
-  "common": {
-    "required": "*",
-    "optional": "optionnel",
-    "loading": "Chargement...",
-    "close": "Fermer",
-    "open": "Ouvrir"
-  }
 }
