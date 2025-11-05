@@ -143,7 +143,7 @@ class I18n {
     }
 
     // Get translation by key with fallback
-    getTranslation(key) {
+    getTranslation(key, params = {}) {
         const keys = key.split('.');
         let translation = this.translations[this.currentLanguage];
         
@@ -165,7 +165,21 @@ class I18n {
             }
         }
         
-        return typeof translation === 'string' ? translation : key;
+        let result = typeof translation === 'string' ? translation : key;
+        
+        // Replace parameters in translation
+        if (typeof result === 'string' && Object.keys(params).length > 0) {
+            Object.entries(params).forEach(([key, value]) => {
+                result = result.replace(new RegExp(`{{${key}}}`, 'g'), value);
+            });
+        }
+        
+        return result;
+    }
+
+    // Shorthand method for translation (commonly used as t())
+    t(key, params = {}) {
+        return this.getTranslation(key, params);
     }
 
     // Update meta tags for SEO

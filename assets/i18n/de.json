@@ -1,7 +1,7 @@
 {
     "meta": {
         "title": "Blacklodge | Mobile Cocktailbar & Event-Services Schweiz",
-        "description": "Blacklodge bietet mobile Cocktailbar, 360° Booth, PhotoBooth und Event Entertainment in der ganzen Schweiz. Professionelle Event-Services für unvergessliche Momente."
+        "description": "Blacklodge bietet mobile Cocktailbar, 360° Booth, PhotoBooth und Event Entertainment in der Schweiz, Deutschland, Frankreich und Österreich. Professionelle Event-Services für unvergessliche Momente."
     },
     "navigation": {
         "home": "Home",
@@ -76,8 +76,8 @@
         "direct_contact": "Direkter Kontakt",
         "phone": "Telefon",
         "email": "E-Mail",
-        "service_area": "Service-Gebiet",
-        "service_area_text": "Schweizweit verfügbar",
+        "service_area": "Servicegebiet",
+        "service_area_text": "Verfügbar in der Schweiz, Deutschland, Frankreich und Österreich",
         "form": {
             "title": "Anfrage senden",
             "microsoft_form": "Microsoft Forms (Empfohlen)",
@@ -142,10 +142,15 @@
     },
     "messages": {
         "form_success": "Vielen Dank für Ihre Anfrage! Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
-        "form_error": "Es gab einen Fehler beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
+        "form_error": "Es gab einen Fehler beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt per E-Mail oder Telefon.",
         "required_fields": "Bitte füllen Sie alle Pflichtfelder aus.",
         "privacy_required": "Bitte akzeptieren Sie die Datenschutzerklärung.",
-        "invalid_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+        "invalid_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        "rate_limit": "Bitte warten Sie {{minutes}} Minuten vor der nächsten Anfrage.",
+        "sending": "Wird gesendet...",
+        "spam_detected": "Spam erkannt - Anfrage blockiert",
+        "emailjs_not_configured": "E-Mail-Service nicht konfiguriert. Bitte kontaktieren Sie uns direkt.",
+        "duplicate_submission": "Formular wird bereits versendet, bitte warten..."
     },
     "swiss_modal": {
         "greeting": "Grüezi!",

@@ -5,9 +5,6 @@
 const CONFIG = {
     // Contact form configuration
     contact: {
-        // Formspree endpoint - replace with your own endpoint
-        formspreeEndpoint: 'https://formspree.io/f/xpwwqbjy',
-        
         // Target email address where form submissions will be sent
         targetEmail: 'the.blacklodge@outlook.com',
         

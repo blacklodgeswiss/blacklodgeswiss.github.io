@@ -185,20 +185,56 @@ function initializeLegacyFeatures() {
     console.log('🔗 Legacy features initialized');
 }
 
+// Global variable to prevent duplicate initialization
+let contactFormInitialized = false;
+
 /**
  * Initialize contact form functionality with EmailJS and spam protection
  */
 function initializeContactForm() {
+    // Global check first
+    if (contactFormInitialized) {
+        console.log('⚠️ Contact form already initialized globally, skipping...');
+        return;
+    }
+    
     const contactForm = document.getElementById('contact-form');
     
-    if (contactForm) {
-        // Initialize EmailJS if not already done
-        if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG?.publicKey) {
-            emailjs.init(window.EMAILJS_CONFIG.publicKey);
-        }
+    if (!contactForm) {
+        return;
+    }
+    
+    // Initialize EmailJS if not already done
+    if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG?.publicKey) {
+        emailjs.init(window.EMAILJS_CONFIG.publicKey);
+    }
+    
+    // Set global flag
+    contactFormInitialized = true;
+    
+    console.log('✅ Initializing contact form (first time)...');
         
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            e.stopImmediatePropagation();
+            
+            // Get i18n for messages - try multiple sources
+            const i18n = window.BlacklodgeApp?.i18n || window.i18n;
+            
+            // Prevent double submission with better logging
+            if (this.submitting || this.dataset.submitting === 'true') {
+                console.log('⚠️ DUPLICATE SUBMISSION BLOCKED - Form is already being submitted');
+                if (i18n && typeof i18n.t === 'function') {
+                    alert(i18n.t('messages.duplicate_submission'));
+                } else {
+                    alert('Form is already being submitted, please wait...');
+                }
+                return;
+            }
+            
+            console.log('📧 Starting form submission...');
+            this.submitting = true;
+            this.dataset.submitting = 'true';
             
             // Get form data
             const formData = new FormData(contactForm);
@@ -226,40 +262,47 @@ function initializeContactForm() {
             if (window.BlacklodgeRateLimiter && !window.BlacklodgeRateLimiter.canSubmit()) {
                 const nextAllowed = window.BlacklodgeRateLimiter.getNextAllowedTime();
                 const waitTime = Math.ceil((nextAllowed - new Date()) / (1000 * 60)); // minutes
-                alert(`Bitte warten Sie ${waitTime} Minuten vor der nächsten Anfrage.`);
+                const message = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.rate_limit', { minutes: waitTime }) : `Please wait ${waitTime} minutes before the next inquiry.`;
+                alert(message);
                 return;
             }
             
             // Basic validation
             if (!data.vorname || !data.nachname || !data.email) {
-                alert('Bitte füllen Sie alle Pflichtfelder aus.');
+                const message = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.required_fields') : 'Please fill in all required fields.';
+                alert(message);
                 return;
             }
             
             if (!data.datenschutz) {
-                alert('Bitte akzeptieren Sie die Datenschutzerklärung.');
+                const message = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.privacy_required') : 'Please accept the privacy policy.';
+                alert(message);
                 return;
             }
             
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(data.email)) {
-                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                const message = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.invalid_email') : 'Please enter a valid email address.';
+                alert(message);
                 return;
             }
             
             // Show loading state
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
-            submitButton.textContent = 'Wird gesendet...';
+            const sendingText = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.sending') : 'Sending...';
+            submitButton.textContent = sendingText;
             submitButton.disabled = true;
             
             try {
-                // Send email via EmailJS (preferred) or fallback to Formspree
-                if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG?.serviceId) {
+                // Send email via EmailJS
+                if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG && isEmailJSConfigured()) {
+                    console.log('📧 Using EmailJS for form submission');
                     await sendViaEmailJS(data);
                 } else {
-                    await sendViaFormspree(data);
+                    const message = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.emailjs_not_configured') : 'Email service not configured. Please contact us directly.';
+                    throw new Error(message);
                 }
                 
                 // Record successful submission for rate limiting
@@ -267,19 +310,25 @@ function initializeContactForm() {
                     window.BlacklodgeRateLimiter.recordSubmission();
                 }
                 
-                alert('Vielen Dank für Ihre Anfrage! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
+                const successMessage = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.form_success') : 'Thank you for your inquiry! We will contact you within 24 hours.';
+                alert(successMessage);
                 contactForm.reset();
                 
             } catch (error) {
                 console.error('Error submitting form:', error);
-                alert('Es gab einen Fehler beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt per E-Mail oder Telefon.');
+                const errorMessage = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.form_error') : 'There was an error sending your inquiry. Please try again or contact us directly via email or phone.';
+                alert(errorMessage);
             } finally {
                 // Reset button state
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
+                
+                // Reset submitting flags
+                this.submitting = false;
+                this.dataset.submitting = 'false';
+                console.log('✅ Form submission completed, flags reset');
             }
         });
-    }
 }
 
 /**
@@ -311,39 +360,9 @@ async function sendViaEmailJS(data) {
     console.log('✅ Email sent via EmailJS:', result);
 }
 
-/**
- * Fallback: Send email via Formspree
- * @param {Object} data - Form data
- */
-async function sendViaFormspree(data) {
-    const formspreeEndpoint = window.BLACKLODGE_CONFIG?.contact?.formspreeEndpoint || 'https://formspree.io/f/xpwwqbjy';
-    const response = await fetch(formspreeEndpoint, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            name: `${data.vorname} ${data.nachname}`,
-            email: data.email,
-            phone: data.phone || 'Nicht angegeben',
-            event_type: data.event_type || 'Nicht angegeben',
-            event_date: data.event_date || 'Nicht angegeben',
-            location: data.location || 'Nicht angegeben',
-            guests: data.guests || 'Nicht angegeben',
-            services: data.services ? data.services.join(', ') : 'Keine ausgewählt',
-            budget: data.budget || 'Nicht angegeben',
-            message: data.message || 'Keine zusätzlichen Informationen',
-            _subject: `Neue Anfrage von ${data.vorname} ${data.nachname}`,
-            _replyto: data.email
-        })
-    });
 
-    if (!response.ok) {
-        throw new Error('Formspree submission failed');
-    }
-    
-    console.log('✅ Email sent via Formspree fallback');
-}
+
+
 
 /**
  * Initialize header scroll effects

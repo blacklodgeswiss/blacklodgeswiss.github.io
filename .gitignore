@@ -7,3 +7,4 @@ assets/js/emailjs-env.js
 *.log
 .vscode/
 node_modules/
+assets/js/emailjs-config-env.js

@@ -46,14 +46,14 @@ function loadEmailJSConfig() {
     const config = window.EMAILJS_CONFIG;
     
     // Method 1: From build-time environment variables (recommended)
-    if (typeof EMAILJS_PUBLIC_KEY !== 'undefined') {
-        config.publicKey = EMAILJS_PUBLIC_KEY;
+    if (typeof window.EMAILJS_PUBLIC_KEY !== 'undefined') {
+        config.publicKey = window.EMAILJS_PUBLIC_KEY;
     }
-    if (typeof EMAILJS_SERVICE_ID !== 'undefined') {
-        config.serviceId = EMAILJS_SERVICE_ID;
+    if (typeof window.EMAILJS_SERVICE_ID !== 'undefined') {
+        config.serviceId = window.EMAILJS_SERVICE_ID;
     }
-    if (typeof EMAILJS_TEMPLATE_ID !== 'undefined') {
-        config.templateId = EMAILJS_TEMPLATE_ID;
+    if (typeof window.EMAILJS_TEMPLATE_ID !== 'undefined') {
+        config.templateId = window.EMAILJS_TEMPLATE_ID;
     }
     
     // Method 2: From URL parameters (for testing)

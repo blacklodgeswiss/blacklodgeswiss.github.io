@@ -1,7 +1,7 @@
 {
     "meta": {
         "title": "Blacklodge | Mobile Cocktail Bar & Event Services Switzerland",
-        "description": "Blacklodge offers mobile cocktail bar, 360° booth, photo booth and event entertainment throughout Switzerland. Professional event services for unforgettable moments."
+        "description": "Blacklodge offers mobile cocktail bar, 360° booth, photo booth and event entertainment throughout Switzerland, Germany, France and Austria. Professional event services for unforgettable moments."
     },
     "navigation": {
         "home": "Home",
@@ -77,7 +77,7 @@
         "phone": "Phone",
         "email": "Email",
         "service_area": "Service Area",
-        "service_area_text": "Available throughout Switzerland",
+        "service_area_text": "Available throughout Switzerland, Germany, France and Austria",
         "form": {
             "title": "Send Inquiry",
             "microsoft_form": "Microsoft Forms (Recommended)",
@@ -142,10 +142,15 @@
     },
     "messages": {
         "form_success": "Thank you for your inquiry! We will contact you within 24 hours.",
-        "form_error": "There was an error sending your inquiry. Please try again.",
+        "form_error": "There was an error sending your inquiry. Please try again or contact us directly via email or phone.",
         "required_fields": "Please fill in all required fields.",
         "privacy_required": "Please accept the privacy policy.",
-        "invalid_email": "Please enter a valid email address."
+        "invalid_email": "Please enter a valid email address.",
+        "rate_limit": "Please wait {{minutes}} minutes before the next inquiry.",
+        "sending": "Sending...",
+        "spam_detected": "Spam detected - request blocked",
+        "emailjs_not_configured": "Email service not configured. Please contact us directly.",
+        "duplicate_submission": "Form is already being submitted, please wait..."
     },
     "swiss_modal": {
         "greeting": "Grüezi!",

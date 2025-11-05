@@ -1,7 +1,7 @@
 {
     "meta": {
         "title": "Blacklodge | Mobili Cocktailbar & Event-Services Schwiiz",
-        "description": "Blacklodge bietet mobili Cocktailbar, 360° Booth, Fotobooth und Event Entertainment i dä ganzä Schwiiz. Professionelli Event-Services für unvergässlichi Momänt."
+        "description": "Blacklodge bietet mobili Cocktailbar, 360° Booth, Fotobooth und Event Entertainment i dä Schwiiz, Dütschland, Frankrich und Östrich. Professionelli Event-Services für unvergässlichi Momänt."
     },
     "navigation": {
         "home": "Home",
@@ -76,8 +76,8 @@
         "direct_contact": "Direkte Kontakt",
         "phone": "Telefon",
         "email": "E-Mail",
-        "service_area": "Service-Gebiet",
-        "service_area_text": "I dä ganzä Schwiiz verfüegbar",
+        "service_area": "Servicegbiet",
+        "service_area_text": "Verfüegbar i dä Schwiiz, Dütschland, Frankrich und Östrich",
         "form": {
             "title": "Afrag schickä",
             "microsoft_form": "Microsoft Forms (Empfohlä)",
@@ -141,11 +141,16 @@
         "copyright": "© 2025 Blacklodge. Alli Rächt vorbehalte."
     },
     "messages": {
-        "form_success": "Vilä Dank für Ihri Afrag! Mir meldä üs innerhalb vo 24 Stundä bi euch.",
-        "form_error": "Es het ä Fehler gä bim Schickä vo eurer Afrag. Bitte versuched's nomal.",
-        "required_fields": "Bitte fülled alli Pflichtfälder us.",
-        "privacy_required": "Bitte akzeptiered d'Dateschutzerklärig.",
-        "invalid_email": "Bitte gebed ä gültigi E-Mail-Adrässe ii."
+        "form_success": "Merci vilmal für Ihri Afrag! Mir mäldäd üs innert 24 Stundä bi Ihnä.",
+        "form_error": "Es het en Fähler gäh bim Schickä vo Ihrä Afrag. Bitä versuächäd es nomol oder kontaktiärid üs diräkt per E-Mail oder Teläfon.",
+        "required_fields": "Bitä füllid alli Pflichtfälder us.",
+        "privacy_required": "Bitä akzeptiärid d Datäschutzerklärig.",
+        "invalid_email": "Bitä gäbid ä gültigi E-Mail-Adrässe ii.",
+        "rate_limit": "Bitä wartid {{minutes}} Minutä vor dä nächstä Afrag.",
+        "sending": "Wird gschickt...",
+        "spam_detected": "Spam erkännt - Afrag blockiert",
+        "emailjs_not_configured": "E-Mail-Service nöd konfiguriert. Bitä kontaktiärid üs diräkt.",
+        "duplicate_submission": "Formular wird scho gschickt, bitä wartä..."
     },
     "swiss_modal": {
         "greeting": "Grüezi!",
