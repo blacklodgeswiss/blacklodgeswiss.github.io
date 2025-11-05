@@ -63,6 +63,9 @@ function initializeNavigation(app, currentPage) {
 function initializeContactPageComponents(app) {
     const i18n = app.i18n;
     
+    // Initialize contact form first
+    initializeContactForm();
+    
     // Initialize and render Footer
     if (window.FooterComponent) {
         const footerContainer = document.getElementById('footer-root');
@@ -176,12 +179,10 @@ function initializeInstagramFeed() {
  * Initialize legacy features and compatibility
  */
 function initializeLegacyFeatures() {
-    // Contact form handling (for contact page)
-    initializeContactForm();
-    
     // Header scroll effect
     initializeHeaderScrollEffect();
     
+    // Contact form only initialized on contact page now
     console.log('🔗 Legacy features initialized');
 }
 
@@ -213,10 +214,19 @@ function initializeContactForm() {
     contactFormInitialized = true;
     
     console.log('✅ Initializing contact form (first time)...');
-        
-        contactForm.addEventListener('submit', async function(e) {
+    
+    // Add event listener to the form
+    contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
+            
+            console.log('🎯 Form submission started from:', this.id);
+            console.log('🔍 Form element details:', {
+                id: this.id,
+                action: this.action,
+                method: this.method,
+                elements: this.elements.length
+            });
             
             // Get i18n for messages - try multiple sources
             const i18n = window.BlacklodgeApp?.i18n || window.i18n;
@@ -250,6 +260,15 @@ function initializeContactForm() {
                 }
             }
             
+            // Debug: Log form data to see what we're getting
+            console.log('📝 Form data collected:', {
+                first_name: data.first_name || 'EMPTY',
+                last_name: data.last_name || 'EMPTY', 
+                email: data.email || 'EMPTY',
+                datenschutz: data.datenschutz || 'UNCHECKED',
+                allKeys: Object.keys(data)
+            });
+            
             // SPAM PROTECTION: Check honeypot field
             if (data.website_url && data.website_url.trim() !== '') {
                 console.log('🚫 Spam detected - honeypot field filled');
@@ -258,23 +277,22 @@ function initializeContactForm() {
                 return;
             }
             
-            // SPAM PROTECTION: Check rate limiting
-            if (window.BlacklodgeRateLimiter && !window.BlacklodgeRateLimiter.canSubmit()) {
-                const nextAllowed = window.BlacklodgeRateLimiter.getNextAllowedTime();
-                const waitTime = Math.ceil((nextAllowed - new Date()) / (1000 * 60)); // minutes
-                const message = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.rate_limit', { minutes: waitTime }) : `Please wait ${waitTime} minutes before the next inquiry.`;
-                alert(message);
-                return;
-            }
+            // SPAM PROTECTION: Rate limiting happens after successful send
             
             // Basic validation
-            if (!data.vorname || !data.nachname || !data.email) {
+            if (!data.first_name || !data.last_name || !data.email) {
+                console.error('❌ Validation failed. Missing fields:', {
+                    first_name: data.first_name ? '✅' : '❌ MISSING',
+                    last_name: data.last_name ? '✅' : '❌ MISSING',
+                    email: data.email ? '✅' : '❌ MISSING'
+                });
                 const message = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.required_fields') : 'Please fill in all required fields.';
                 alert(message);
                 return;
             }
             
             if (!data.datenschutz) {
+                console.error('❌ Privacy checkbox not checked:', data.datenschutz);
                 const message = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.privacy_required') : 'Please accept the privacy policy.';
                 alert(message);
                 return;
@@ -300,14 +318,16 @@ function initializeContactForm() {
                 if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG && isEmailJSConfigured()) {
                     console.log('📧 Using EmailJS for form submission');
                     await sendViaEmailJS(data);
+                    
+                    // ✅ Only record submission if EmailJS was successful
+                    if (window.BlacklodgeRateLimiter) {
+                        window.BlacklodgeRateLimiter.recordSubmission();
+                        console.log('📊 Rate limiting: Successful submission recorded');
+                    }
+                    
                 } else {
                     const message = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.emailjs_not_configured') : 'Email service not configured. Please contact us directly.';
                     throw new Error(message);
-                }
-                
-                // Record successful submission for rate limiting
-                if (window.BlacklodgeRateLimiter) {
-                    window.BlacklodgeRateLimiter.recordSubmission();
                 }
                 
                 const successMessage = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.form_success') : 'Thank you for your inquiry! We will contact you within 24 hours.';
@@ -316,6 +336,7 @@ function initializeContactForm() {
                 
             } catch (error) {
                 console.error('Error submitting form:', error);
+                console.log('❌ Rate limiting: Failed submission NOT recorded');
                 const errorMessage = (i18n && typeof i18n.t === 'function') ? i18n.t('messages.form_error') : 'There was an error sending your inquiry. Please try again or contact us directly via email or phone.';
                 alert(errorMessage);
             } finally {
@@ -337,7 +358,7 @@ function initializeContactForm() {
  */
 async function sendViaEmailJS(data) {
     const templateParams = {
-        from_name: `${data.vorname} ${data.nachname}`,
+        from_name: `${data.first_name} ${data.last_name}`,
         from_email: data.email,
         phone: data.phone || 'Nicht angegeben',
         event_type: data.event_type || 'Nicht angegeben',
@@ -358,6 +379,9 @@ async function sendViaEmailJS(data) {
     }
     
     console.log('✅ Email sent via EmailJS:', result);
+}
+
+/**
 }
 
 
