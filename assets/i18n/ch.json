@@ -59,7 +59,10 @@
     "instagram": {
         "title": "Folged üs uf Instagram",
         "description": "Entdecked üseri neueste Events und lönd euch inspirierä.",
-        "cta": "Uf Instagram folgä"
+        "cta": "Uf Instagram folgä",
+        "embed_note": "Live Instagram Feed vo @_the.black.lodge_",
+        "fallback_text": "Instagram chann nöd glade werdä?",
+        "visit_profile": "Profil besuchä"
     },
     "contact": {
         "title": "Kontakt",

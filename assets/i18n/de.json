@@ -59,7 +59,10 @@
     "instagram": {
         "title": "Folgen Sie uns auf Instagram",
         "description": "Entdecken Sie unsere neuesten Events und lassen Sie sich inspirieren.",
-        "cta": "Auf Instagram folgen"
+        "cta": "Folgen auf Instagram",
+        "embed_note": "Live Instagram Feed von @_the.black.lodge_",
+        "fallback_text": "Instagram kann nicht geladen werden?",
+        "visit_profile": "Profil besuchen"
     },
     "contact": {
         "title": "Kontakt",
