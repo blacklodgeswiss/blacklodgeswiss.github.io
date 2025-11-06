@@ -330,8 +330,33 @@
     <!-- EmailJS Library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
-    <!-- EmailJS Environment Variables (auto-generated) -->
-    <script src="assets/js/emailjs-env.js"></script>
+    <!-- EmailJS Configuration (embedded for reliability) -->
+    <script>
+        // EmailJS configuration for production (auto-injected by GitHub Actions)
+        window.EMAILJS_PUBLIC_KEY = '${EMAILJS_PUBLIC_KEY}';
+        window.EMAILJS_SERVICE_ID = '${EMAILJS_SERVICE_ID}';
+        window.EMAILJS_TEMPLATE_ID = '${EMAILJS_TEMPLATE_ID}';
+        window.EMAILJS_AUTOREPLY_TEMPLATE_ID = '${EMAILJS_AUTOREPLY_TEMPLATE_ID}';
+        
+        // Production deployment marker
+        window.EMAILJS_DEPLOYMENT = 'production';
+        
+        console.log('📧 EmailJS embedded configuration loaded');
+        console.log('🔑 Public Key:', window.EMAILJS_PUBLIC_KEY ? 'Set ✅' : 'Missing ❌');
+        console.log('📬 Service ID:', window.EMAILJS_SERVICE_ID ? 'Set ✅' : 'Missing ❌');
+        console.log('📝 Template ID:', window.EMAILJS_TEMPLATE_ID ? 'Set ✅' : 'Missing ❌');
+        console.log('🔄 Auto-Reply Template ID:', window.EMAILJS_AUTOREPLY_TEMPLATE_ID ? 'Set ✅' : 'Missing ❌');
+        
+        // Fallback configuration check
+        if (!window.EMAILJS_PUBLIC_KEY || window.EMAILJS_PUBLIC_KEY === '${EMAILJS_PUBLIC_KEY}' || 
+            !window.EMAILJS_SERVICE_ID || window.EMAILJS_SERVICE_ID === '${EMAILJS_SERVICE_ID}' ||
+            !window.EMAILJS_TEMPLATE_ID || window.EMAILJS_TEMPLATE_ID === '${EMAILJS_TEMPLATE_ID}') {
+            console.warn('⚠️ EmailJS configuration placeholders not replaced - check GitHub Actions');
+            console.log('Required GitHub Secrets: EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID');
+        } else {
+            console.log('✅ EmailJS configuration complete');
+        }
+    </script>
     
     <!-- Load all components and core scripts -->
     <script src="assets/js/emailjs-config-env.js"></script>

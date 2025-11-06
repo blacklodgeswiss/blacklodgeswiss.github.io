@@ -64,11 +64,25 @@ jobs:
             '}' \
             > assets/js/emailjs-env.js
           
+          # Also inject EmailJS config directly into kontakt.html
+          echo "=== Injecting EmailJS config into kontakt.html ==="
+          
+          # Replace placeholders in kontakt.html with actual values
+          sed -i "s/\${EMAILJS_PUBLIC_KEY}/${{ secrets.EMAILJS_PUBLIC_KEY }}/g" kontakt.html
+          sed -i "s/\${EMAILJS_SERVICE_ID}/${{ secrets.EMAILJS_SERVICE_ID }}/g" kontakt.html  
+          sed -i "s/\${EMAILJS_TEMPLATE_ID}/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" kontakt.html
+          sed -i "s/\${EMAILJS_AUTOREPLY_TEMPLATE_ID}/${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}/g" kontakt.html
+          
+          echo "kontakt.html updated with EmailJS configuration"
+          
           # Debug: Show what we created
           echo "=== Generated emailjs-env.js ==="
           cat assets/js/emailjs-env.js
           echo "=== File size and permissions ==="
           ls -la assets/js/emailjs-env.js
+          
+          echo "=== EmailJS config in kontakt.html ==="
+          grep -A 5 -B 5 "EMAILJS_PUBLIC_KEY" kontakt.html || echo "No EMAILJS_PUBLIC_KEY found in kontakt.html"
           
           # Verify secrets are available (without exposing full values)
           echo "=== Secret availability check ==="
