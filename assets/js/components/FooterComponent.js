@@ -42,7 +42,7 @@ class FooterComponent {
                             <ul class="space-y-2">
                                 <li><a href="#services" class="text-gray-400 hover:text-white transition-colors" data-i18n="navigation.services">Leistungen</a></li>
                                 <li><a href="#katalog" class="text-gray-400 hover:text-white transition-colors" data-i18n="navigation.catalog">Katalog</a></li>
-                                <li><a href="#instagram" class="text-gray-400 hover:text-white transition-colors" data-i18n="navigation.instagram">Instagram</a></li>
+                                <li><a href="#instagram" class="text-gray-400 hover:text-white transition-colors" data-i18n="navigation.social">Social Media</a></li>
                                 <li><a href="kontakt.html" class="text-gray-400 hover:text-white transition-colors" data-i18n="navigation.contact">Kontakt</a></li>
                             </ul>
                         </div>
