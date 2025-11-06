@@ -36,35 +36,34 @@ jobs:
           # Ensure the directory exists
           mkdir -p assets/js
           
-          # Create emailjs-env.js with environment variables
-          # Use heredoc with variable substitution
-          cat > assets/js/emailjs-env.js << EOF
-          // EmailJS Environment Configuration - Auto-generated from GitHub Secrets
-          window.EMAILJS_PUBLIC_KEY = '${{ secrets.EMAILJS_PUBLIC_KEY }}';
-          window.EMAILJS_SERVICE_ID = '${{ secrets.EMAILJS_SERVICE_ID }}';
-          window.EMAILJS_TEMPLATE_ID = '${{ secrets.EMAILJS_TEMPLATE_ID }}';
-          window.EMAILJS_AUTOREPLY_TEMPLATE_ID = '${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}';
-          
-          // Debug information for deployment
-          console.log('📧 EmailJS Configuration loaded from GitHub Secrets (Production)');
-          console.log('🔑 Public Key:', window.EMAILJS_PUBLIC_KEY ? 'Set ✅' : 'Missing ❌');
-          console.log('📬 Service ID:', window.EMAILJS_SERVICE_ID ? 'Set ✅' : 'Missing ❌');  
-          console.log('📝 Template ID:', window.EMAILJS_TEMPLATE_ID ? 'Set ✅' : 'Missing ❌');
-          console.log('🔄 Auto-Reply Template ID:', window.EMAILJS_AUTOREPLY_TEMPLATE_ID ? 'Set ✅' : 'Missing ❌');
-          
-          // Production deployment marker
-          window.EMAILJS_DEPLOYMENT = 'production';
-          window.EMAILJS_BUILD_TIME = '${{ github.run_number }}';
-          window.EMAILJS_BUILD_SHA = '${{ github.sha }}';
-          
-          // Fallback configuration check
-          if (!window.EMAILJS_PUBLIC_KEY || !window.EMAILJS_SERVICE_ID || !window.EMAILJS_TEMPLATE_ID) {
-            console.warn('⚠️ EmailJS configuration incomplete - check GitHub Secrets');
-            console.log('Required Secrets: EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID');
-          } else {
-            console.log('✅ EmailJS configuration complete');
-          }
-          EOF
+          # Create emailjs-env.js with environment variables - use printf for better control
+          printf '%s\n' \
+            '// EmailJS Environment Configuration - Auto-generated from GitHub Secrets' \
+            "window.EMAILJS_PUBLIC_KEY = '${{ secrets.EMAILJS_PUBLIC_KEY }}';" \
+            "window.EMAILJS_SERVICE_ID = '${{ secrets.EMAILJS_SERVICE_ID }}';" \
+            "window.EMAILJS_TEMPLATE_ID = '${{ secrets.EMAILJS_TEMPLATE_ID }}';" \
+            "window.EMAILJS_AUTOREPLY_TEMPLATE_ID = '${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}';" \
+            '' \
+            '// Debug information for deployment' \
+            "console.log('📧 EmailJS Configuration loaded from GitHub Secrets (Production)');" \
+            "console.log('🔑 Public Key:', window.EMAILJS_PUBLIC_KEY ? 'Set ✅' : 'Missing ❌');" \
+            "console.log('📬 Service ID:', window.EMAILJS_SERVICE_ID ? 'Set ✅' : 'Missing ❌');" \
+            "console.log('📝 Template ID:', window.EMAILJS_TEMPLATE_ID ? 'Set ✅' : 'Missing ❌');" \
+            "console.log('🔄 Auto-Reply Template ID:', window.EMAILJS_AUTOREPLY_TEMPLATE_ID ? 'Set ✅' : 'Missing ❌');" \
+            '' \
+            '// Production deployment marker' \
+            "window.EMAILJS_DEPLOYMENT = 'production';" \
+            "window.EMAILJS_BUILD_TIME = '${{ github.run_number }}';" \
+            "window.EMAILJS_BUILD_SHA = '${{ github.sha }}';" \
+            '' \
+            '// Fallback configuration check' \
+            'if (!window.EMAILJS_PUBLIC_KEY || !window.EMAILJS_SERVICE_ID || !window.EMAILJS_TEMPLATE_ID) {' \
+            "  console.warn('⚠️ EmailJS configuration incomplete - check GitHub Secrets');" \
+            "  console.log('Required Secrets: EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID');" \
+            '} else {' \
+            "  console.log('✅ EmailJS configuration complete');" \
+            '}' \
+            > assets/js/emailjs-env.js
           
           # Debug: Show what we created
           echo "=== Generated emailjs-env.js ==="
