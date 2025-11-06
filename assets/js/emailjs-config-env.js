@@ -60,6 +60,13 @@ function loadEmailJSConfig() {
         config.autoReplyTemplateId = window.EMAILJS_AUTOREPLY_TEMPLATE_ID;
     }
     
+    // If no environment variables, show error (never hardcode keys!)
+    if (!config.publicKey || !config.serviceId || !config.templateId) {
+        console.error('❌ EmailJS configuration missing! GitHub Secrets not properly configured.');
+        console.log('Required GitHub Secrets: EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID');
+        console.log('Contact form will be disabled until configuration is fixed.');
+    }
+    
     // Method 2: From URL parameters (for testing)
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('emailjs_key')) {
