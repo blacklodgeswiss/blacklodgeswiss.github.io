@@ -67,11 +67,11 @@ jobs:
           # Also inject EmailJS config directly into kontakt.html
           echo "=== Injecting EmailJS config into kontakt.html ==="
           
-          # Replace placeholders in kontakt.html with actual values (using # as delimiter to avoid issues with /)
-          sed -i "s#\\\${EMAILJS_PUBLIC_KEY}#${{ secrets.EMAILJS_PUBLIC_KEY }}#g" kontakt.html
-          sed -i "s#\\\${EMAILJS_SERVICE_ID}#${{ secrets.EMAILJS_SERVICE_ID }}#g" kontakt.html  
-          sed -i "s#\\\${EMAILJS_TEMPLATE_ID}#${{ secrets.EMAILJS_TEMPLATE_ID }}#g" kontakt.html
-          sed -i "s#\\\${EMAILJS_AUTOREPLY_TEMPLATE_ID}#${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}#g" kontakt.html
+          # Replace placeholders in kontakt.html with actual values (using @ as delimiter and proper escaping)
+          sed -i 's@${EMAILJS_PUBLIC_KEY}@${{ secrets.EMAILJS_PUBLIC_KEY }}@g' kontakt.html
+          sed -i 's@${EMAILJS_SERVICE_ID}@${{ secrets.EMAILJS_SERVICE_ID }}@g' kontakt.html  
+          sed -i 's@${EMAILJS_TEMPLATE_ID}@${{ secrets.EMAILJS_TEMPLATE_ID }}@g' kontakt.html
+          sed -i 's@${EMAILJS_AUTOREPLY_TEMPLATE_ID}@${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}@g' kontakt.html
           
           echo "kontakt.html updated with EmailJS configuration"
           
