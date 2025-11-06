@@ -53,15 +53,21 @@ jobs:
           
           # Inject EmailJS config directly into kontakt.html
           
-          # Set environment variables for envsubst
-          export EMAILJS_PUBLIC_KEY="${{ secrets.EMAILJS_PUBLIC_KEY }}"
-          export EMAILJS_SERVICE_ID="${{ secrets.EMAILJS_SERVICE_ID }}"
-          export EMAILJS_TEMPLATE_ID="${{ secrets.EMAILJS_TEMPLATE_ID }}"
-          export EMAILJS_AUTOREPLY_TEMPLATE_ID="${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}"
+          # Replace placeholders using shell parameter expansion (more reliable than envsubst)
+          cp kontakt.html kontakt.html.backup
           
-          # Use envsubst to replace placeholders safely
-          envsubst '${EMAILJS_PUBLIC_KEY} ${EMAILJS_SERVICE_ID} ${EMAILJS_TEMPLATE_ID} ${EMAILJS_AUTOREPLY_TEMPLATE_ID}' < kontakt.html > kontakt.html.tmp
-          mv kontakt.html.tmp kontakt.html
+          # Use shell to replace each placeholder individually
+          TEMP_FILE=$(mktemp)
+          cp kontakt.html "$TEMP_FILE"
+          
+          # Replace placeholders one by one with proper escaping
+          sed "s|\${EMAILJS_PUBLIC_KEY}|${{ secrets.EMAILJS_PUBLIC_KEY }}|g" "$TEMP_FILE" > kontakt.html.tmp1
+          sed "s|\${EMAILJS_SERVICE_ID}|${{ secrets.EMAILJS_SERVICE_ID }}|g" kontakt.html.tmp1 > kontakt.html.tmp2
+          sed "s|\${EMAILJS_TEMPLATE_ID}|${{ secrets.EMAILJS_TEMPLATE_ID }}|g" kontakt.html.tmp2 > kontakt.html.tmp3
+          sed "s|\${EMAILJS_AUTOREPLY_TEMPLATE_ID}|${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}|g" kontakt.html.tmp3 > kontakt.html
+          
+          # Clean up temporary files
+          rm -f kontakt.html.tmp* "$TEMP_FILE"
           
           echo "✅ EmailJS configuration injected successfully"
 
