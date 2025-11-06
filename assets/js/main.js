@@ -357,7 +357,10 @@ function initializeContactForm() {
  * @param {Object} data - Form data
  */
 async function sendViaEmailJS(data) {
-    const templateParams = {
+    const config = window.EMAILJS_CONFIG;
+    
+    // Template parameters for the main email (to you)
+    const mainTemplateParams = {
         from_name: `${data.first_name} ${data.last_name}`,
         from_email: data.email,
         phone: data.phone || 'Nicht angegeben',
@@ -371,14 +374,62 @@ async function sendViaEmailJS(data) {
         reply_to: data.email
     };
     
-    const config = window.EMAILJS_CONFIG;
-    const result = await emailjs.send(config.serviceId, config.templateId, templateParams);
+    // Template parameters for auto-reply (to customer)
+    // Based on your EmailJS template fields: from_name and email
+    const autoReplyParams = {
+        // Exact fields from your EmailJS auto-reply template
+        from_name: `${data.first_name} ${data.last_name}`, // Kundenname
+        email: data.email,  // Empfänger-E-Mail (Kunde)
+        
+        // Additional event details for confirmation message
+        event_type: data.event_type || 'Ihr Anlass',
+        event_date: data.event_date || 'dem gewünschten Datum',
+        location: data.location || 'dem gewünschten Ort',
+        services: data.services ? data.services.join(', ') : 'den gewünschten Services',
+        phone: data.phone || 'Nicht angegeben',
+        customer_name: data.first_name,
+        
+        // Company contact info
+        company_name: 'Blacklodge',
+        company_email: 'the.blacklodge@outlook.com',
+        company_phone: '+41 79 778 48 61'
+    };
     
-    if (result.status !== 200) {
-        throw new Error('EmailJS failed');
+    try {
+        // Send main email to you
+        console.log('📧 Sending main inquiry email...');
+        const mainResult = await emailjs.send(config.serviceId, config.templateId, mainTemplateParams);
+        
+        if (mainResult.status !== 200) {
+            throw new Error('Main email failed');
+        }
+        
+        // Send auto-reply to customer (if auto-reply template is configured)
+        if (config.autoReplyTemplateId) {
+            console.log('📧 Sending auto-reply to customer...');
+            console.log('🔍 Auto-reply parameters:', {
+                reply_to: autoReplyParams.reply_to,
+                to_email: autoReplyParams.to_email,
+                to_name: autoReplyParams.to_name,
+                templateId: config.autoReplyTemplateId
+            });
+            const autoReplyResult = await emailjs.send(config.serviceId, config.autoReplyTemplateId, autoReplyParams);
+            
+            if (autoReplyResult.status !== 200) {
+                console.warn('⚠️ Auto-reply failed, but main email was sent successfully');
+            } else {
+                console.log('✅ Auto-reply sent to customer');
+            }
+        } else {
+            console.log('ℹ️ No auto-reply template configured');
+        }
+        
+        console.log('✅ Email sent via EmailJS:', mainResult);
+        
+    } catch (error) {
+        console.error('❌ EmailJS sending failed:', error);
+        throw error;
     }
-    
-    console.log('✅ Email sent via EmailJS:', result);
 }
 
 /**

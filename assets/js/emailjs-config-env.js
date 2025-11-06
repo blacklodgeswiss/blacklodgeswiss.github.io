@@ -10,6 +10,7 @@ window.EMAILJS_CONFIG = {
     publicKey: null,
     serviceId: null, 
     templateId: null,
+    autoReplyTemplateId: null,
     
     // Template parameters mapping
     templateParams: {
@@ -55,6 +56,9 @@ function loadEmailJSConfig() {
     if (typeof window.EMAILJS_TEMPLATE_ID !== 'undefined') {
         config.templateId = window.EMAILJS_TEMPLATE_ID;
     }
+    if (typeof window.EMAILJS_AUTOREPLY_TEMPLATE_ID !== 'undefined') {
+        config.autoReplyTemplateId = window.EMAILJS_AUTOREPLY_TEMPLATE_ID;
+    }
     
     // Method 2: From URL parameters (for testing)
     const urlParams = new URLSearchParams(window.location.search);
@@ -83,7 +87,8 @@ function loadEmailJSConfig() {
     console.log('📧 EmailJS Config Status:', {
         publicKey: config.publicKey ? '✅ Loaded' : '❌ Missing',
         serviceId: config.serviceId ? '✅ Loaded' : '❌ Missing', 
-        templateId: config.templateId ? '✅ Loaded' : '❌ Missing'
+        templateId: config.templateId ? '✅ Loaded' : '❌ Missing',
+        autoReplyTemplateId: config.autoReplyTemplateId ? '✅ Loaded' : '⚠️ Optional (no auto-reply)'
     });
     
     return config;
@@ -153,7 +158,9 @@ const RateLimiter = {
 };
 
 // Load configuration when script loads
+console.log('🔄 Loading EmailJS config...');
 loadEmailJSConfig();
+console.log('✅ EmailJS config loading completed');
 
 // Export for use in main.js
 window.BlacklodgeRateLimiter = RateLimiter;
