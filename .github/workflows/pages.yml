@@ -25,20 +25,17 @@ jobs:
         uses: actions/configure-pages@v4
         
       - name: Replace EmailJS Placeholders in kontakt.html
-        env:
-          EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
-          EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
-          EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
-          EMAILJS_AUTOREPLY_TEMPLATE_ID: ${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}
         run: |
-          python3 << 'EOF'
+          # Create a Python script to replace placeholders
+          cat > replace_placeholders.py << 'EOF'
 import os
+import sys
 
 # Read kontakt.html
 with open('kontakt.html', 'r', encoding='utf-8') as f:
     content = f.read()
 
-# Replace placeholders with actual values
+# Replace placeholders with environment variables
 content = content.replace('${EMAILJS_PUBLIC_KEY}', os.environ.get('EMAILJS_PUBLIC_KEY', ''))
 content = content.replace('${EMAILJS_SERVICE_ID}', os.environ.get('EMAILJS_SERVICE_ID', ''))
 content = content.replace('${EMAILJS_TEMPLATE_ID}', os.environ.get('EMAILJS_TEMPLATE_ID', ''))
@@ -50,6 +47,16 @@ with open('kontakt.html', 'w', encoding='utf-8') as f:
 
 print("✅ EmailJS placeholders replaced successfully")
 EOF
+          
+          # Run the Python script with environment variables
+          EMAILJS_PUBLIC_KEY="${{ secrets.EMAILJS_PUBLIC_KEY }}" \
+          EMAILJS_SERVICE_ID="${{ secrets.EMAILJS_SERVICE_ID }}" \
+          EMAILJS_TEMPLATE_ID="${{ secrets.EMAILJS_TEMPLATE_ID }}" \
+          EMAILJS_AUTOREPLY_TEMPLATE_ID="${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}" \
+          python3 replace_placeholders.py
+          
+          # Clean up
+          rm replace_placeholders.py
 
       - name: Verify Build
         run: |
