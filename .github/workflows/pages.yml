@@ -1,80 +1,159 @@
-name: Deploy GitHub Pages with EmailJS
+name: Deploy GitHub Pages with EmailJSname: Deploy GitHub Pages with EmailJS
 
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+on:on:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
-      - name: Replace EmailJS Placeholders in kontakt.html
-        run: |
-          # Create a Python script to replace placeholders
-          cat > replace_placeholders.py << 'EOF'
-import os
-import sys
+  push:  push:
 
-# Read kontakt.html
-with open('kontakt.html', 'r', encoding='utf-8') as f:
-    content = f.read()
+    branches: [ main ]    branches: [ main ]
 
-# Replace placeholders with environment variables
-content = content.replace('${EMAILJS_PUBLIC_KEY}', os.environ.get('EMAILJS_PUBLIC_KEY', ''))
-content = content.replace('${EMAILJS_SERVICE_ID}', os.environ.get('EMAILJS_SERVICE_ID', ''))
-content = content.replace('${EMAILJS_TEMPLATE_ID}', os.environ.get('EMAILJS_TEMPLATE_ID', ''))
-content = content.replace('${EMAILJS_AUTOREPLY_TEMPLATE_ID}', os.environ.get('EMAILJS_AUTOREPLY_TEMPLATE_ID', ''))
+  workflow_dispatch:  workflow_dispatch:
 
-# Write back the modified content
-with open('kontakt.html', 'w', encoding='utf-8') as f:
-    f.write(content)
 
-print("✅ EmailJS placeholders replaced successfully")
-EOF
+
+permissions:permissions:
+
+  contents: read  contents: read
+
+  pages: write  pages: write
+
+  id-token: write  id-token: write
+
+
+
+concurrency:concurrency:
+
+  group: "pages"  group: "pages"
+
+  cancel-in-progress: false  cancel-in-progress: false
+
+
+
+jobs:jobs:
+
+  build:  build:
+
+    runs-on: ubuntu-latest    runs-on: ubuntu-latest
+
+    steps:    steps:
+
+      - name: Checkout      - name: Checkout
+
+        uses: actions/checkout@v4        uses: actions/checkout@v4
+
+                
+
+      - name: Setup Pages      - name: Setup Pages
+
+        uses: actions/configure-pages@v4        uses: actions/configure-pages@v4
+
+                
+
+      - name: Replace EmailJS Placeholders in kontakt.html      - name: Replace EmailJS Placeholders in kontakt.html
+
+        run: |        run: |
+
+          # Create a Python script to replace placeholders          # Create a Python script to replace placeholders
+
+          cat > replace_placeholders.py << 'EOF'          cat > replace_placeholders.py << 'EOF'
+
+          import osimport os
+
+          import sysimport sys
+
           
-          # Run the Python script with environment variables
-          EMAILJS_PUBLIC_KEY="${{ secrets.EMAILJS_PUBLIC_KEY }}" \
-          EMAILJS_SERVICE_ID="${{ secrets.EMAILJS_SERVICE_ID }}" \
-          EMAILJS_TEMPLATE_ID="${{ secrets.EMAILJS_TEMPLATE_ID }}" \
-          EMAILJS_AUTOREPLY_TEMPLATE_ID="${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}" \
-          python3 replace_placeholders.py
-          
-          # Clean up
-          rm replace_placeholders.py
 
-      - name: Verify Build
-        run: |
-          echo "✅ Build verification complete"
-          echo "📧 EmailJS configuration embedded in kontakt.html"
-          
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
+          # Read kontakt.html# Read kontakt.html
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          with open('kontakt.html', 'r', encoding='utf-8') as f:with open('kontakt.html', 'r', encoding='utf-8') as f:
+
+              content = f.read()    content = f.read()
+
+          
+
+          # Replace placeholders with environment variables# Replace placeholders with environment variables
+
+          content = content.replace('${EMAILJS_PUBLIC_KEY}', os.environ.get('EMAILJS_PUBLIC_KEY', ''))content = content.replace('${EMAILJS_PUBLIC_KEY}', os.environ.get('EMAILJS_PUBLIC_KEY', ''))
+
+          content = content.replace('${EMAILJS_SERVICE_ID}', os.environ.get('EMAILJS_SERVICE_ID', ''))content = content.replace('${EMAILJS_SERVICE_ID}', os.environ.get('EMAILJS_SERVICE_ID', ''))
+
+          content = content.replace('${EMAILJS_TEMPLATE_ID}', os.environ.get('EMAILJS_TEMPLATE_ID', ''))content = content.replace('${EMAILJS_TEMPLATE_ID}', os.environ.get('EMAILJS_TEMPLATE_ID', ''))
+
+          content = content.replace('${EMAILJS_AUTOREPLY_TEMPLATE_ID}', os.environ.get('EMAILJS_AUTOREPLY_TEMPLATE_ID', ''))content = content.replace('${EMAILJS_AUTOREPLY_TEMPLATE_ID}', os.environ.get('EMAILJS_AUTOREPLY_TEMPLATE_ID', ''))
+
+          
+
+          # Write back the modified content# Write back the modified content
+
+          with open('kontakt.html', 'w', encoding='utf-8') as f:with open('kontakt.html', 'w', encoding='utf-8') as f:
+
+              f.write(content)    f.write(content)
+
+          
+
+          print("✅ EmailJS placeholders replaced successfully")print("✅ EmailJS placeholders replaced successfully")
+
+          EOFEOF
+
+                    
+
+          # Run the Python script with environment variables          # Run the Python script with environment variables
+
+          EMAILJS_PUBLIC_KEY="${{ secrets.EMAILJS_PUBLIC_KEY }}" \          EMAILJS_PUBLIC_KEY="${{ secrets.EMAILJS_PUBLIC_KEY }}" \
+
+          EMAILJS_SERVICE_ID="${{ secrets.EMAILJS_SERVICE_ID }}" \          EMAILJS_SERVICE_ID="${{ secrets.EMAILJS_SERVICE_ID }}" \
+
+          EMAILJS_TEMPLATE_ID="${{ secrets.EMAILJS_TEMPLATE_ID }}" \          EMAILJS_TEMPLATE_ID="${{ secrets.EMAILJS_TEMPLATE_ID }}" \
+
+          EMAILJS_AUTOREPLY_TEMPLATE_ID="${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}" \          EMAILJS_AUTOREPLY_TEMPLATE_ID="${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}" \
+
+          python3 replace_placeholders.py          python3 replace_placeholders.py
+
+                    
+
+          # Clean up          # Clean up
+
+          rm replace_placeholders.py          rm replace_placeholders.py
+
+
+
+      - name: Verify Build      - name: Verify Build
+
+        run: |        run: |
+
+          echo "✅ Build verification complete"          echo "✅ Build verification complete"
+
+          echo "📧 EmailJS configuration embedded in kontakt.html"          echo "📧 EmailJS configuration embedded in kontakt.html"
+
+                    
+
+      - name: Upload artifact      - name: Upload artifact
+
+        uses: actions/upload-pages-artifact@v3        uses: actions/upload-pages-artifact@v3
+
+        with:        with:
+
+          path: '.'          path: '.'
+
+
+
+  deploy:  deploy:
+
+    environment:    environment:
+
+      name: github-pages      name: github-pages
+
+      url: ${{ steps.deployment.outputs.page_url }}      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest    runs-on: ubuntu-latest
+
+    needs: build    needs: build
+
+    steps:    steps:
+
+      - name: Deploy to GitHub Pages      - name: Deploy to GitHub Pages
+
+        id: deployment        id: deployment
+
+        uses: actions/deploy-pages@v4        uses: actions/deploy-pages@v4
