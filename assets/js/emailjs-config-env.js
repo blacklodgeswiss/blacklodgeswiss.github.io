@@ -60,7 +60,39 @@ function loadEmailJSConfig() {
         config.autoReplyTemplateId = window.EMAILJS_AUTOREPLY_TEMPLATE_ID;
     }
     
-    // If no environment variables, show error (never hardcode keys!)
+    // Production fallback: Try to fetch config if environment variables missing
+    if ((!config.publicKey || !config.serviceId || !config.templateId) && 
+        typeof window.EMAILJS_DEPLOYMENT !== 'undefined' && window.EMAILJS_DEPLOYMENT === 'production') {
+        
+        console.log('🔧 Attempting to load EmailJS config from production deployment...');
+        
+        // Try to fetch the configuration from the deployed emailjs-env.js (async)
+        fetch('/assets/js/emailjs-env.js')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(scriptText => {
+                // Create a script element and execute it safely
+                const script = document.createElement('script');
+                script.textContent = scriptText;
+                document.head.appendChild(script);
+                
+                // Reload configuration after script execution
+                setTimeout(() => {
+                    loadEmailJSConfig();
+                    console.log('✅ Production EmailJS configuration reloaded');
+                }, 100);
+            })
+            .catch(error => {
+                console.error('❌ Failed to load production EmailJS config:', error);
+                console.log('💡 This is expected on localhost - use local emailjs-env.js for development');
+            });
+    }
+    
+    // If still no configuration, show error
     if (!config.publicKey || !config.serviceId || !config.templateId) {
         console.error('❌ EmailJS configuration missing! GitHub Secrets not properly configured.');
         console.log('Required GitHub Secrets: EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID');
