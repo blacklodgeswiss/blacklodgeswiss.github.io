@@ -35,10 +35,18 @@ jobs:
         run: |
           # Create a temporary JavaScript file with environment variables
           cat > assets/js/emailjs-env.js << EOF
-          // EmailJS Environment Configuration - Auto-generated
+          // EmailJS Environment Configuration - Auto-generated from GitHub Secrets
           window.EMAILJS_PUBLIC_KEY = '${{ secrets.EMAILJS_PUBLIC_KEY }}';
           window.EMAILJS_SERVICE_ID = '${{ secrets.EMAILJS_SERVICE_ID }}';
           window.EMAILJS_TEMPLATE_ID = '${{ secrets.EMAILJS_TEMPLATE_ID }}';
+          window.EMAILJS_AUTOREPLY_TEMPLATE_ID = '${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}';
+          
+          // Debug information for deployment
+          console.log('📧 EmailJS Configuration loaded from GitHub Secrets');
+          console.log('🔑 Public Key:', window.EMAILJS_PUBLIC_KEY ? 'Set' : 'Missing');
+          console.log('📬 Service ID:', window.EMAILJS_SERVICE_ID ? 'Set' : 'Missing');
+          console.log('📝 Template ID:', window.EMAILJS_TEMPLATE_ID ? 'Set' : 'Missing');
+          console.log('🔄 Auto-Reply Template ID:', window.EMAILJS_AUTOREPLY_TEMPLATE_ID ? 'Set' : 'Missing');
           EOF
           
           # Verify the file was created
