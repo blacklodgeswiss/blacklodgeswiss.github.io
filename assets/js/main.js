@@ -98,7 +98,7 @@ function initializeHomePageComponents(app) {
     
     // Initialize and render Services Section
     if (window.ServicesSection) {
-        const servicesContainer = document.getElementById('services-section');
+        const servicesContainer = document.getElementById('services');
         if (servicesContainer) {
             const servicesSection = new ServicesSection(i18n);
             servicesSection.render(servicesContainer);
@@ -108,7 +108,7 @@ function initializeHomePageComponents(app) {
     
     // Initialize and render Catalog Section
     if (window.CatalogSection) {
-        const catalogContainer = document.getElementById('catalog-section');
+        const catalogContainer = document.getElementById('katalog');
         if (catalogContainer) {
             const catalogSection = new CatalogSection(i18n);
             catalogSection.render(catalogContainer);

@@ -66,7 +66,7 @@ class NavigationComponent {
             { key: 'home', href: 'index.html', i18nKey: 'navigation.home' },
             { key: 'services', href: 'index.html#services', i18nKey: 'navigation.services' },
             { key: 'catalog', href: 'index.html#katalog', i18nKey: 'navigation.catalog' },
-            { key: 'instagram', href: 'index.html#instagram', i18nKey: 'navigation.instagram' },
+            { key: 'social', href: 'index.html#social', i18nKey: 'navigation.social' },
             { key: 'contact', href: 'kontakt.html', i18nKey: 'navigation.contact', isButton: true }
         ];
 
@@ -213,7 +213,7 @@ class NavigationComponent {
             { key: 'home', href: 'index.html', i18nKey: 'navigation.home' },
             { key: 'services', href: 'index.html#services', i18nKey: 'navigation.services' },
             { key: 'catalog', href: 'index.html#katalog', i18nKey: 'navigation.catalog' },
-            { key: 'instagram', href: 'index.html#instagram', i18nKey: 'navigation.instagram' },
+            { key: 'social', href: 'index.html#social', i18nKey: 'navigation.social' },
             { key: 'contact', href: 'kontakt.html', i18nKey: 'navigation.contact' }
         ];
 
@@ -362,7 +362,7 @@ class NavigationComponent {
             'navigation.home': 'Home',
             'navigation.services': 'Services',
             'navigation.catalog': 'Katalog',
-            'navigation.instagram': 'Instagram',
+            'navigation.social': 'Social Media',
             'navigation.contact': 'Kontakt'
         };
         return defaults[key] || key;
