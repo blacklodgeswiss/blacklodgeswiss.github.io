@@ -3,24 +3,18 @@ name: Deploy GitHub Pages with EmailJS
 on:
   push:
     branches: [ main ]
-  # Remove pull_request trigger - secrets not available in PR context
-  
-# Allow manual trigger
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
@@ -30,77 +24,62 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
-      - name: Inject EmailJS Configuration
+      - name: Create EmailJS Environment File
         run: |
-          # Ensure the directory exists
           mkdir -p assets/js
           
-          # Create emailjs-env.js with environment variables - use printf for better control
-          printf '%s\n' \
-            '// EmailJS Environment Configuration - Auto-generated from GitHub Secrets' \
-            "window.EMAILJS_PUBLIC_KEY = '${{ secrets.EMAILJS_PUBLIC_KEY }}';" \
-            "window.EMAILJS_SERVICE_ID = '${{ secrets.EMAILJS_SERVICE_ID }}';" \
-            "window.EMAILJS_TEMPLATE_ID = '${{ secrets.EMAILJS_TEMPLATE_ID }}';" \
-            "window.EMAILJS_AUTOREPLY_TEMPLATE_ID = '${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}';" \
-            '' \
-            '// Configuration validation' \
-            'if (!window.EMAILJS_PUBLIC_KEY || !window.EMAILJS_SERVICE_ID || !window.EMAILJS_TEMPLATE_ID) {' \
-            "  console.warn('⚠️ EmailJS configuration incomplete');" \
-            '} else {' \
-            "  console.log('✅ EmailJS ready');" \
-            '}' \
-            > assets/js/emailjs-env.js
-          
-          # Inject EmailJS config directly into kontakt.html using Python (bulletproof)
+          cat > assets/js/emailjs-env.js << 'EOL'
+// EmailJS Environment Configuration - Auto-generated from GitHub Secrets
+window.EMAILJS_PUBLIC_KEY = '${{ secrets.EMAILJS_PUBLIC_KEY }}';
+window.EMAILJS_SERVICE_ID = '${{ secrets.EMAILJS_SERVICE_ID }}';
+window.EMAILJS_TEMPLATE_ID = '${{ secrets.EMAILJS_TEMPLATE_ID }}';
+window.EMAILJS_AUTOREPLY_TEMPLATE_ID = '${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}';
+
+// Configuration validation
+if (!window.EMAILJS_PUBLIC_KEY || !window.EMAILJS_SERVICE_ID || !window.EMAILJS_TEMPLATE_ID) {
+  console.warn('⚠️ EmailJS configuration incomplete');
+} else {
+  console.log('✅ EmailJS ready');
+}
+EOL
+
+      - name: Replace EmailJS Placeholders in kontakt.html
+        env:
+          EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+          EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+          EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          EMAILJS_AUTOREPLY_TEMPLATE_ID: ${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}
+        run: |
           python3 << 'EOF'
 import os
-import sys
 
-# Read the template file
+# Read kontakt.html
 with open('kontakt.html', 'r', encoding='utf-8') as f:
     content = f.read()
 
-# Get secrets from environment variables
-public_key = os.environ.get('GITHUB_EMAILJS_PUBLIC_KEY', '')
-service_id = os.environ.get('GITHUB_EMAILJS_SERVICE_ID', '')
-template_id = os.environ.get('GITHUB_EMAILJS_TEMPLATE_ID', '')
-autoreply_id = os.environ.get('GITHUB_EMAILJS_AUTOREPLY_TEMPLATE_ID', '')
+# Replace placeholders with actual values
+content = content.replace('${EMAILJS_PUBLIC_KEY}', os.environ.get('EMAILJS_PUBLIC_KEY', ''))
+content = content.replace('${EMAILJS_SERVICE_ID}', os.environ.get('EMAILJS_SERVICE_ID', ''))
+content = content.replace('${EMAILJS_TEMPLATE_ID}', os.environ.get('EMAILJS_TEMPLATE_ID', ''))
+content = content.replace('${EMAILJS_AUTOREPLY_TEMPLATE_ID}', os.environ.get('EMAILJS_AUTOREPLY_TEMPLATE_ID', ''))
 
-# Replace placeholders safely
-content = content.replace('${EMAILJS_PUBLIC_KEY}', public_key)
-content = content.replace('${EMAILJS_SERVICE_ID}', service_id)
-content = content.replace('${EMAILJS_TEMPLATE_ID}', template_id)
-content = content.replace('${EMAILJS_AUTOREPLY_TEMPLATE_ID}', autoreply_id)
-
-# Write back the file
+# Write back the modified content
 with open('kontakt.html', 'w', encoding='utf-8') as f:
     f.write(content)
 
-print(f"✅ Replaced placeholders successfully")
-print(f"Public Key: {'✅ Set' if public_key else '❌ Missing'}")
-print(f"Service ID: {'✅ Set' if service_id else '❌ Missing'}")
-print(f"Template ID: {'✅ Set' if template_id else '❌ Missing'}")
-print(f"Auto-Reply ID: {'✅ Set' if autoreply_id else '❌ Missing'}")
+print("✅ EmailJS placeholders replaced successfully")
 EOF
-        env:
-          GITHUB_EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
-          GITHUB_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
-          GITHUB_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
-          GITHUB_EMAILJS_AUTOREPLY_TEMPLATE_ID: ${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}
-          
-          echo "✅ EmailJS configuration injected successfully"
 
-      - name: Verify Build Structure
+      - name: Verify Build
         run: |
           echo "✅ Build verification complete"
-          ls -la assets/js/emailjs-env.js > /dev/null && echo "📧 EmailJS environment file created" || echo "❌ EmailJS file missing"
+          ls -la assets/js/emailjs-env.js > /dev/null && echo "📧 EmailJS file ready" || echo "❌ EmailJS file missing"
           
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
