@@ -24,25 +24,6 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
-      - name: Create EmailJS Environment File
-        run: |
-          mkdir -p assets/js
-          
-          cat > assets/js/emailjs-env.js << 'EOL'
-// EmailJS Environment Configuration - Auto-generated from GitHub Secrets
-window.EMAILJS_PUBLIC_KEY = '${{ secrets.EMAILJS_PUBLIC_KEY }}';
-window.EMAILJS_SERVICE_ID = '${{ secrets.EMAILJS_SERVICE_ID }}';
-window.EMAILJS_TEMPLATE_ID = '${{ secrets.EMAILJS_TEMPLATE_ID }}';
-window.EMAILJS_AUTOREPLY_TEMPLATE_ID = '${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}';
-
-// Configuration validation
-if (!window.EMAILJS_PUBLIC_KEY || !window.EMAILJS_SERVICE_ID || !window.EMAILJS_TEMPLATE_ID) {
-  console.warn('⚠️ EmailJS configuration incomplete');
-} else {
-  console.log('✅ EmailJS ready');
-}
-EOL
-
       - name: Replace EmailJS Placeholders in kontakt.html
         env:
           EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
@@ -73,7 +54,7 @@ EOF
       - name: Verify Build
         run: |
           echo "✅ Build verification complete"
-          ls -la assets/js/emailjs-env.js > /dev/null && echo "📧 EmailJS file ready" || echo "❌ EmailJS file missing"
+          echo "📧 EmailJS configuration embedded in kontakt.html"
           
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
