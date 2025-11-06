@@ -51,23 +51,42 @@ jobs:
             '}' \
             > assets/js/emailjs-env.js
           
-          # Inject EmailJS config directly into kontakt.html
-          
-          # Replace placeholders using shell parameter expansion (more reliable than envsubst)
-          cp kontakt.html kontakt.html.backup
-          
-          # Use shell to replace each placeholder individually
-          TEMP_FILE=$(mktemp)
-          cp kontakt.html "$TEMP_FILE"
-          
-          # Replace placeholders one by one with proper escaping
-          sed "s|\${EMAILJS_PUBLIC_KEY}|${{ secrets.EMAILJS_PUBLIC_KEY }}|g" "$TEMP_FILE" > kontakt.html.tmp1
-          sed "s|\${EMAILJS_SERVICE_ID}|${{ secrets.EMAILJS_SERVICE_ID }}|g" kontakt.html.tmp1 > kontakt.html.tmp2
-          sed "s|\${EMAILJS_TEMPLATE_ID}|${{ secrets.EMAILJS_TEMPLATE_ID }}|g" kontakt.html.tmp2 > kontakt.html.tmp3
-          sed "s|\${EMAILJS_AUTOREPLY_TEMPLATE_ID}|${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}|g" kontakt.html.tmp3 > kontakt.html
-          
-          # Clean up temporary files
-          rm -f kontakt.html.tmp* "$TEMP_FILE"
+          # Inject EmailJS config directly into kontakt.html using Python (bulletproof)
+          python3 << 'EOF'
+import os
+import sys
+
+# Read the template file
+with open('kontakt.html', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+# Get secrets from environment variables
+public_key = os.environ.get('GITHUB_EMAILJS_PUBLIC_KEY', '')
+service_id = os.environ.get('GITHUB_EMAILJS_SERVICE_ID', '')
+template_id = os.environ.get('GITHUB_EMAILJS_TEMPLATE_ID', '')
+autoreply_id = os.environ.get('GITHUB_EMAILJS_AUTOREPLY_TEMPLATE_ID', '')
+
+# Replace placeholders safely
+content = content.replace('${EMAILJS_PUBLIC_KEY}', public_key)
+content = content.replace('${EMAILJS_SERVICE_ID}', service_id)
+content = content.replace('${EMAILJS_TEMPLATE_ID}', template_id)
+content = content.replace('${EMAILJS_AUTOREPLY_TEMPLATE_ID}', autoreply_id)
+
+# Write back the file
+with open('kontakt.html', 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print(f"✅ Replaced placeholders successfully")
+print(f"Public Key: {'✅ Set' if public_key else '❌ Missing'}")
+print(f"Service ID: {'✅ Set' if service_id else '❌ Missing'}")
+print(f"Template ID: {'✅ Set' if template_id else '❌ Missing'}")
+print(f"Auto-Reply ID: {'✅ Set' if autoreply_id else '❌ Missing'}")
+EOF
+        env:
+          GITHUB_EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+          GITHUB_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+          GITHUB_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          GITHUB_EMAILJS_AUTOREPLY_TEMPLATE_ID: ${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}
           
           echo "✅ EmailJS configuration injected successfully"
 
