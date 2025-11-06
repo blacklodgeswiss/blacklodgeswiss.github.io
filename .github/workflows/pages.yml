@@ -43,29 +43,15 @@ jobs:
             "window.EMAILJS_TEMPLATE_ID = '${{ secrets.EMAILJS_TEMPLATE_ID }}';" \
             "window.EMAILJS_AUTOREPLY_TEMPLATE_ID = '${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}';" \
             '' \
-            '// Debug information for deployment' \
-            "console.log('📧 EmailJS Configuration loaded from GitHub Secrets (Production)');" \
-            "console.log('🔑 Public Key:', window.EMAILJS_PUBLIC_KEY ? 'Set ✅' : 'Missing ❌');" \
-            "console.log('📬 Service ID:', window.EMAILJS_SERVICE_ID ? 'Set ✅' : 'Missing ❌');" \
-            "console.log('📝 Template ID:', window.EMAILJS_TEMPLATE_ID ? 'Set ✅' : 'Missing ❌');" \
-            "console.log('🔄 Auto-Reply Template ID:', window.EMAILJS_AUTOREPLY_TEMPLATE_ID ? 'Set ✅' : 'Missing ❌');" \
-            '' \
-            '// Production deployment marker' \
-            "window.EMAILJS_DEPLOYMENT = 'production';" \
-            "window.EMAILJS_BUILD_TIME = '${{ github.run_number }}';" \
-            "window.EMAILJS_BUILD_SHA = '${{ github.sha }}';" \
-            '' \
-            '// Fallback configuration check' \
+            '// Configuration validation' \
             'if (!window.EMAILJS_PUBLIC_KEY || !window.EMAILJS_SERVICE_ID || !window.EMAILJS_TEMPLATE_ID) {' \
-            "  console.warn('⚠️ EmailJS configuration incomplete - check GitHub Secrets');" \
-            "  console.log('Required Secrets: EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID');" \
+            "  console.warn('⚠️ EmailJS configuration incomplete');" \
             '} else {' \
-            "  console.log('✅ EmailJS configuration complete');" \
+            "  console.log('✅ EmailJS ready');" \
             '}' \
             > assets/js/emailjs-env.js
           
-          # Also inject EmailJS config directly into kontakt.html
-          echo "=== Injecting EmailJS config into kontakt.html ==="
+          # Inject EmailJS config directly into kontakt.html
           
           # Set environment variables for envsubst
           export EMAILJS_PUBLIC_KEY="${{ secrets.EMAILJS_PUBLIC_KEY }}"
@@ -77,64 +63,12 @@ jobs:
           envsubst '${EMAILJS_PUBLIC_KEY} ${EMAILJS_SERVICE_ID} ${EMAILJS_TEMPLATE_ID} ${EMAILJS_AUTOREPLY_TEMPLATE_ID}' < kontakt.html > kontakt.html.tmp
           mv kontakt.html.tmp kontakt.html
           
-          echo "kontakt.html updated with EmailJS configuration"
-          
-          # Debug: Show what we created
-          echo "=== Generated emailjs-env.js ==="
-          cat assets/js/emailjs-env.js
-          echo "=== File size and permissions ==="
-          ls -la assets/js/emailjs-env.js
-          
-          echo "=== EmailJS config in kontakt.html ==="
-          grep -A 5 -B 5 "EMAILJS_PUBLIC_KEY" kontakt.html || echo "No EMAILJS_PUBLIC_KEY found in kontakt.html"
-          
-          # Verify secrets are available (without exposing full values)
-          echo "=== Secret availability check ==="
-          echo "EMAILJS_PUBLIC_KEY exists: ${{ secrets.EMAILJS_PUBLIC_KEY != '' }}"
-          echo "EMAILJS_SERVICE_ID exists: ${{ secrets.EMAILJS_SERVICE_ID != '' }}"
-          echo "EMAILJS_TEMPLATE_ID exists: ${{ secrets.EMAILJS_TEMPLATE_ID != '' }}"
-          echo "EMAILJS_AUTOREPLY_TEMPLATE_ID exists: ${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID != '' }}"
-          
-          # Show first/last few characters for verification (safe debugging)
-          PUBLIC_KEY="${{ secrets.EMAILJS_PUBLIC_KEY }}"
-          SERVICE_ID="${{ secrets.EMAILJS_SERVICE_ID }}"
-          TEMPLATE_ID="${{ secrets.EMAILJS_TEMPLATE_ID }}"
-          AUTOREPLY_ID="${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}"
-          
-          if [ -n "$PUBLIC_KEY" ]; then
-            echo "PUBLIC_KEY format: ${PUBLIC_KEY:0:3}...${PUBLIC_KEY: -3}"
-          else
-            echo "❌ PUBLIC_KEY is empty!"
-          fi
-          
-          if [ -n "$SERVICE_ID" ]; then
-            echo "SERVICE_ID format: ${SERVICE_ID:0:8}...${SERVICE_ID: -3}"
-          else
-            echo "❌ SERVICE_ID is empty!"
-          fi
+          echo "✅ EmailJS configuration injected successfully"
 
       - name: Verify Build Structure
         run: |
-          echo "=== Final build verification ==="
-          echo "EmailJS file exists:"
-          ls -la assets/js/emailjs-env.js || echo "❌ emailjs-env.js NOT found"
-          
-          echo "=== EmailJS file content verification ==="
-          if [ -f "assets/js/emailjs-env.js" ]; then
-            echo "File size: $(wc -c < assets/js/emailjs-env.js) bytes"
-            echo "Content preview:"
-            head -10 assets/js/emailjs-env.js
-            
-            # Check if variables are actually set (not empty)
-            if grep -q "window.EMAILJS_PUBLIC_KEY = '';" assets/js/emailjs-env.js; then
-              echo "❌ WARNING: PUBLIC_KEY is empty in generated file!"
-            fi
-            if grep -q "window.EMAILJS_SERVICE_ID = '';" assets/js/emailjs-env.js; then
-              echo "❌ WARNING: SERVICE_ID is empty in generated file!"  
-            fi
-          else
-            echo "❌ emailjs-env.js was not created!"
-          fi
+          echo "✅ Build verification complete"
+          ls -la assets/js/emailjs-env.js > /dev/null && echo "📧 EmailJS environment file created" || echo "❌ EmailJS file missing"
           
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
