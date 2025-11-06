@@ -3,9 +3,8 @@ name: Deploy GitHub Pages with EmailJS
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+  # Remove pull_request trigger - secrets not available in PR context
+  
 # Allow manual trigger
   workflow_dispatch:
 
@@ -71,22 +70,53 @@ jobs:
           echo "=== File size and permissions ==="
           ls -la assets/js/emailjs-env.js
           
-          # Verify secrets are available (without exposing values)
+          # Verify secrets are available (without exposing full values)
           echo "=== Secret availability check ==="
-          echo "EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY != '' }}"
-          echo "EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID != '' }}"
-          echo "EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID != '' }}"
-          echo "EMAILJS_AUTOREPLY_TEMPLATE_ID: ${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID != '' }}"
+          echo "EMAILJS_PUBLIC_KEY exists: ${{ secrets.EMAILJS_PUBLIC_KEY != '' }}"
+          echo "EMAILJS_SERVICE_ID exists: ${{ secrets.EMAILJS_SERVICE_ID != '' }}"
+          echo "EMAILJS_TEMPLATE_ID exists: ${{ secrets.EMAILJS_TEMPLATE_ID != '' }}"
+          echo "EMAILJS_AUTOREPLY_TEMPLATE_ID exists: ${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID != '' }}"
+          
+          # Show first/last few characters for verification (safe debugging)
+          PUBLIC_KEY="${{ secrets.EMAILJS_PUBLIC_KEY }}"
+          SERVICE_ID="${{ secrets.EMAILJS_SERVICE_ID }}"
+          TEMPLATE_ID="${{ secrets.EMAILJS_TEMPLATE_ID }}"
+          AUTOREPLY_ID="${{ secrets.EMAILJS_AUTOREPLY_TEMPLATE_ID }}"
+          
+          if [ -n "$PUBLIC_KEY" ]; then
+            echo "PUBLIC_KEY format: ${PUBLIC_KEY:0:3}...${PUBLIC_KEY: -3}"
+          else
+            echo "❌ PUBLIC_KEY is empty!"
+          fi
+          
+          if [ -n "$SERVICE_ID" ]; then
+            echo "SERVICE_ID format: ${SERVICE_ID:0:8}...${SERVICE_ID: -3}"
+          else
+            echo "❌ SERVICE_ID is empty!"
+          fi
 
       - name: Verify Build Structure
         run: |
           echo "=== Final build verification ==="
-          echo "Directory structure:"
-          find . -name "*.js" | head -20
           echo "EmailJS file exists:"
           ls -la assets/js/emailjs-env.js || echo "❌ emailjs-env.js NOT found"
-          echo "Content preview (first 5 lines):"
-          head -5 assets/js/emailjs-env.js || echo "❌ Cannot read emailjs-env.js"
+          
+          echo "=== EmailJS file content verification ==="
+          if [ -f "assets/js/emailjs-env.js" ]; then
+            echo "File size: $(wc -c < assets/js/emailjs-env.js) bytes"
+            echo "Content preview:"
+            head -10 assets/js/emailjs-env.js
+            
+            # Check if variables are actually set (not empty)
+            if grep -q "window.EMAILJS_PUBLIC_KEY = '';" assets/js/emailjs-env.js; then
+              echo "❌ WARNING: PUBLIC_KEY is empty in generated file!"
+            fi
+            if grep -q "window.EMAILJS_SERVICE_ID = '';" assets/js/emailjs-env.js; then
+              echo "❌ WARNING: SERVICE_ID is empty in generated file!"  
+            fi
+          else
+            echo "❌ emailjs-env.js was not created!"
+          fi
           
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
