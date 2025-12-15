@@ -2,6 +2,13 @@
 
 Eine moderne, responsive Website für Blacklodge – Mobile Cocktailbar & Event-Services.
 
+## 🚨 WICHTIG: Website nicht erreichbar?
+
+**Falls Ihre Website nur vom Heimnetzwerk aus erreichbar ist:**
+- 📄 **[SOLUTION_SUMMARY.md](SOLUTION_SUMMARY.md)** - KRITISCHER BUG WURDE BEHOBEN! Lesen Sie dies zuerst.
+- 📄 **[WEBSITE_NICHT_ERREICHBAR.md](WEBSITE_NICHT_ERREICHBAR.md)** - Schnell-Hilfe
+- 📄 **[documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md](documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md)** - Detaillierte Anleitung
+
 ## 🎯 Überblick
 
 Die Website präsentiert die Event-Services von Blacklodge in einem modernen, minimalistischen Design. Entwickelt nach den Anforderungen aus den Website-Instructions mit Fokus auf Lead-Generierung und Portfolio-Präsentation.
@@ -148,6 +155,12 @@ Die Website ist für GitHub Pages optimiert und kann direkt deployed werden:
 - **Image Optimization**: WebP Format, responsive Images
 - **CDN Integration**: Für bessere Performance
 
+## 🆘 Troubleshooting
+
+**Website nicht erreichbar oder nur vom Heimnetzwerk aus?**
+- 📄 **[WEBSITE_NICHT_ERREICHBAR.md](WEBSITE_NICHT_ERREICHBAR.md)** - Sofort-Hilfe
+- 📄 **[documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md](documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md)** - Detaillierte Anleitung
+
 ## 📞 Kontakt & Support
 
 Bei Fragen zur Website-Entwicklung oder technischen Problemen:
@@ -155,6 +168,7 @@ Bei Fragen zur Website-Entwicklung oder technischen Problemen:
 **Entwicklung:**
 - Dokumentation in diesem README
 - Code-Kommentare in den Dateien
+- Troubleshooting Guides (siehe oben)
 
 **Blacklodge Business:**
 - Telefon: +41 79 778 48 61  
