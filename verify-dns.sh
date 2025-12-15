@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # DNS Verification Script for blacklodge.ch
 # This script checks if DNS records are properly configured for GitHub Pages
@@ -60,7 +60,7 @@ else
     echo -e "${GREEN}✓ Found A records:${NC}"
     VALID_COUNT=0
     while IFS= read -r ip; do
-        if [ -n "$ip" ] && [[ " ${GITHUB_IPS[@]} " =~ " ${ip} " ]]; then
+        if [ -n "$ip" ] && [[ " ${GITHUB_IPS[*]} " =~ " ${ip} " ]]; then
             echo -e "${GREEN}  ✓ ${ip} (GitHub Pages IP)${NC}"
             VALID_COUNT=$((VALID_COUNT + 1))
         elif [ -n "$ip" ]; then
@@ -100,7 +100,7 @@ echo ""
 # Check if domain resolves
 echo "3. Checking domain resolution:"
 if command_exists curl; then
-    HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -L "https://${DOMAIN}" --max-time 30 2>/dev/null || echo "000")
+    HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -L --max-redirs 5 "https://${DOMAIN}" --max-time 30 2>/dev/null || echo "000")
     
     if [ "$HTTP_STATUS" = "000" ]; then
         echo -e "${RED}✗ Cannot connect to https://${DOMAIN}${NC}"
