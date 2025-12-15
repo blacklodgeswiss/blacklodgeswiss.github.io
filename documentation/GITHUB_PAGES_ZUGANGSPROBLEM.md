@@ -82,7 +82,7 @@ Ihre Website sollte unter `https://blacklodge.ch` erreichbar sein.
    Wert: blacklodgeswiss.github.io
    ```
 
-3. **DNS-Propagation abwarten:**
+3. **DNS-Propagierung abwarten:**
    - DNS-Änderungen können **24-48 Stunden** dauern
    - Überprüfen Sie den Status mit: https://dnschecker.org/
 
@@ -95,7 +95,7 @@ Ihre Website sollte unter `https://blacklodge.ch` erreichbar sein.
 
 2. **Falls Workflow fehlgeschlagen:**
    - Repository → Actions
-   - Neuester Workflow → Details anschauen
+   - Neuester Workflow → Details ansehen
    - Fehler beheben (meist fehlende Secrets oder falsche Konfiguration)
 
 ### Schritt 5: Cache und DNS leeren (auf Ihrem Computer)

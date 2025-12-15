@@ -31,7 +31,7 @@ on:on:  # ❌ DOPPELT!
    https://github.com/blacklodgeswiss/blacklodgeswiss.github.io
    ```
 
-2. **Gehen Sie zum "Actions" Tab**
+2. **Gehen Sie zum "Actions"-Reiter** (Aktionen-Tab)
 
 3. **Der Workflow sollte jetzt automatisch laufen** (durch den Push dieses Commits)
 

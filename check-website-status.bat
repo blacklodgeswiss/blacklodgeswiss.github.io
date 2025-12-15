@@ -7,6 +7,22 @@ echo Blacklodge Website Status Checker
 echo ==================================
 echo.
 
+REM Check if curl is available
+where curl >nul 2>nul
+if %errorlevel% neq 0 (
+    echo [FEHLER] curl ist nicht installiert!
+    echo.
+    echo curl wird benoetigt, um die Website-Erreichbarkeit zu pruefen.
+    echo.
+    echo Loesungen:
+    echo   1. Installieren Sie curl fuer Windows von: https://curl.se/windows/
+    echo   2. Unter Windows 10/11 ist curl normalerweise bereits installiert
+    echo   3. Alternativ: Testen Sie die Website direkt im Browser
+    echo.
+    pause
+    exit /b 1
+)
+
 REM Test 1: Hauptdomain
 echo Test 1: Hauptdomain (blacklodge.ch)
 echo ------------------------------------

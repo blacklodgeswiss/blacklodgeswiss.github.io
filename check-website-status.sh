@@ -17,10 +17,17 @@ NC='\033[0m' # No Color
 # Test 1: Hauptdomain
 echo "Test 1: Hauptdomain (blacklodge.ch)"
 echo "------------------------------------"
-if curl -I -s -o /dev/null -w "%{http_code}" https://blacklodge.ch | grep -q "200\|301\|302"; then
-    echo -e "${GREEN}✅ blacklodge.ch ist erreichbar${NC}"
+HTTP_CODE=$(curl -I -s -o /dev/null -w "%{http_code}" https://blacklodge.ch 2>/dev/null || echo "000")
+if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "301" ] || [ "$HTTP_CODE" = "302" ]; then
+    echo -e "${GREEN}✅ blacklodge.ch ist erreichbar (HTTP $HTTP_CODE)${NC}"
+elif [ "$HTTP_CODE" = "000" ]; then
+    echo -e "${RED}❌ blacklodge.ch ist NICHT erreichbar (Netzwerkfehler)${NC}"
+    echo -e "${YELLOW}   Mögliche Ursachen:${NC}"
+    echo "   - Keine Internetverbindung"
+    echo "   - DNS kann nicht aufgelöst werden"
+    echo "   - Firewall blockiert Zugriff"
 else
-    echo -e "${RED}❌ blacklodge.ch ist NICHT erreichbar${NC}"
+    echo -e "${RED}❌ blacklodge.ch ist NICHT erreichbar (HTTP $HTTP_CODE)${NC}"
     echo -e "${YELLOW}   Mögliche Ursachen:${NC}"
     echo "   - Repository ist auf 'Private' gestellt"
     echo "   - GitHub Pages ist nicht aktiviert"
@@ -31,8 +38,9 @@ echo ""
 # Test 2: WWW Subdomain
 echo "Test 2: WWW Subdomain (www.blacklodge.ch)"
 echo "------------------------------------"
-if curl -I -s -o /dev/null -w "%{http_code}" https://www.blacklodge.ch | grep -q "200\|301\|302"; then
-    echo -e "${GREEN}✅ www.blacklodge.ch ist erreichbar${NC}"
+HTTP_CODE=$(curl -I -s -o /dev/null -w "%{http_code}" https://www.blacklodge.ch 2>/dev/null || echo "000")
+if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "301" ] || [ "$HTTP_CODE" = "302" ]; then
+    echo -e "${GREEN}✅ www.blacklodge.ch ist erreichbar (HTTP $HTTP_CODE)${NC}"
 else
     echo -e "${YELLOW}⚠️  www.blacklodge.ch ist nicht erreichbar${NC}"
     echo "   (Dies ist optional, aber empfohlen)"
@@ -42,8 +50,9 @@ echo ""
 # Test 3: GitHub Pages URL
 echo "Test 3: GitHub Pages URL"
 echo "------------------------------------"
-if curl -I -s -o /dev/null -w "%{http_code}" https://blacklodgeswiss.github.io | grep -q "200\|301\|302"; then
-    echo -e "${GREEN}✅ GitHub Pages URL ist erreichbar${NC}"
+HTTP_CODE=$(curl -I -s -o /dev/null -w "%{http_code}" https://blacklodgeswiss.github.io 2>/dev/null || echo "000")
+if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "301" ] || [ "$HTTP_CODE" = "302" ]; then
+    echo -e "${GREEN}✅ GitHub Pages URL ist erreichbar (HTTP $HTTP_CODE)${NC}"
 else
     echo -e "${RED}❌ GitHub Pages URL ist NICHT erreichbar${NC}"
     echo -e "${YELLOW}   KRITISCH: Repository muss auf 'Public' stehen!${NC}"
@@ -78,7 +87,8 @@ echo "=================================="
 echo ""
 
 # Haupttest
-if curl -I -s -o /dev/null -w "%{http_code}" https://blacklodge.ch | grep -q "200"; then
+HTTP_CODE=$(curl -I -s -o /dev/null -w "%{http_code}" https://blacklodge.ch 2>/dev/null || echo "000")
+if [ "$HTTP_CODE" = "200" ]; then
     echo -e "${GREEN}✅ Website ist ÖFFENTLICH erreichbar!${NC}"
     echo ""
     echo "Ihre Website funktioniert korrekt."
