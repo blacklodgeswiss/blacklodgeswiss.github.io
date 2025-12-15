@@ -3,7 +3,7 @@
 # DNS Verification Script for blacklodge.ch
 # This script checks if DNS records are properly configured for GitHub Pages
 
-set -e
+set -euo pipefail
 
 DOMAIN="blacklodge.ch"
 WWW_DOMAIN="www.blacklodge.ch"
@@ -47,9 +47,9 @@ echo ""
 # Check A records for root domain
 echo "1. Checking A records for ${DOMAIN}:"
 if command_exists dig; then
-    A_RECORDS=$(dig +short $DOMAIN A 2>/dev/null || echo "")
+    A_RECORDS=$(dig +short "$DOMAIN" A 2>/dev/null || echo "")
 else
-    A_RECORDS=$(nslookup $DOMAIN 2>/dev/null | grep 'Address:' | grep -v '#' | awk '{print $2}' || echo "")
+    A_RECORDS=$(nslookup "$DOMAIN" 2>/dev/null | grep 'Address:' | grep -v '#' | awk '{print $2}' || echo "")
 fi
 
 A_RECORDS_VALID=false
@@ -59,11 +59,11 @@ if [ -z "$A_RECORDS" ]; then
 else
     echo -e "${GREEN}✓ Found A records:${NC}"
     VALID_COUNT=0
-    while read -r ip; do
-        if [[ " ${GITHUB_IPS[@]} " =~ " ${ip} " ]]; then
+    while IFS= read -r ip; do
+        if [ -n "$ip" ] && [[ " ${GITHUB_IPS[@]} " =~ " ${ip} " ]]; then
             echo -e "${GREEN}  ✓ ${ip} (GitHub Pages IP)${NC}"
             VALID_COUNT=$((VALID_COUNT + 1))
-        else
+        elif [ -n "$ip" ]; then
             echo -e "${YELLOW}  ⚠ ${ip} (Not a GitHub Pages IP)${NC}"
         fi
     done <<< "$A_RECORDS"
@@ -78,9 +78,9 @@ echo ""
 echo "2. Checking CNAME record for ${WWW_DOMAIN}:"
 CNAME_VALID=false
 if command_exists dig; then
-    CNAME_RECORD=$(dig +short $WWW_DOMAIN CNAME 2>/dev/null || echo "")
+    CNAME_RECORD=$(dig +short "$WWW_DOMAIN" CNAME 2>/dev/null || echo "")
 else
-    CNAME_RECORD=$(nslookup -type=CNAME $WWW_DOMAIN 2>/dev/null | grep 'canonical name' | awk '{print $NF}' | sed 's/\.$//' || echo "")
+    CNAME_RECORD=$(nslookup -type=CNAME "$WWW_DOMAIN" 2>/dev/null | grep 'canonical name' | awk '{print $NF}' | sed 's/\.$//' || echo "")
 fi
 
 if [ -z "$CNAME_RECORD" ]; then
@@ -100,7 +100,7 @@ echo ""
 # Check if domain resolves
 echo "3. Checking domain resolution:"
 if command_exists curl; then
-    HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -L "https://${DOMAIN}" --max-time 10 2>/dev/null || echo "000")
+    HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -L "https://${DOMAIN}" --max-time 30 2>/dev/null || echo "000")
     
     if [ "$HTTP_STATUS" = "000" ]; then
         echo -e "${RED}✗ Cannot connect to https://${DOMAIN}${NC}"
