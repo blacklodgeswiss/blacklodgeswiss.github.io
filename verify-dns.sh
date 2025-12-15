@@ -52,25 +52,31 @@ else
     A_RECORDS=$(nslookup $DOMAIN 2>/dev/null | grep 'Address:' | grep -v '#' | awk '{print $2}' || echo "")
 fi
 
+A_RECORDS_VALID=false
 if [ -z "$A_RECORDS" ]; then
     echo -e "${RED}✗ No A records found for ${DOMAIN}${NC}"
     echo -e "${YELLOW}  Action required: Configure A records with GitHub Pages IPs${NC}"
-    DNS_CONFIGURED=false
 else
     echo -e "${GREEN}✓ Found A records:${NC}"
-    echo "$A_RECORDS" | while read -r ip; do
+    VALID_COUNT=0
+    while read -r ip; do
         if [[ " ${GITHUB_IPS[@]} " =~ " ${ip} " ]]; then
             echo -e "${GREEN}  ✓ ${ip} (GitHub Pages IP)${NC}"
+            VALID_COUNT=$((VALID_COUNT + 1))
         else
             echo -e "${YELLOW}  ⚠ ${ip} (Not a GitHub Pages IP)${NC}"
         fi
-    done
-    DNS_CONFIGURED=true
+    done <<< "$A_RECORDS"
+    
+    if [ "$VALID_COUNT" -gt 0 ]; then
+        A_RECORDS_VALID=true
+    fi
 fi
 echo ""
 
 # Check CNAME record for www subdomain
 echo "2. Checking CNAME record for ${WWW_DOMAIN}:"
+CNAME_VALID=false
 if command_exists dig; then
     CNAME_RECORD=$(dig +short $WWW_DOMAIN CNAME 2>/dev/null || echo "")
 else
@@ -83,6 +89,7 @@ if [ -z "$CNAME_RECORD" ]; then
 else
     if [ "$CNAME_RECORD" = "$GITHUB_PAGES_DOMAIN." ] || [ "$CNAME_RECORD" = "$GITHUB_PAGES_DOMAIN" ]; then
         echo -e "${GREEN}✓ CNAME record correctly configured: ${CNAME_RECORD}${NC}"
+        CNAME_VALID=true
     else
         echo -e "${YELLOW}⚠ CNAME record found but incorrect: ${CNAME_RECORD}${NC}"
         echo -e "${YELLOW}  Expected: ${GITHUB_PAGES_DOMAIN}${NC}"
@@ -118,14 +125,14 @@ echo "======================================"
 echo "Summary:"
 echo "======================================"
 
-if [ -n "$A_RECORDS" ] && [ -n "$CNAME_RECORD" ]; then
-    echo -e "${GREEN}✓ DNS records appear to be configured${NC}"
+if [ "$A_RECORDS_VALID" = true ] && [ "$CNAME_VALID" = true ]; then
+    echo -e "${GREEN}✓ DNS records are correctly configured${NC}"
     echo ""
     echo "Next steps:"
     echo "1. Wait for DNS propagation (can take 5 minutes to 48 hours)"
     echo "2. Enable HTTPS in GitHub Pages settings"
     echo "3. Test website: https://${DOMAIN}"
-elif [ -z "$A_RECORDS" ] && [ -z "$CNAME_RECORD" ]; then
+elif [ "$A_RECORDS_VALID" = false ] && [ "$CNAME_VALID" = false ]; then
     echo -e "${RED}✗ DNS records are NOT configured${NC}"
     echo ""
     echo "Required actions:"
@@ -134,6 +141,13 @@ elif [ -z "$A_RECORDS" ] && [ -z "$CNAME_RECORD" ]; then
     echo "3. See DNS-SETUP-GUIDE.md for detailed instructions"
 else
     echo -e "${YELLOW}⚠ DNS configuration is incomplete${NC}"
+    echo ""
+    if [ "$A_RECORDS_VALID" = false ]; then
+        echo "Missing or incorrect: A records for ${DOMAIN}"
+    fi
+    if [ "$CNAME_VALID" = false ]; then
+        echo "Missing or incorrect: CNAME record for ${WWW_DOMAIN}"
+    fi
     echo ""
     echo "Please review the checks above and configure missing DNS records"
     echo "See DNS-SETUP-GUIDE.md for detailed instructions"
