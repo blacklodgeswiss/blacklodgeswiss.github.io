@@ -18,27 +18,10 @@ The website **blacklodge.ch** is not accessible due to missing or incorrect DNS 
 
 You need to configure DNS records at your domain registrar (where you purchased `blacklodge.ch`).
 
-### Option 1: CNAME Record (Recommended)
-Configure a `CNAME` record for `www.blacklodge.ch`:
+### Option 1: A Records (Most Common)
+Most registrars support A records. Use GitHub Pages IP addresses:
 
-```
-Type:  CNAME
-Name:  www
-Value: blacklodgeswiss.github.io
-TTL:   3600 (or default)
-```
-
-And configure an `ALIAS` or `ANAME` record for the root domain (if supported by your registrar):
-
-```
-Type:  ALIAS or ANAME
-Name:  @ (or leave blank for root)
-Value: blacklodgeswiss.github.io
-TTL:   3600 (or default)
-```
-
-### Option 2: A Records (If ALIAS is not supported)
-If your registrar doesn't support `ALIAS` records, use GitHub Pages IP addresses:
+**Note:** You need ALL FOUR A records AND the CNAME record below.
 
 ```
 Type:  A
@@ -70,13 +53,33 @@ Value: blacklodgeswiss.github.io
 TTL:   3600
 ```
 
+### Option 2: ALIAS/ANAME Records (Advanced)
+If your registrar supports `ALIAS` or `ANAME` records (less common), you can use these instead of A records:
+
+```
+Type:  ALIAS or ANAME
+Name:  @ (or leave blank for root)
+Value: blacklodgeswiss.github.io
+TTL:   3600 (or default)
+```
+
+**Plus the CNAME record for www subdomain:**
+```
+Type:  CNAME
+Name:  www
+Value: blacklodgeswiss.github.io
+TTL:   3600
+```
+
+**Note:** Many registrars (especially Swiss ones like Infomaniak, Hostpoint) don't support ALIAS/ANAME records. When in doubt, use Option 1 (A records).
+
 ## Steps to Configure DNS
 
 1. **Log in to your domain registrar** (e.g., GoDaddy, Namecheap, Infomaniak, etc.)
 
 2. **Navigate to DNS Management** section for `blacklodge.ch`
 
-3. **Add DNS records** as specified in Option 1 or Option 2 above
+3. **Add DNS records** as specified in Option 1 (or Option 2 if supported)
 
 4. **Save changes** and wait for DNS propagation (can take 5 minutes to 48 hours, typically within 1 hour)
 
