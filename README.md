@@ -148,6 +148,12 @@ Die Website ist für GitHub Pages optimiert und kann direkt deployed werden:
 - **Image Optimization**: WebP Format, responsive Images
 - **CDN Integration**: Für bessere Performance
 
+## 🆘 Troubleshooting
+
+**Website nicht erreichbar oder nur vom Heimnetzwerk aus?**
+- 📄 **[WEBSITE_NICHT_ERREICHBAR.md](WEBSITE_NICHT_ERREICHBAR.md)** - Sofort-Hilfe
+- 📄 **[documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md](documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md)** - Detaillierte Anleitung
+
 ## 📞 Kontakt & Support
 
 Bei Fragen zur Website-Entwicklung oder technischen Problemen:
@@ -155,6 +161,7 @@ Bei Fragen zur Website-Entwicklung oder technischen Problemen:
 **Entwicklung:**
 - Dokumentation in diesem README
 - Code-Kommentare in den Dateien
+- Troubleshooting Guides (siehe oben)
 
 **Blacklodge Business:**
 - Telefon: +41 79 778 48 61  
