@@ -54,12 +54,12 @@ DNS verwendet statische A-Records (nur IPv4) statt ALIAS/ANAME (IPv4 + IPv6)
 
 **Frage:** "Unterstützen Sie ALIAS- oder ANAME-Records für meine Apex-Domain?"
 
-### Wenn NEIN → CloudFlare verwenden (kostenlos)
+### Wenn NEIN → Cloudflare verwenden (kostenlos)
 
-1. **CloudFlare-Account:** https://www.cloudflare.com/
+1. **Cloudflare-Account:** https://www.cloudflare.com/
 2. **Domain hinzufügen:** blacklodge.ch
-3. **Nameserver ändern** bei Hosttech auf CloudFlare
-4. **CNAME erstellen** bei CloudFlare:
+3. **Nameserver ändern** bei Hosttech auf Cloudflare
+4. **CNAME erstellen** bei Cloudflare:
    - Typ: CNAME
    - Name: @ (Apex)
    - Ziel: blacklodgeswiss.github.io

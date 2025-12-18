@@ -12,7 +12,8 @@ Mobile Netzwerke bevorzugen **IPv6**, während WLAN-Netzwerke oft IPv4 verwenden
 
 **Aktuelles Problem:**
 - `blacklodge.ch` verwendet statische **IPv4 A-Records**
-- GitHub Pages liefert **nur IPv6 (AAAA) bei CNAME/ALIAS-Setup**
+- GitHub Pages liefert **IPv4 UND IPv6 bei CNAME/ALIAS-Setup**
+- Mit A-Records: Nur die statischen IPv4-Adressen werden zurückgegeben
 - Resultat: **Kein IPv6** → Mobile Netzwerke können die Website nicht laden
 
 ---
@@ -118,14 +119,14 @@ TTL: 3600
 
 ## ⚠️ Falls Hosttech ALIAS/ANAME nicht unterstützt
 
-### Alternative: CloudFlare DNS (kostenlos)
+### Alternative: Cloudflare DNS (kostenlos)
 
-Falls Hosttech keine ALIAS/ANAME-Records unterstützt, können Sie CloudFlare als DNS-Provider verwenden:
+Falls Hosttech keine ALIAS/ANAME-Records unterstützt, können Sie Cloudflare als DNS-Provider verwenden:
 
-1. **CloudFlare-Account erstellen:** https://www.cloudflare.com/
+1. **Cloudflare-Account erstellen:** https://www.cloudflare.com/
 2. **Domain hinzufügen:** `blacklodge.ch`
-3. **Nameserver bei Hosttech ändern** auf CloudFlare-Nameserver
-4. **CNAME-Record erstellen** (CloudFlare unterstützt CNAME Flattening automatisch):
+3. **Nameserver bei Hosttech ändern** auf Cloudflare-Nameserver
+4. **CNAME-Record erstellen** (Cloudflare unterstützt CNAME Flattening automatisch):
    ```
    Typ: CNAME
    Name: @ (Apex)
@@ -140,7 +141,7 @@ Falls Hosttech keine ALIAS/ANAME-Records unterstützt, können Sie CloudFlare al
    Proxy-Status: ☁️ Proxied
    ```
 
-**Vorteile CloudFlare:**
+**Vorteile Cloudflare:**
 - ✅ Kostenlos
 - ✅ Automatisches IPv6
 - ✅ CDN (schnellere Ladezeiten)
@@ -232,7 +233,7 @@ Verwenden Sie Online-Tools zur Überprüfung:
 
 **Lösung:**
 - Kontaktieren Sie den Hosttech-Support und fragen Sie explizit nach **ALIAS** oder **ANAME**
-- Alternativ: Wechseln Sie zu CloudFlare (siehe oben)
+- Alternativ: Wechseln Sie zu Cloudflare (siehe oben)
 
 ### Problem: "DNS-Änderung dauert zu lange"
 

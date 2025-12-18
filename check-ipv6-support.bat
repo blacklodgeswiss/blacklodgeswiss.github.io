@@ -49,7 +49,7 @@ echo.
 nslookup -type=AAAA %GITHUB_PAGES% | findstr /C:"Address:" > nul
 if %errorlevel% equ 0 (
     echo    ✅ GitHub Pages unterstützt IPv6
-    nslookup -type=AAAA %GITHUB_PAGES% | findstr /C:"Address:" | findstr /V /C:"127.0.0.1"
+    nslookup -type=AAAA %GITHUB_PAGES% | findstr /C:"Address:"
 ) else (
     echo    ⚠️  GitHub Pages hat kein IPv6 (ungewöhnlich)
 )
