@@ -3,8 +3,10 @@
 ## 🚨 Zwei häufige Probleme
 
 ### Problem A: Website funktioniert über WLAN, aber NICHT über mobile Daten (4G/5G)
-**Ursache:** IPv6-Unterstützung fehlt (DNS-Konfiguration)
-**Lösung:** 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - DNS auf ALIAS/ANAME umstellen
+**Ursache:** IPv6-Unterstützung fehlt (DNS-Konfiguration)  
+**Lösungen:**
+- 🚀 **[IPv6_QUICK_FIX.md](IPv6_QUICK_FIX.md)** - 5-Minuten Schnell-Anleitung
+- 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - Detaillierte Anleitung
 
 ### Problem B: Website ist komplett privat (nur für Sie sichtbar)
 **Ursache:** Repository ist auf "Private" gestellt
@@ -44,7 +46,8 @@ Der beste Test, ob die Website öffentlich erreichbar ist:
 - ❌ **NEIN:** Wahrscheinlich IPv6-Problem (siehe unten)
 
 **Falls mobile Daten nicht funktionieren:**
-→ 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - IPv6-Support aktivieren
+→ 🚀 **[IPv6_QUICK_FIX.md](IPv6_QUICK_FIX.md)** - 5-Minuten Schnell-Anleitung  
+→ 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - Detaillierte Anleitung
 
 ## 📖 Detaillierte Anleitung
 

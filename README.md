@@ -8,7 +8,9 @@ Eine moderne, responsive Website für Blacklodge – Mobile Cocktailbar & Event-
 
 ### Problem: Website funktioniert auf WLAN, aber NICHT auf mobilen Daten (4G/5G)
 **Ursache:** Fehlende IPv6-Unterstützung (DNS verwendet A-Records statt ALIAS)  
-**Lösung:** 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - **WICHTIG FÜR MOBILE NETZWERKE!**
+**Lösungen:**
+- 🚀 **[IPv6_QUICK_FIX.md](IPv6_QUICK_FIX.md)** - **5-Minuten Schnell-Anleitung**
+- 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - Detaillierte Anleitung
 
 ### Problem: Website ist komplett privat
 **Ursache:** Repository auf "Private" oder nicht korrekt deployed  
@@ -166,9 +168,10 @@ Die Website ist für GitHub Pages optimiert und kann direkt deployed werden:
 ## 🆘 Troubleshooting
 
 **Website nicht erreichbar?**
-- 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - **IPv6 für mobile Netzwerke (4G/5G)**
+- 🚀 **[IPv6_QUICK_FIX.md](IPv6_QUICK_FIX.md)** - **5-Minuten Quick Fix für mobile Netzwerke**
+- 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - **Detaillierte IPv6-Anleitung**
 - 📄 **[WEBSITE_NICHT_ERREICHBAR.md](WEBSITE_NICHT_ERREICHBAR.md)** - Sofort-Hilfe
-- 📄 **[documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md](documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md)** - Detaillierte Anleitung
+- 📄 **[documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md](documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md)** - Vollständige Anleitung
 
 ## 📞 Kontakt & Support
 
