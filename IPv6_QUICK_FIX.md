@@ -8,7 +8,11 @@ Website lädt auf **WLAN** ✅, aber nicht auf **mobilen Daten** ❌ (4G/5G)
 ### Ursache
 DNS verwendet statische A-Records (nur IPv4) statt ALIAS/ANAME (IPv4 + IPv6)
 
-### Lösung (3 Schritte)
+### ⚠️ WICHTIG: Zuerst überprüfen
+📄 **[documentation/HOSTTECH_DNS_CHECK.md](documentation/HOSTTECH_DNS_CHECK.md)** - Überprüfen Sie, ob Hosttech ALIAS/ANAME unterstützt  
+📸 **[documentation/HOSTTECH_VISUAL_GUIDE.md](documentation/HOSTTECH_VISUAL_GUIDE.md)** - Visuelle Anleitung basierend auf Ihrem DNS-Setup
+
+### Lösung (3 Schritte) - nur wenn ALIAS/ANAME verfügbar
 
 #### 1. Bei Hosttech anmelden
 → https://www.hosttech.ch/  

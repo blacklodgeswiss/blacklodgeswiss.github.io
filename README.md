@@ -9,6 +9,7 @@ Eine moderne, responsive Website für Blacklodge – Mobile Cocktailbar & Event-
 ### Problem: Website funktioniert auf WLAN, aber NICHT auf mobilen Daten (4G/5G)
 **Ursache:** Fehlende IPv6-Unterstützung (DNS verwendet A-Records statt ALIAS)  
 **Lösungen:**
+- 📸 **[documentation/HOSTTECH_VISUAL_GUIDE.md](documentation/HOSTTECH_VISUAL_GUIDE.md)** - **Visuelle Anleitung für Ihr Setup**
 - 🚀 **[IPv6_QUICK_FIX.md](IPv6_QUICK_FIX.md)** - **5-Minuten Schnell-Anleitung**
 - 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - Detaillierte Anleitung
 
