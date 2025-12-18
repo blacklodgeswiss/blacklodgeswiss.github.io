@@ -1,10 +1,13 @@
 @echo off
 REM Website Status Checker für blacklodge.ch (Windows Version)
 REM Überprüft ob die Website öffentlich erreichbar ist
+REM Für IPv6-Support-Test verwenden Sie: check-ipv6-support.bat
 
 echo ==================================
 echo Blacklodge Website Status Checker
 echo ==================================
+echo.
+echo 💡 Tipp: Für IPv6-Test (mobile Netzwerke): check-ipv6-support.bat
 echo.
 
 REM Check if curl is available

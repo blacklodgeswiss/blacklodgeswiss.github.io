@@ -1,6 +1,22 @@
 # 🔧 Lösung: Website nicht erreichbar Problem
 
-## ✅ Was wurde behoben
+## 🚨 NEUES PROBLEM IDENTIFIZIERT: IPv6 fehlt für mobile Netzwerke
+
+### Website funktioniert auf WLAN, aber NICHT auf mobilen Daten?
+
+**Ursache:** Die Domain verwendet aktuell statische **A-Records** (nur IPv4), keine **ALIAS/ANAME-Records** (IPv4 + IPv6).
+
+**Problem:**
+- Mobile Netzwerke (4G/5G) bevorzugen IPv6
+- Aktuelle DNS-Konfiguration liefert kein IPv6 (AAAA-Records)
+- Resultat: Website lädt nicht auf mobilen Daten
+
+**Lösung:**
+📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - **DNS auf ALIAS/ANAME umstellen bei Hosttech**
+
+---
+
+## ✅ Was bereits behoben wurde
 
 ### 1. **KRITISCHER BUG: GitHub Actions Workflow war defekt**
 
@@ -117,16 +133,22 @@ Der GitHub Actions Workflow hatte eine **ungültige YAML-Syntax** (jede Zeile do
 
 ## 📋 Checkliste
 
+### Deployment & Konfiguration
 - [ ] GitHub Actions Workflow erfolgreich durchgelaufen
 - [ ] Repository auf "Public" gestellt
 - [ ] GitHub Pages aktiviert (Source = "GitHub Actions")
 - [ ] EmailJS Secrets konfiguriert (optional, nur für Kontaktformular)
-- [ ] Website von Handy mit mobilen Daten getestet
-- [ ] DNS propagiert (kann 24-48h dauern)
+
+### IPv6-Support für mobile Netzwerke (WICHTIG!)
+- [ ] DNS von A-Records auf ALIAS/ANAME umgestellt (siehe [DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md))
+- [ ] `nslookup -type=AAAA blacklodge.ch` zeigt IPv6-Adressen
+- [ ] Website von Handy mit mobilen Daten getestet (WLAN AUS!)
+- [ ] DNS propagiert (kann 1-48h dauern)
 
 ## 📞 Weitere Hilfe
 
 **Detaillierte Troubleshooting-Anleitungen:**
+- 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - **IPv6-Support für mobile Netzwerke**
 - 📄 **[WEBSITE_NICHT_ERREICHBAR.md](WEBSITE_NICHT_ERREICHBAR.md)** - Schnellanleitung
 - 📄 **[documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md](documentation/GITHUB_PAGES_ZUGANGSPROBLEM.md)** - Vollständige Anleitung
 

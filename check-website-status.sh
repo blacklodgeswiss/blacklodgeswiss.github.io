@@ -2,10 +2,13 @@
 
 # Website Status Checker für blacklodge.ch
 # Überprüft ob die Website öffentlich erreichbar ist
+# Für IPv6-Support-Test verwenden Sie: ./check-ipv6-support.sh
 
 echo "=================================="
 echo "Blacklodge Website Status Checker"
 echo "=================================="
+echo ""
+echo "💡 Tipp: Für IPv6-Test (mobile Netzwerke): ./check-ipv6-support.sh"
 echo ""
 
 # Farben für Output
