@@ -85,137 +85,25 @@
                     <p class="text-gray-600">Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden</p>
                 </div>
                 
-                <!-- Contact Form -->
-                <form id="contact-form" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.first_name">Vorname</label>
-                            <input type="text" id="first_name" name="first_name" required 
-                                   autocomplete="given-name"
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.last_name">Nachname</label>
-                            <input type="text" id="last_name" name="last_name" required 
-                                   autocomplete="family-name"
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.email">E-Mail</label>
-                            <input type="email" id="email" name="email" required 
-                                   autocomplete="email"
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone" 
-                                   autocomplete="tel"
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                        </div>
-                    </div>
-                    
-                    <!-- Honeypot field - hidden spam trap -->
-                    <div style="position: absolute; left: -5000px; opacity: 0; pointer-events: none;" aria-hidden="true">
-                        <label for="website_url">Website URL (bitte leer lassen)</label>
-                        <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="event_type" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.event_type">Art des Anlasses</label>
-                            <select id="event_type" name="event_type" 
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                                <option value="" data-i18n="contact.form.event_type_placeholder">Bitte wählen...</option>
-                                <option value="private" data-i18n="contact.form.event_type_private">Private Feier</option>
-                                <option value="corporate" data-i18n="contact.form.event_type_corporate">Firmenveranstaltung</option>
-                                <option value="wedding" data-i18n="contact.form.event_type_wedding">Hochzeit</option>
-                                <option value="other" data-i18n="contact.form.event_type_other">Sonstiges</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="guests" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.guests">Anzahl Gäste</label>
-                            <select id="guests" name="guests" 
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                                <option value="" data-i18n="contact.form.event_type_placeholder">Bitte wählen...</option>
-                                <option value="< 100" data-i18n="contact.form.guests_under_100">< 100 Personen</option>
-                                <option value="100-200" data-i18n="contact.form.guests_100_200">100-200 Personen</option>
-                                <option value="200-400" data-i18n="contact.form.guests_200_400">200-400 Personen</option>
-                                <option value="400-600" data-i18n="contact.form.guests_400_600">400-600 Personen</option>
-                                <option value="600+" data-i18n="contact.form.guests_600_plus">600+ Personen</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="event_date" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.event_date">Datum (ungefähr)</label>
-                            <input type="date" id="event_date" name="event_date" 
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label for="location" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.location">Ort / PLZ</label>
-                            <input type="text" id="location" name="location" data-i18n="contact.form.location_placeholder"
-                                   autocomplete="address-line1"
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.services">Gewünschte Services</label>
-                        <div class="space-y-2">
-                            <label class="flex items-center">
-                                <input type="checkbox" name="services[]" value="cocktail" class="rounded border-gray-300 text-amber-600 focus:ring-amber-500">
-                                <span class="ml-2 text-sm text-gray-700" data-i18n="contact.form.service_cocktail">Cocktail & Bar Service</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" name="services[]" value="booth" class="rounded border-gray-300 text-amber-600 focus:ring-amber-500">
-                                <span class="ml-2 text-sm text-gray-700" data-i18n="contact.form.service_booth">360° Booth & PhotoBooth</span>
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" name="services[]" value="entertainment" class="rounded border-gray-300 text-amber-600 focus:ring-amber-500">
-                                <span class="ml-2 text-sm text-gray-700" data-i18n="contact.form.service_entertainment">Event Entertainment</span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label for="budget" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.budget">Budgetrahmen</label>
-                        <select id="budget" name="budget" 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                            <option value="" data-i18n="contact.form.event_type_placeholder">Bitte wählen...</option>
-                            <option value="500-1000" data-i18n="contact.form.budget_500_1000">CHF 500 - 1'000</option>
-                            <option value="1000-2500" data-i18n="contact.form.budget_1000_2500">CHF 1'000 - 2'500</option>
-                            <option value="2500-5000" data-i18n="contact.form.budget_2500_5000">CHF 2'500 - 5'000</option>
-                            <option value="5000+" data-i18n="contact.form.budget_5000_plus">CHF 5'000+</option>
-                            <option value="open" data-i18n="contact.form.budget_open">Offen / Individuell</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="contact.form.message">Zusätzliche Informationen</label>
-                        <textarea id="message" name="message" rows="4" data-i18n="contact.form.message_placeholder"
-                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"></textarea>
-                    </div>
-                    
-                    <div>
-                        <label class="flex items-start">
-                            <input type="checkbox" name="datenschutz" required class="mt-1 rounded border-gray-300 text-amber-600 focus:ring-amber-500">
-                            <span class="ml-2 text-sm text-gray-700">
-                                <span data-i18n="contact.form.privacy">Ich stimme der</span>
-                                <a href="datenschutz.html" class="text-amber-600 hover:underline" data-i18n="contact.form.privacy_link">Datenschutzerklärung</a>
-                                <span data-i18n="contact.form.privacy_text">zu und bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden.</span>
-                            </span>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" 
-                            class="w-full bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-amber-700 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-colors">
-                        <span data-i18n="contact.form.submit">Anfrage senden</span>
-                    </button>
-                </form>
+                <!-- Microsoft Forms iframe -->
+                <div class="w-full h-screen min-h-[800px]">
+                    <iframe 
+                        src="https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__VhuQK1UQ1VORlRWVzZLTU04MVUxUlNBVTgxOURIWC4u&route=shorturl"
+                        width="100%" 
+                        height="100%"
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0"
+                        style="border: none; border-radius: 8px;"
+                        allow="geolocation; microphone; camera"
+                        allowfullscreen
+                        title="Black Lodge Contact Form">
+                        Ihr Browser unterstützt keine iframes. 
+                        <a href="https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__VhuQK1UQ1VORlRWVzZLTU04MVUxUlNBVTgxOURIWC4u&route=shorturl" target="_blank">
+                            Formular in neuem Tab öffnen
+                        </a>
+                    </iframe>
+                </div>
                 
                 <div class="text-center mt-6 pt-6 border-t border-gray-100">
                     <p class="text-sm text-gray-600 mb-3">Oder kontaktieren Sie uns direkt:</p>
@@ -327,39 +215,9 @@
     <!-- Footer Component -->
     <div id="footer-root"></div>
 
-    <!-- EmailJS Library -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
-    <!-- EmailJS Configuration (embedded for reliability) -->
-    <script>
-        // EmailJS configuration for production (auto-injected by GitHub Actions)
-        window.EMAILJS_PUBLIC_KEY = '${EMAILJS_PUBLIC_KEY}';
-        window.EMAILJS_SERVICE_ID = '${EMAILJS_SERVICE_ID}';
-        window.EMAILJS_TEMPLATE_ID = '${EMAILJS_TEMPLATE_ID}';
-        window.EMAILJS_AUTOREPLY_TEMPLATE_ID = '${EMAILJS_AUTOREPLY_TEMPLATE_ID}';
-        
-        // Production deployment marker
-        window.EMAILJS_DEPLOYMENT = 'production';
-        
-        console.log('📧 EmailJS embedded configuration loaded');
-        console.log('🔑 Public Key:', window.EMAILJS_PUBLIC_KEY ? 'Set ✅' : 'Missing ❌');
-        console.log('📬 Service ID:', window.EMAILJS_SERVICE_ID ? 'Set ✅' : 'Missing ❌');
-        console.log('📝 Template ID:', window.EMAILJS_TEMPLATE_ID ? 'Set ✅' : 'Missing ❌');
-        console.log('🔄 Auto-Reply Template ID:', window.EMAILJS_AUTOREPLY_TEMPLATE_ID ? 'Set ✅' : 'Missing ❌');
-        
-        // Fallback configuration check
-        if (!window.EMAILJS_PUBLIC_KEY || window.EMAILJS_PUBLIC_KEY === '${EMAILJS_PUBLIC_KEY}' || 
-            !window.EMAILJS_SERVICE_ID || window.EMAILJS_SERVICE_ID === '${EMAILJS_SERVICE_ID}' ||
-            !window.EMAILJS_TEMPLATE_ID || window.EMAILJS_TEMPLATE_ID === '${EMAILJS_TEMPLATE_ID}') {
-            console.warn('⚠️ EmailJS configuration placeholders not replaced - check GitHub Actions');
-            console.log('Required GitHub Secrets: EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_AUTOREPLY_TEMPLATE_ID');
-        } else {
-            console.log('✅ EmailJS configuration complete');
-        }
-    </script>
+    <!-- Microsoft Forms - No additional scripts needed -->
     
     <!-- Load all components and core scripts -->
-    <script src="assets/js/emailjs-config-env.js"></script>
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/components/SwissLanguageModal.js"></script>
     <script src="assets/js/components/NavigationComponent.js"></script>
