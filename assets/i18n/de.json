@@ -204,17 +204,16 @@
     "privacy": {
         "title": "Datenschutzerklärung",
         "meta_description": "Datenschutzerklärung von Blacklodge – Informationen zum Schutz Ihrer persönlichen Daten.",
-        "subtitle": "Schutz Ihrer persönlichen Daten",
-        "intro": "Wir freuen uns über Ihr Interesse an unserer Website. Der Schutz Ihrer Privatsphäre ist für uns sehr wichtig.",
-        "data_collection_title": "Datenerfassung",
-        "data_collection_text": "Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte SSL-Verschlüsselung.",
-        "contact_data_title": "Kontaktdaten",
-        "contact_data_text": "Wenn Sie mit uns per Formular auf der Website oder per E-Mail Kontakt aufnehmen, werden Ihre Angaben zur Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.",
-        "cookies_title": "Cookies",
-        "cookies_text": "Diese Website verwendet Cookies, um die Benutzerfreundlichkeit zu verbessern.",
-        "rights_title": "Ihre Rechte",
-        "rights_text": "Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten.",
-        "back_to_home": "Zurück zur Startseite"
+        "back_to_home": "Zurück zur Startseite",
+        "sections": {
+            "overview": {
+                "content": "Informationen zum Umgang mit Ihren personenbezogenen Daten"
+            },
+            "controller": {
+                "title": "Verantwortliche Stelle",
+                "content": "Blacklodge\nMario Kantharoobarajah\nAdresse folgt nach Firmenanmeldung\nSchweiz\n\nKontakt:\nTelefon: +41 79 778 48 61\nE-Mail: the.blacklodge@outlook.com"
+            }
+        }
     },
     "common": {
         "required": "*",
