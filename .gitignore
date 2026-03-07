@@ -8,3 +8,4 @@ assets/js/emailjs-env.js
 .vscode/
 node_modules/
 assets/js/emailjs-config-env.js
+.firebase/
