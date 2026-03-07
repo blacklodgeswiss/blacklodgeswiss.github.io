@@ -52,6 +52,7 @@ class FooterComponent {
                             <ul class="space-y-2">
                                 <li><a href="impressum.html" class="text-gray-400 hover:text-white transition-colors" data-i18n="footer.imprint">Impressum</a></li>
                                 <li><a href="datenschutz.html" class="text-gray-400 hover:text-white transition-colors" data-i18n="footer.privacy">Datenschutz</a></li>
+                                <li><a href="agb.html" class="text-gray-400 hover:text-white transition-colors" data-i18n="footer.terms">AGB</a></li>
                             </ul>
                         </div>
                     </div>
