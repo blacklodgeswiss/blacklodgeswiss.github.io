@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "blacklodge-swiss"
+  },
+  "targets": {
+    "blacklodge-swiss": {
+      "hosting": {
+        "main": [
+          "blacklodge"
+        ]
+      }
+    }
   }
 }
