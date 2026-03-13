@@ -176,7 +176,7 @@
         "company_info": "Unternehmen",
         "business_type": "Mobile Cocktailbar & Event-Services",
         "address": "Schweiz",
-        "address_note": "Adresse folgt nach Firmenanmeldung",
+        "address_note": "Birkenstrasse 3, 4123 Allschwil",
         "contact_title": "Kontakt",
         "phone_label": "Telefon",
         "email_label": "E-Mail",
@@ -212,7 +212,7 @@
             },
             "controller": {
                 "title": "Verantwortliche Stelle",
-                "content": "Blacklodge\nMario Kantharoobarajah\nAdresse folgt nach Firmenanmeldung\nSchweiz\n\nKontakt:\nTelefon: +41 79 778 48 61\nE-Mail: the.blacklodge@outlook.com"
+                "content": "Blacklodge\nMario Kantharoobarajah\nBirkenstrasse 3\n4123 Allschwil\nSchweiz\n\nKontakt:\nTelefon: +41 79 778 48 61\nE-Mail: the.blacklodge@outlook.com"
             }
         }
     },
