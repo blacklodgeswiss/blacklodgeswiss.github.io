@@ -1,6 +1,20 @@
 # ⚠️ Website nur vom Heimnetzwerk erreichbar?
 
-## 🚨 Sofort-Lösung
+## 🚨 Zwei häufige Probleme
+
+### Problem A: Website funktioniert über WLAN, aber NICHT über mobile Daten (4G/5G)
+**Ursache:** IPv6-Unterstützung fehlt (DNS-Konfiguration)  
+**Lösungen:**
+- 🚀 **[IPv6_QUICK_FIX.md](IPv6_QUICK_FIX.md)** - 5-Minuten Schnell-Anleitung
+- 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - Detaillierte Anleitung
+
+### Problem B: Website ist komplett privat (nur für Sie sichtbar)
+**Ursache:** Repository ist auf "Private" gestellt
+**Lösung:** Siehe unten (Schritt 1)
+
+---
+
+## 🚨 Sofort-Lösung für Problem B (Private Repository)
 
 ### Schritt 1: Repository-Sichtbarkeit prüfen
 Ihre Website ist nur öffentlich erreichbar, wenn das **Repository auf "Public"** steht!
@@ -29,7 +43,11 @@ Der beste Test, ob die Website öffentlich erreichbar ist:
 
 **Funktioniert es?**
 - ✅ **JA:** Problem war nur lokales Caching oder DNS
-- ❌ **NEIN:** Siehe detaillierte Anleitung unten
+- ❌ **NEIN:** Wahrscheinlich IPv6-Problem (siehe unten)
+
+**Falls mobile Daten nicht funktionieren:**
+→ 🚀 **[IPv6_QUICK_FIX.md](IPv6_QUICK_FIX.md)** - 5-Minuten Schnell-Anleitung  
+→ 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - Detaillierte Anleitung
 
 ## 📖 Detaillierte Anleitung
 
@@ -38,13 +56,16 @@ Für eine komplette Schritt-für-Schritt Anleitung lesen Sie:
 
 ## 🎯 Häufigste Ursachen
 
-### 1. Repository ist "Private" (80% der Fälle)
+### 1. IPv6 fehlt - Mobile Netzwerke (40% der Fälle)
+→ 📄 **[documentation/DNS_IPV6_KONFIGURATION.md](documentation/DNS_IPV6_KONFIGURATION.md)** - DNS auf ALIAS/ANAME umstellen
+
+### 2. Repository ist "Private" (35% der Fälle)
 → Settings → Danger Zone → Make Public
 
-### 2. DNS nicht propagiert (15% der Fälle)
+### 3. DNS nicht propagiert (20% der Fälle)
 → Warten Sie 24-48 Stunden nach DNS-Änderung
 
-### 3. Browser-Cache (5% der Fälle)
+### 4. Browser-Cache (5% der Fälle)
 → `Ctrl+Shift+Delete` → Cache leeren
 
 ## 🔧 Schnelltest im Terminal/CMD

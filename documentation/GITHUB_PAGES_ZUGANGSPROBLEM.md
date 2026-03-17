@@ -1,9 +1,20 @@
 # GitHub Pages Zugriffsproblem beheben
 
-## 🔴 Problem
-Die Website ist nur vom Heimnetzwerk aus erreichbar, aber nicht öffentlich verfügbar.
+## 🔴 Zwei häufige Probleme
 
-## ✅ Lösung: Schritt-für-Schritt Anleitung
+### Problem 1: Website funktioniert über WLAN, aber NICHT über mobile Daten (4G/5G)
+**Ursache:** Fehlende IPv6-Unterstützung  
+**Symptome:** Lädt auf WLAN, aber nicht auf mobilem Internet  
+**Lösung:** 📄 **[DNS_IPV6_KONFIGURATION.md](DNS_IPV6_KONFIGURATION.md)** - DNS auf ALIAS/ANAME umstellen für IPv6-Support
+
+### Problem 2: Website ist komplett privat (nur für Sie sichtbar)
+**Ursache:** Repository auf "Private" oder GitHub Pages nicht aktiviert  
+**Symptome:** Niemand außer Sie kann die Website sehen  
+**Lösung:** Siehe Schritte unten
+
+---
+
+## ✅ Lösung für Problem 2: Schritt-für-Schritt Anleitung
 
 ### Schritt 1: GitHub Pages Einstellungen überprüfen
 
@@ -46,17 +57,24 @@ Ihre Website sollte unter `https://blacklodge.ch` erreichbar sein.
    
    Ihre Domain `blacklodge.ch` muss korrekt konfiguriert sein:
 
-   **Bei Ihrem Domain-Provider (z.B. Hostpoint, Infomaniak, etc.):**
+   **⚠️ WICHTIG: Für mobile Netzwerke (IPv6-Support):**
    
-   **Option A: Mit CNAME (empfohlen für GitHub Pages):**
+   **Option A: Mit ALIAS/ANAME (EMPFOHLEN für IPv6-Support):**
    ```
-   Typ: CNAME
-   Name: @ (oder www)
-   Wert: blacklodgeswiss.github.io
+   Typ: ALIAS (oder ANAME)
+   Name: @ (Apex-Domain)
+   Ziel: blacklodgeswiss.github.io
    TTL: 3600
    ```
+   
+   **Vorteile:**
+   - ✅ Unterstützt IPv4 UND IPv6
+   - ✅ Funktioniert auf mobilen Netzwerken (4G/5G)
+   - ✅ Automatische IP-Updates durch GitHub
+   
+   📄 **Detaillierte Anleitung:** [DNS_IPV6_KONFIGURATION.md](DNS_IPV6_KONFIGURATION.md)
 
-   **Option B: Mit A-Records (wenn CNAME nicht funktioniert):**
+   **Option B: Mit A-Records (NUR IPv4, funktioniert NICHT auf mobilen Netzwerken):**
    ```
    Typ: A
    Name: @
@@ -74,17 +92,23 @@ Ihre Website sollte unter `https://blacklodge.ch` erreichbar sein.
    Name: @
    Wert: 185.199.111.153
    ```
+   
+   **⚠️ Warnung:** A-Records unterstützen kein IPv6!
+   - ❌ Website funktioniert NICHT auf mobilen Netzwerken
+   - ❌ Keine IPv6-Unterstützung
+   - ⚠️ Nur für WLAN/IPv4-Netzwerke
 
-   **Wichtig für www-Subdomain:**
+   **Wichtig für www-Subdomain (beide Optionen):**
    ```
    Typ: CNAME
    Name: www
-   Wert: blacklodgeswiss.github.io
+   Ziel: blacklodgeswiss.github.io
    ```
 
 3. **DNS-Propagierung abwarten:**
-   - DNS-Änderungen können **24-48 Stunden** dauern
+   - DNS-Änderungen können **1-48 Stunden** dauern
    - Überprüfen Sie den Status mit: https://dnschecker.org/
+   - Testen Sie IPv6: `nslookup -type=AAAA blacklodge.ch`
 
 ### Schritt 4: GitHub Actions Workflow überprüfen
 
@@ -135,23 +159,28 @@ sudo systemd-resolve --flush-caches
 
 ## 🔍 Häufige Ursachen
 
-### 1. Repository ist auf "Private" gestellt
+### 1. IPv6 fehlt - Mobile Netzwerke funktionieren nicht
+**Symptom:** Website lädt auf WLAN, aber nicht auf mobilen Daten (4G/5G)
+**Lösung:** DNS auf ALIAS/ANAME umstellen (siehe [DNS_IPV6_KONFIGURATION.md](DNS_IPV6_KONFIGURATION.md))
+**Test:** `nslookup -type=AAAA blacklodge.ch` sollte IPv6-Adressen zeigen
+
+### 2. Repository ist auf "Private" gestellt
 **Symptom:** Website ist nur für Sie sichtbar
 **Lösung:** Repository auf "Public" stellen (siehe Schritt 2)
 
-### 2. DNS nicht richtig konfiguriert
+### 3. DNS nicht richtig konfiguriert
 **Symptom:** `blacklodge.ch` funktioniert nicht, aber `blacklodgeswiss.github.io` schon
 **Lösung:** DNS-Einstellungen beim Domain-Provider korrigieren (siehe Schritt 3)
 
-### 3. GitHub Pages ist deaktiviert
+### 4. GitHub Pages ist deaktiviert
 **Symptom:** Website lädt gar nicht
 **Lösung:** Settings → Pages → Source auf "GitHub Actions" stellen
 
-### 4. CNAME-Datei fehlt oder falsch
+### 5. CNAME-Datei fehlt oder falsch
 **Symptom:** Custom Domain funktioniert nicht
 **Lösung:** CNAME-Datei muss `blacklodge.ch` enthalten (bereits vorhanden ✅)
 
-### 5. Router/Firewall blockiert Zugriff
+### 6. Router/Firewall blockiert Zugriff
 **Symptom:** Nur von Zuhause erreichbar
 **Lösung:** 
 - Testen Sie mit mobilen Daten (Handy ohne WLAN)
